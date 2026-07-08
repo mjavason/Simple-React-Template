@@ -8,115 +8,120 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root';
-import { Route as AuthLoginRouteImport } from './routes/_auth/login';
-import { Route as AboutRouteImport } from './routes/about';
-import { Route as IndexRouteImport } from './routes/index';
-import { Route as PostsRouteImport } from './routes/posts';
-import { Route as PostsPostIdRouteImport } from './routes/posts_.$postId';
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as PostsRouteImport } from './routes/posts'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as PostsPostIdRouteImport } from './routes/posts_.$postId'
+import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 
 const PostsRoute = PostsRouteImport.update({
   id: '/posts',
   path: '/posts',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const PostsPostIdRoute = PostsPostIdRouteImport.update({
   id: '/posts_/$postId',
   path: '/posts/$postId',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/_auth/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute;
-  '/about': typeof AboutRoute;
-  '/posts': typeof PostsRoute;
-  '/login': typeof AuthLoginRoute;
-  '/posts/$postId': typeof PostsPostIdRoute;
+  '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/posts': typeof PostsRoute
+  '/login': typeof AuthLoginRoute
+  '/posts/$postId': typeof PostsPostIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute;
-  '/about': typeof AboutRoute;
-  '/posts': typeof PostsRoute;
-  '/login': typeof AuthLoginRoute;
-  '/posts/$postId': typeof PostsPostIdRoute;
+  '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/posts': typeof PostsRoute
+  '/login': typeof AuthLoginRoute
+  '/posts/$postId': typeof PostsPostIdRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  '/': typeof IndexRoute;
-  '/about': typeof AboutRoute;
-  '/posts': typeof PostsRoute;
-  '/_auth/login': typeof AuthLoginRoute;
-  '/posts_/$postId': typeof PostsPostIdRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/posts': typeof PostsRoute
+  '/_auth/login': typeof AuthLoginRoute
+  '/posts_/$postId': typeof PostsPostIdRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/about' | '/posts' | '/login' | '/posts/$postId';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/about' | '/posts' | '/login' | '/posts/$postId';
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/about' | '/posts' | '/login' | '/posts/$postId'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/about' | '/posts' | '/login' | '/posts/$postId'
   id:
-    '__root__' | '/' | '/about' | '/posts' | '/_auth/login' | '/posts_/$postId';
-  fileRoutesById: FileRoutesById;
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/posts'
+    | '/_auth/login'
+    | '/posts_/$postId'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  AboutRoute: typeof AboutRoute;
-  PostsRoute: typeof PostsRoute;
-  AuthLoginRoute: typeof AuthLoginRoute;
-  PostsPostIdRoute: typeof PostsPostIdRoute;
+  IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  PostsRoute: typeof PostsRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  PostsPostIdRoute: typeof PostsPostIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/posts': {
-      id: '/posts';
-      path: '/posts';
-      fullPath: '/posts';
-      preLoaderRoute: typeof PostsRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
-      id: '/about';
-      path: '/about';
-      fullPath: '/about';
-      preLoaderRoute: typeof AboutRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/posts_/$postId': {
-      id: '/posts_/$postId';
-      path: '/posts/$postId';
-      fullPath: '/posts/$postId';
-      preLoaderRoute: typeof PostsPostIdRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/posts_/$postId'
+      path: '/posts/$postId'
+      fullPath: '/posts/$postId'
+      preLoaderRoute: typeof PostsPostIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_auth/login': {
-      id: '/_auth/login';
-      path: '/login';
-      fullPath: '/login';
-      preLoaderRoute: typeof AuthLoginRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/_auth/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -126,7 +131,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRoute: PostsRoute,
   AuthLoginRoute: AuthLoginRoute,
   PostsPostIdRoute: PostsPostIdRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
