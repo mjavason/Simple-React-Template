@@ -1,7 +1,6 @@
-import { Link } from '@tanstack/react-router'
-
-import { useState } from 'react'
-import { Home, Menu, Network, X } from 'lucide-react'
+import { Link } from '@tanstack/react-router';
+import { Home, Menu, Network, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,7 +16,7 @@ export default function Header() {
           <Menu size={24} />
         </button>
         <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">
+          <Link to="/about">
             <img
               src="/tanstack-word-logo-white.svg"
               alt="TanStack Logo"
