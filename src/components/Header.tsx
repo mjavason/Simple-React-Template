@@ -1,6 +1,7 @@
-import { Link } from '@tanstack/react-router';
-import { Home, Menu, Network, X } from 'lucide-react';
-import { useState } from 'react';
+import { Routes } from '@/common/constants/constants'
+import { Link } from '@tanstack/react-router'
+import { Globe, Menu, X } from 'lucide-react'
+import { useState } from 'react'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,35 +44,21 @@ export default function Header() {
         </div>
 
         <nav className="flex-1 p-4 overflow-y-auto">
-          <Link
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Home size={20} />
-            <span className="font-medium">Home</span>
-          </Link>
-
-          {/* Demo Links Start */}
-
-          <Link
-            to="/login"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Network size={20} />
-            <span className="font-medium">TanStack Query</span>
-          </Link>
-
-          {/* Demo Links End */}
+          {Object.entries(Routes).map(([key, path]) => (
+            <Link
+              key={key}
+              to={path}
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+              activeProps={{
+                className:
+                  'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+              }}
+            >
+              <Globe size={20} />
+              <span className="font-medium">{key}</span>
+            </Link>
+          ))}
         </nav>
       </aside>
     </>

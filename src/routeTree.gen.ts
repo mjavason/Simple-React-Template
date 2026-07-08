@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PostsRouteImport } from './routes/posts'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PostsPostIdRouteImport } from './routes/posts.$postId'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 
+const PostsRoute = PostsRouteImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -25,9 +31,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const PostsPostIdRoute = PostsPostIdRouteImport.update({
-  id: '/posts/$postId',
-  path: '/posts/$postId',
-  getParentRoute: () => rootRouteImport,
+  id: '/$postId',
+  path: '/$postId',
+  getParentRoute: () => PostsRoute,
 } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/_auth/login',
@@ -38,12 +44,14 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/posts': typeof PostsRouteWithChildren
   '/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/posts': typeof PostsRouteWithChildren
   '/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
 }
@@ -51,26 +59,34 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/posts': typeof PostsRouteWithChildren
   '/_auth/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/login' | '/posts/$postId'
+  fullPaths: '/' | '/about' | '/posts' | '/login' | '/posts/$postId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login' | '/posts/$postId'
-  id: '__root__' | '/' | '/about' | '/_auth/login' | '/posts/$postId'
+  to: '/' | '/about' | '/posts' | '/login' | '/posts/$postId'
+  id: '__root__' | '/' | '/about' | '/posts' | '/_auth/login' | '/posts/$postId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  PostsRoute: typeof PostsRouteWithChildren
   AuthLoginRoute: typeof AuthLoginRoute
-  PostsPostIdRoute: typeof PostsPostIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -87,10 +103,10 @@ declare module '@tanstack/react-router' {
     }
     '/posts/$postId': {
       id: '/posts/$postId'
-      path: '/posts/$postId'
+      path: '/$postId'
       fullPath: '/posts/$postId'
       preLoaderRoute: typeof PostsPostIdRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PostsRoute
     }
     '/_auth/login': {
       id: '/_auth/login'
@@ -102,11 +118,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface PostsRouteChildren {
+  PostsPostIdRoute: typeof PostsPostIdRoute
+}
+
+const PostsRouteChildren: PostsRouteChildren = {
+  PostsPostIdRoute: PostsPostIdRoute,
+}
+
+const PostsRouteWithChildren = PostsRoute._addFileChildren(PostsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  PostsRoute: PostsRouteWithChildren,
   AuthLoginRoute: AuthLoginRoute,
-  PostsPostIdRoute: PostsPostIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
