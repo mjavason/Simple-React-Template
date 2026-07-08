@@ -1,33 +1,28 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import PageContainer from '@/components/PageContainer';
+import { createFileRoute, Link } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/posts')({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
   return (
-    <div>
-      <div className="text-center">
-        <h1>Posts</h1>
-      </div>
+    <PageContainer>
+      <div>
+        <div className="text-center">
+          <h1>Posts</h1>
+        </div>
 
-      <ul>
-        <li>
-          <Link to="/posts/$postId" params={{ postId: '1' }}>
-            Post 1
-          </Link>
-        </li>
-        <li>
-          <Link to="/posts/$postId" params={{ postId: '2' }}>
-            Post 2
-          </Link>
-        </li>
-        <li>
-          <Link to="/posts/$postId" params={{ postId: '3' }}>s
-            Post 3
-          </Link>
-        </li>
-      </ul>
-    </div>
-  )
+        <ul>
+          {[1, 2, 3].map((postId) => (
+            <li key={postId} className="mb-2">
+              <Link to="/posts/$postId" params={{ postId: String(postId) }}>
+                Post {postId}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </PageContainer>
+  );
 }

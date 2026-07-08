@@ -1,14 +1,14 @@
-import type { LinkProps } from '@tanstack/react-router'
+import type { LinkProps } from '@tanstack/react-router';
 
-type RoutePath = LinkProps['to']
+type RoutePath = LinkProps['to'];
 export const Routes: Record<string, RoutePath> = {
   HOME: '/',
   LOGIN: '/login',
   ABOUT: '/about',
   POSTS: '/posts/$postId',
-}
+};
 
-export const API_BASE_URL = 'https://fpl-ultimate-team-pv6i.onrender.com'
+export const API_BASE_URL = 'https://fpl-ultimate-team-pv6i.onrender.com';
 
 export enum CookieKeys {
   AUTH_TOKEN = 'auth_token',
