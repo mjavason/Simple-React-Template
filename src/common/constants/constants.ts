@@ -5,7 +5,7 @@ export const Routes: Record<string, RoutePath> = {
   HOME: '/',
   LOGIN: '/login',
   ABOUT: '/about',
-  POSTS: '/posts/$postId',
+  POSTS: '/posts',
 };
 
 export const API_BASE_URL = 'https://fpl-ultimate-team-pv6i.onrender.com';

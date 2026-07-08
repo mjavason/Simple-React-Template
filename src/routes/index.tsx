@@ -1,3 +1,4 @@
+import PageContainer from '@/components/PageContainer';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/')({
@@ -6,8 +7,10 @@ export const Route = createFileRoute('/')({
 
 function App() {
   return (
-    <div className="text-center">
-      <h1>Hello World!</h1>
-    </div>
+    <PageContainer title={'Home'}>
+      <div className="text-center">
+        <h1>Hello World!</h1>
+      </div>
+    </PageContainer>
   );
 }

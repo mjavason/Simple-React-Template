@@ -9,8 +9,63 @@ function RouteComponent() {
   const params = Route.useParams();
 
   return (
-    <PageContainer>
-      <h1 className="text-center text-9xl">Post {params.postId}</h1>
+    <PageContainer title={`Post ${params.postId}`}>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel a vitae
+        officiis ea distinctio aliquid magni eos commodi? Itaque sequi ut, ab
+        totam eum facilis beatae nihil sapiente repudiandae. Architecto! Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Vel a vitae officiis
+        ea distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Vel a vitae officiis ea
+        distinctio aliquid magni eos commodi? Itaque sequi ut, ab totam eum
+        facilis beatae nihil sapiente repudiandae. Architecto!
+      </p>
     </PageContainer>
   );
 }

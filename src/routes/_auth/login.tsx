@@ -1,3 +1,4 @@
+import PageContainer from '@/components/PageContainer';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/_auth/login')({
@@ -5,5 +6,11 @@ export const Route = createFileRoute('/_auth/login')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/_auth/login"!</div>;
+  return (
+    <PageContainer title={'Login'}>
+      <div className="text-center">
+        <h1>Hello "/_auth/login"!</h1>
+      </div>
+    </PageContainer>
+  );
 }

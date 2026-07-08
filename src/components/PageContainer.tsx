@@ -1,6 +1,15 @@
-function PageContainer({ children }: { children: React.ReactNode }) {
+function PageContainer({
+  children,
+  title,
+}: {
+  children: React.ReactNode;
+  title: string;
+}) {
   return (
-    <div className="min-h-[90vh] border-8 border-red-500 p-4">{children}</div>
+    <div>
+      <h1 className="text-center text-9xl font-bold">{title}</h1>
+      <div className="min-h-[90vh] p-4">{children}</div>;
+    </div>
   );
 }
 

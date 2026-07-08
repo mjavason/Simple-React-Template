@@ -7,7 +7,7 @@ export const Route = createFileRoute('/posts')({
 
 function RouteComponent() {
   return (
-    <PageContainer>
+    <PageContainer title={"Posts"}>
       <div>
         <div className="text-center">
           <h1>Posts</h1>
