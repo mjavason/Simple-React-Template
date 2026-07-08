@@ -1,5 +1,4 @@
-# Simple-React-Template
-A simple react template with basic boilerplate setup (routing, theming, querying)
+Welcome to your new TanStack app! 
 
 # Getting Started
 
