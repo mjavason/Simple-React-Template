@@ -12,8 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PostsPostIdRouteImport } from './routes/posts_.$postId'
+import { Route as PostsPostIdRouteImport } from './routes/posts_/$postId'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
+import { Route as PostsEditEditRouteImport } from './routes/posts_/edit_/edit'
 
 const PostsRoute = PostsRouteImport.update({
   id: '/posts',
@@ -40,6 +41,11 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PostsEditEditRoute = PostsEditEditRouteImport.update({
+  id: '/posts_/edit_/edit',
+  path: '/posts/edit/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/posts': typeof PostsRoute
   '/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/posts/edit/edit': typeof PostsEditEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/posts': typeof PostsRoute
   '/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/posts/edit/edit': typeof PostsEditEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,12 +70,25 @@ export interface FileRoutesById {
   '/posts': typeof PostsRoute
   '/_auth/login': typeof AuthLoginRoute
   '/posts_/$postId': typeof PostsPostIdRoute
+  '/posts_/edit_/edit': typeof PostsEditEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/posts' | '/login' | '/posts/$postId'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/posts'
+    | '/login'
+    | '/posts/$postId'
+    | '/posts/edit/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/posts' | '/login' | '/posts/$postId'
+  to:
+    | '/'
+    | '/about'
+    | '/posts'
+    | '/login'
+    | '/posts/$postId'
+    | '/posts/edit/edit'
   id:
     | '__root__'
     | '/'
@@ -75,6 +96,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/_auth/login'
     | '/posts_/$postId'
+    | '/posts_/edit_/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -83,6 +105,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRoute
   AuthLoginRoute: typeof AuthLoginRoute
   PostsPostIdRoute: typeof PostsPostIdRoute
+  PostsEditEditRoute: typeof PostsEditEditRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -122,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/posts_/edit_/edit': {
+      id: '/posts_/edit_/edit'
+      path: '/posts/edit/edit'
+      fullPath: '/posts/edit/edit'
+      preLoaderRoute: typeof PostsEditEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -131,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRoute: PostsRoute,
   AuthLoginRoute: AuthLoginRoute,
   PostsPostIdRoute: PostsPostIdRoute,
+  PostsEditEditRoute: PostsEditEditRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
