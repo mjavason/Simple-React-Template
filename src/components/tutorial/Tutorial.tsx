@@ -44,7 +44,6 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
 
   return (
     <>
-      {/* Highlight overlay */}
       {/* Dark overlay */}
       {rects.map((rect, i) => (
         <div key={i}>
@@ -122,7 +121,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.7)',
+            background: overlayColor,
             zIndex: 9997,
           }}
         />
