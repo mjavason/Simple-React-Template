@@ -37,13 +37,13 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'Ah Ha! Hello there, My name is Grandma Wura and welcome to my Hub! We are going have fun learning about our African Heritage, interesting skills and taking care of our environment',
     textPosition: {
-      top: 120,
-      left: 80,
+      top: 360,
+      left: 790,
     },
     characterPosition: {
       icon: gHandOnWaist,
-      top: 420,
-      left: 30,
+      top: 230,
+      left: 1080,
     },
     highlight: [],
   },
@@ -58,13 +58,13 @@ export const WelcomeSteps: TutorialStep[] = [
     },
     characterPosition: {
       icon: gPointLeft,
-      top: 350,
-      left: 850,
+      top: 450,
+      left: 1080,
     },
     pointerPosition: {
       icon: pointerLeftDown,
-      top: 180,
-      left: 240,
+      top: 530,
+      left: 624,
     },
     highlight: [
       {
