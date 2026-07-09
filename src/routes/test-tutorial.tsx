@@ -1,3 +1,4 @@
+import { Routes } from '@/common/constants/constants';
 import PageContainer from '@/components/PageContainer';
 import { WelcomeSteps } from '@/components/tutorial/steps';
 import Tutorial from '@/components/tutorial/Tutorial';
@@ -13,30 +14,38 @@ function RouteComponent() {
       {/* <PositionPicker imageSrc={gHandOnWaist} /> */}
       <Tutorial isOpen={true} steps={WelcomeSteps} />
       <div className="flex flex-row gap-3 items-center justify-center h-screen">
-        <div
-          id="eco-house-svg"
-          className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-        >
-          Eco House
-        </div>
-        <div
-          id="hq-svg"
-          className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-        >
-          HQ
-        </div>
-        <div
-          id="spotlight-svg"
-          className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-        >
-          Spotlight
-        </div>
-        <div
-          id="hub-tv-svg"
-          className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-        >
-          Hub TV
-        </div>
+        <a href={Routes['TEST TUTORIAL']}>
+          <div
+            id="eco-house-svg"
+            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
+          >
+            Eco House
+          </div>
+        </a>
+        <a href={Routes['TEST TUTORIAL']}>
+          <div
+            id="hq-svg"
+            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
+          >
+            HQ
+          </div>
+        </a>
+        <a href={Routes['TEST TUTORIAL']}>
+          <div
+            id="spotlight-svg"
+            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
+          >
+            Spotlight
+          </div>
+        </a>
+        <a href={Routes['TEST TUTORIAL']}>
+          <div
+            id="hub-tv-svg"
+            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
+          >
+            Hub TV
+          </div>
+        </a>
       </div>
     </PageContainer>
   );

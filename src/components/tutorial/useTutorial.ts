@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { TutorialStep } from './steps';
+import type { TutorialStep } from './types';
 
 export function useTutorial(steps: TutorialStep[], onFinish?: () => void) {
   const [currentStep, setCurrentStep] = useState(0);

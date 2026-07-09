@@ -7,39 +7,7 @@ import {
   pointerRight,
   pointerRightUp,
 } from '@/assets';
-
-export type Placement =
-  | 'top-left'
-  | 'top'
-  | 'top-right'
-  | 'right'
-  | 'bottom-right'
-  | 'bottom'
-  | 'bottom-left'
-  | 'left';
-
-export type HighlightAction = 'click' | 'hover' | 'next' | 'none';
-
-export interface TutorialStep {
-  title?: string;
-  content: string;
-  textPlacement?: Placement;
-  characterPosition?: {
-    icon: string;
-    placement: Placement;
-    width?: number;
-  };
-  pointerPosition?: {
-    icon: string;
-    placement: Placement;
-    width?: number;
-  };
-  highlight?: {
-    elementId: string;
-    action: HighlightAction;
-  };
-  actionButtonText?: string;
-}
+import type { TutorialStep } from './types';
 
 export const WelcomeSteps: TutorialStep[] = [
   {

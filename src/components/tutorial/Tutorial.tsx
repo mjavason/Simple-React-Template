@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { Placement, TutorialStep } from './steps';
+import { characterPositions, textPositions } from './constants';
+import type { Placement, TutorialStep } from './types';
 import { useTutorial } from './useTutorial';
 
 interface Props {
@@ -7,106 +8,6 @@ interface Props {
   steps: TutorialStep[];
   onFinish?: () => void;
 }
-
-const characterPositions: Record<
-  Placement,
-  {
-    top?: string;
-    left?: string;
-    bottom?: string;
-    right?: string;
-    transform?: string;
-  }
-> = {
-  'top-left': {
-    top: '32',
-    left: '32',
-  },
-
-  top: {
-    top: '32',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  },
-
-  'top-right': {
-    top: '32',
-    right: '32',
-  },
-
-  right: {
-    top: '50%',
-    right: '32',
-    transform: 'translateY(-50%)',
-  },
-
-  'bottom-right': {
-    bottom: '32',
-    right: '32',
-  },
-
-  bottom: {
-    bottom: '32',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  },
-
-  'bottom-left': {
-    bottom: '32',
-    left: '32',
-  },
-
-  left: {
-    top: '50%',
-    left: '32',
-    transform: 'translateY(-50%)',
-  },
-};
-
-export type Globals =
-  '-moz-initial' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';
-export type FlexDirection =
-  Globals | 'column' | 'column-reverse' | 'row' | 'row-reverse';
-
-const textPositions: Record<
-  Placement,
-  { display: string; flexDirection: FlexDirection }
-> = {
-  left: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  right: {
-    display: 'flex',
-    flexDirection: 'row-reverse',
-  },
-  top: {
-    display: 'flex',
-    flexDirection: 'column-reverse',
-  },
-  bottom: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  // untested
-  'top-left': {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  'top-right': {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  'bottom-left': {
-    display: 'flex',
-    flexDirection: 'column-reverse',
-  },
-  'bottom-right': {
-    display: 'flex',
-    flexDirection: 'column-reverse',
-  },
-};
 
 // Fairly stabilized, but may need some tweaking for different screen sizes
 function getPointerPosition(rect: DOMRect, placement: Placement) {
@@ -129,7 +30,7 @@ function getPointerPosition(rect: DOMRect, placement: Placement) {
     case 'bottom-right':
       return {
         left: rect.right - rect.width / 2, // ✅
-        top: rect.bottom + 20, 
+        top: rect.bottom + 20,
       };
     case 'bottom':
       return {
@@ -328,6 +229,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
             borderRadius: 12,
             padding: 20,
             zIndex: 10000,
+            textAlign: 'center',
           }}
         >
           {step.title && <h3>{step.title}</h3>}
@@ -335,7 +237,10 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
           <p>{step.content}</p>
 
           {!step.highlight?.action || step.highlight.action === 'none' ? (
-            <button onClick={next}>
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+              onClick={next}
+            >
               {step.actionButtonText ?? 'Continue'}
             </button>
           ) : null}
