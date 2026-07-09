@@ -1,3 +1,12 @@
+import gHandOnWaist from '../../assets/grandmawura-hand-on-waist.png'
+import gPointLeft from '../../assets/grandmawura-point-left.png'
+import gPointRight from '../../assets/grandmawura-point-right.png'
+import gPointUp from '../../assets/grandmawura-point-up.png'
+import pointerLeftDown from '../../assets/pointer-left-down.png'
+import pointerLeft from '../../assets/pointer-left.png'
+import pointerRightUp from '../../assets/pointer-right-up.png'
+import pointerRight from '../../assets/pointer-right.png'
+
 export interface TutorialStep {
   title?: string;
   content: string;
@@ -28,18 +37,13 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'Ah Ha! Hello there, My name is Grandma Wura and welcome to my Hub! We are going have fun learning about our African Heritage, interesting skills and taking care of our environment',
     textPosition: {
-      top: 0,
-      left: 0,
+      top: 120,
+      left: 80,
     },
     characterPosition: {
-      icon: '/images/characters/grandma-wura.png',
-      top: 0,
-      left: 0,
-    },
-    pointerPosition: {
-      icon: '/images/pointers/pointer.png',
-      top: 0,
-      left: 0,
+      icon: gHandOnWaist,
+      top: 420,
+      left: 30,
     },
     highlight: [],
   },
@@ -49,18 +53,18 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'Over here we will learn about our environment and how our actions can make the world a cleaner and safer place',
     textPosition: {
-      top: 0,
-      left: 0,
+      top: 60,
+      left: 720,
     },
     characterPosition: {
-      icon: '/images/characters/grandma-wura.png',
-      top: 0,
-      left: 0,
+      icon: gPointLeft,
+      top: 350,
+      left: 850,
     },
     pointerPosition: {
-      icon: '/images/pointers/pointer.png',
-      top: 0,
-      left: 0,
+      icon: pointerLeftDown,
+      top: 180,
+      left: 240,
     },
     highlight: [
       {
@@ -75,18 +79,18 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'Through stories, proverbs, fun activities, and everyday lessons, the HQ will help discover values that will guide you wherever you go.',
     textPosition: {
-      top: 0,
-      left: 0,
+      top: 320,
+      left: 480,
     },
     characterPosition: {
-      icon: '/images/characters/grandma-wura.png',
-      top: 0,
-      left: 0,
+      icon: gPointUp,
+      top: 520,
+      left: 650,
     },
     pointerPosition: {
-      icon: '/images/pointers/pointer.png',
-      top: 0,
-      left: 0,
+      icon: pointerLeft,
+      top: 90,
+      left: 950,
     },
     highlight: [
       {
@@ -101,18 +105,18 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'The Spotlight is the hub for creativity and expression. It is where we learn to Act, Sing, Dance and show all of our creativity that would throw us into the SPOTLIGHT!!',
     textPosition: {
-      top: 0,
-      left: 0,
+      top: 520,
+      left: 180,
     },
     characterPosition: {
-      icon: '/images/characters/grandma-wura.png',
-      top: 0,
-      left: 0,
+      icon: gPointRight,
+      top: 120,
+      left: 1040,
     },
     pointerPosition: {
-      icon: '/images/pointers/pointer.png',
-      top: 0,
-      left: 0,
+      icon: pointerRightUp,
+      top: 400,
+      left: 500,
     },
     highlight: [
       {
@@ -127,18 +131,18 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'A good story stays in the heart forever. At the Hub TV get to Watch, Sing along and let every video teach you something new.',
     textPosition: {
-      top: 0,
-      left: 0,
+      top: 220,
+      left: 980,
     },
     characterPosition: {
-      icon: '/images/characters/grandma-wura.png',
-      top: 0,
-      left: 0,
+      icon: gPointRight,
+      top: 480,
+      left: 940,
     },
     pointerPosition: {
-      icon: '/images/pointers/pointer.png',
-      top: 0,
-      left: 0,
+      icon: pointerRightUp,
+      top: 300,
+      left: 160,
     },
     highlight: [
       {
@@ -150,15 +154,20 @@ export const WelcomeSteps: TutorialStep[] = [
 
   {
     content:
-      'Now that we know what each faculty is about, lets take a look at one of them. click on the HQ to explore all the fun it has to offer!',
+      'Now that we know what each faculty is about, lets take a look at one of them. Click on the HQ to explore all the fun it has to offer!',
     textPosition: {
-      top: 0,
-      left: 0,
+      top: 150,
+      left: 420,
     },
     characterPosition: {
-      icon: '/images/characters/grandma-wura.png',
-      top: 0,
-      left: 0,
+      icon: gHandOnWaist,
+      top: 560,
+      left: 120,
+    },
+    pointerPosition: {
+      icon: pointerRight,
+      top: 120,
+      left: 620,
     },
     highlight: [
       {
