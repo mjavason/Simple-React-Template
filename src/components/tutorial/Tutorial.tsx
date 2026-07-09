@@ -1,11 +1,160 @@
 import { useEffect, useState } from 'react';
-import type { TutorialStep } from './steps';
+import type { Placement, TutorialStep } from './steps';
 import { useTutorial } from './useTutorial';
 
 interface Props {
   isOpen: boolean;
   steps: TutorialStep[];
   onFinish?: () => void;
+}
+
+const characterPositions: Record<
+  Placement,
+  {
+    top?: string;
+    left?: string;
+    bottom?: string;
+    right?: string;
+    transform?: string;
+  }
+> = {
+  'top-left': {
+    top: '32',
+    left: '32',
+  },
+
+  top: {
+    top: '32',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  },
+
+  'top-right': {
+    top: '32',
+    right: '32',
+  },
+
+  right: {
+    top: '50%',
+    right: '32',
+    transform: 'translateY(-50%)',
+  },
+
+  'bottom-right': {
+    bottom: '32',
+    right: '32',
+  },
+
+  bottom: {
+    bottom: '32',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  },
+
+  'bottom-left': {
+    bottom: '32',
+    left: '32',
+  },
+
+  left: {
+    top: '50%',
+    left: '32',
+    transform: 'translateY(-50%)',
+  },
+};
+
+export type Globals =
+  '-moz-initial' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';
+export type FlexDirection =
+  Globals | 'column' | 'column-reverse' | 'row' | 'row-reverse';
+
+const textPositions: Record<
+  Placement,
+  { display: string; flexDirection: FlexDirection }
+> = {
+  left: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  right: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+  },
+  top: {
+    display: 'flex',
+    flexDirection: 'column-reverse',
+  },
+  bottom: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  // untested
+  'top-left': {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  'top-right': {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  'bottom-left': {
+    display: 'flex',
+    flexDirection: 'column-reverse',
+  },
+  'bottom-right': {
+    display: 'flex',
+    flexDirection: 'column-reverse',
+  },
+};
+
+// Fairly stabilized, but may need some tweaking for different screen sizes
+function getPointerPosition(rect: DOMRect, placement: Placement) {
+  switch (placement) {
+    case 'top':
+      return {
+        left: rect.left, // ✅
+        top: rect.top - rect.height * 2,
+      };
+    case 'top-right':
+      return {
+        left: rect.left + rect.width / 2, // ✅
+        top: rect.top - rect.height * 2,
+      };
+    case 'right':
+      return {
+        left: rect.right + 40,
+        top: rect.top, // ✅
+      };
+    case 'bottom-right':
+      return {
+        left: rect.right - rect.width / 2, // ✅
+        top: rect.bottom + 20, 
+      };
+    case 'bottom':
+      return {
+        left: rect.left, // ✅
+        top: rect.bottom + 20,
+      };
+
+    case 'bottom-left':
+      return {
+        left: rect.left - rect.width / 2, // ✅
+        top: rect.bottom + 20,
+      };
+
+    case 'left':
+      return {
+        left: rect.left - rect.width - 40,
+        top: rect.top, // ✅
+      };
+
+    case 'top-left':
+      return {
+        left: rect.left - rect.width / 2, // ✅
+        top: rect.top - rect.height * 2,
+      };
+  }
 }
 
 export default function Tutorial({ isOpen, steps, onFinish }: Props) {
@@ -20,11 +169,13 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
     }
 
     const updateRects = () => {
-      const values = step
-        .highlight!.map((h) =>
-          document.getElementById(h.elementId)?.getBoundingClientRect(),
-        )
-        .filter(Boolean) as DOMRect[];
+      const values = step.highlight
+        ? ([
+            document
+              .getElementById(step.highlight.elementId)
+              ?.getBoundingClientRect(),
+          ].filter(Boolean) as DOMRect[])
+        : [];
 
       setRects(values);
     };
@@ -109,7 +260,8 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
               height: rect.height,
               border: '4px solid gold',
               borderRadius: 12,
-              pointerEvents: step.highlight?.some(h => h.action === "click") ? "none" : "auto",
+              pointerEvents:
+                step.highlight?.action === 'click' ? 'none' : 'auto',
               zIndex: 9998,
             }}
           />
@@ -128,51 +280,66 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
       )}
 
       {/* Pointer */}
-      {step.pointerPosition && (
+      {step.pointerPosition?.placement && rects.length > 0 && (
         <img
           src={step.pointerPosition.icon}
           style={{
             position: 'fixed',
-            left: step.pointerPosition.left,
-            top: step.pointerPosition.top,
+            width: step.pointerPosition.width ?? 100,
+            left: getPointerPosition(rects[0], step.pointerPosition?.placement)
+              .left,
+            top: getPointerPosition(rects[0], step.pointerPosition?.placement)
+              .top,
             zIndex: 9999,
           }}
         />
       )}
 
-      {/* Character */}
-      {step.characterPosition && (
-        <img
-          src={step.characterPosition.icon}
-          style={{
-            position: 'fixed',
-            left: step.characterPosition.left,
-            top: step.characterPosition.top,
-            zIndex: 9999,
-          }}
-        />
-      )}
-
-      {/* Speech bubble */}
       <div
         style={{
           position: 'fixed',
-          left: step.textPosition.left,
-          top: step.textPosition.top,
-          width: 350,
-          background: 'white',
-          borderRadius: 12,
-          padding: 20,
           zIndex: 10000,
+          left: characterPositions[
+            step.characterPosition?.placement ?? 'bottom'
+          ].left,
+          top: characterPositions[step.characterPosition?.placement ?? 'bottom']
+            .top,
+          display: textPositions[step.textPlacement ?? 'bottom'].display,
+          flexDirection:
+            textPositions[step.textPlacement ?? 'bottom'].flexDirection,
         }}
       >
-        {step.title && <h3>{step.title}</h3>}
-
-        <p>{step.content}</p>
-
-        {!step.highlight?.some((h) => h.action !== 'none') && (
-          <button onClick={next}>{step.actionButtonText ?? 'Continue'}</button>
+        {/* Character */}
+        {step.characterPosition && (
+          <img
+            src={step.characterPosition.icon}
+            style={{
+              zIndex: 9999,
+              width: step.characterPosition.width ?? 400,
+            }}
+          />
         )}
+
+        {/* Speech bubble */}
+        <div
+          style={{
+            width: 350,
+            background: 'white',
+            borderRadius: 12,
+            padding: 20,
+            zIndex: 10000,
+          }}
+        >
+          {step.title && <h3>{step.title}</h3>}
+
+          <p>{step.content}</p>
+
+          {!step.highlight?.action || step.highlight.action === 'none' ? (
+            <button onClick={next}>
+              {step.actionButtonText ?? 'Continue'}
+            </button>
+          ) : null}
+        </div>
       </div>
     </>
   );

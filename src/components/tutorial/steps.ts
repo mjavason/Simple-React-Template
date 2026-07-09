@@ -1,33 +1,43 @@
 import {
   gHandOnWaist,
+  gPointLeft,
   gPointRight,
   gPointUp,
-  pointerLeft,
+  pointerLeftDown,
   pointerRight,
   pointerRightUp,
 } from '@/assets';
 
+export type Placement =
+  | 'top-left'
+  | 'top'
+  | 'top-right'
+  | 'right'
+  | 'bottom-right'
+  | 'bottom'
+  | 'bottom-left'
+  | 'left';
+
+export type HighlightAction = 'click' | 'hover' | 'next' | 'none';
+
 export interface TutorialStep {
   title?: string;
   content: string;
-  textPosition: {
-    top: number;
-    left: number;
-  };
+  textPlacement?: Placement;
   characterPosition?: {
     icon: string;
-    top: number;
-    left: number;
+    placement: Placement;
+    width?: number;
   };
   pointerPosition?: {
     icon: string;
-    top: number;
-    left: number;
+    placement: Placement;
+    width?: number;
   };
   highlight?: {
     elementId: string;
-    action: 'click' | 'hover' | 'next' | 'none';
-  }[];
+    action: HighlightAction;
+  };
   actionButtonText?: string;
 }
 
@@ -36,144 +46,106 @@ export const WelcomeSteps: TutorialStep[] = [
     title: 'Welcome to the GrandmaWura Hub',
     content:
       'Ah Ha! Hello there, My name is Grandma Wura and welcome to my Hub! We are going have fun learning about our African Heritage, interesting skills and taking care of our environment',
-    textPosition: {
-      top: 360,
-      left: 790,
-    },
+    textPlacement: 'top',
     characterPosition: {
       icon: gHandOnWaist,
-      top: 200,
-      left: 1080,
+      placement: 'right',
     },
-    highlight: [],
   },
 
   {
     title: 'Eco House',
     content:
       'Over here we will learn about our environment and how our actions can make the world a cleaner and safer place',
-    textPosition: {
-      top: 340,
-      left: 570,
+    textPlacement: 'top',
+    characterPosition: {
+      icon: gPointLeft,
+      placement: 'bottom-right',
     },
-    // characterPosition: {
-    //   icon: gPointLeft,
-    //   top: 450,
-    //   left: 1080,
-    // },
-    // pointerPosition: {
-    //   icon: pointerLeftDown,
-    //   top: 530,
-    //   left: 324,
-    // },
-    highlight: [
-      {
-        elementId: 'eco-house-svg',
-        action: 'none',
-      },
-    ],
+
+    pointerPosition: {
+      icon: pointerLeftDown,
+      placement: 'top-right',
+    },
+
+    highlight: {
+      elementId: 'eco-house-svg',
+      action: 'none',
+    },
   },
 
   {
     title: 'HQ',
     content:
       'Through stories, proverbs, fun activities, and everyday lessons, the HQ will help discover values that will guide you wherever you go.',
-    textPosition: {
-      top: 320,
-      left: 480,
-    },
+    textPlacement: 'top',
     characterPosition: {
       icon: gPointUp,
-      top: 520,
-      left: 650,
+      placement: 'bottom-left',
     },
     pointerPosition: {
-      icon: pointerLeft,
-      top: 90,
-      left: 950,
+      icon: pointerLeftDown,
+      placement: 'top-right',
     },
-    highlight: [
-      {
-        elementId: 'hq-svg',
-        action: 'none',
-      },
-    ],
+    highlight: {
+      elementId: 'hq-svg',
+      action: 'none',
+    },
   },
 
   {
     title: 'Spotlight',
     content:
       'The Spotlight is the hub for creativity and expression. It is where we learn to Act, Sing, Dance and show all of our creativity that would throw us into the SPOTLIGHT!!',
-    textPosition: {
-      top: 520,
-      left: 180,
-    },
+    textPlacement: 'top',
     characterPosition: {
       icon: gPointRight,
-      top: 120,
-      left: 1040,
+      placement: 'bottom-left',
     },
     pointerPosition: {
       icon: pointerRightUp,
-      top: 400,
-      left: 500,
+      placement: 'bottom-left',
     },
-    highlight: [
-      {
-        elementId: 'spotlight-svg',
-        action: 'none',
-      },
-    ],
+    highlight: {
+      elementId: 'spotlight-svg',
+      action: 'none',
+    },
   },
 
   {
     title: 'Hub TV',
     content:
       'A good story stays in the heart forever. At the Hub TV get to Watch, Sing along and let every video teach you something new.',
-    textPosition: {
-      top: 220,
-      left: 980,
-    },
+    textPlacement: 'top',
     characterPosition: {
       icon: gPointRight,
-      top: 480,
-      left: 940,
+      placement: 'bottom-left',
     },
     pointerPosition: {
-      icon: pointerRightUp,
-      top: 300,
-      left: 160,
+      icon: pointerRight,
+      placement: 'left',
     },
-    highlight: [
-      {
-        elementId: 'hub-tv-svg',
-        action: 'none',
-      },
-    ],
+    highlight: {
+      elementId: 'hub-tv-svg',
+      action: 'none',
+    },
   },
 
   {
     content:
       'Now that we know what each faculty is about, lets take a look at one of them. Click on the HQ to explore all the fun it has to offer!',
-    textPosition: {
-      top: 150,
-      left: 420,
-    },
+    textPlacement: 'top',
     characterPosition: {
       icon: gHandOnWaist,
-      top: 560,
-      left: 120,
+      placement: 'bottom-left',
     },
     pointerPosition: {
-      icon: pointerRight,
-      top: 120,
-      left: 620,
+      icon: pointerLeftDown,
+      placement: 'top-right',
     },
-    highlight: [
-      {
-        elementId: 'hq-svg',
-        action: 'click',
-      },
-    ],
+    highlight: {
+      elementId: 'hq-svg',
+      action: 'click',
+    },
   },
 ];

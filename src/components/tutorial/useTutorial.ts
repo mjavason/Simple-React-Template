@@ -20,19 +20,17 @@ export function useTutorial(steps: TutorialStep[], onFinish?: () => void) {
 
     const cleanups: (() => void)[] = [];
 
-    step.highlight.forEach((highlight) => {
-      if (!highlight.action) return;
+    if (!step.highlight.action) return;
 
-      const element = document.getElementById(highlight.elementId);
-      if (!element) return;
+    const element = document.getElementById(step.highlight.elementId);
+    if (!element) return;
 
-      const handler = () => next();
-      element.addEventListener(highlight.action, handler);
+    const handler = () => next();
+    element.addEventListener(step.highlight.action, handler);
 
-      cleanups.push(() =>
-        element.removeEventListener(highlight.action!, handler),
-      );
-    });
+    cleanups.push(() =>
+      element.removeEventListener(step.highlight!.action!, handler),
+    );
 
     return () => cleanups.forEach((c) => c());
   }, [step]);
