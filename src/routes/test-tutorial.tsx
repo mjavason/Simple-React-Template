@@ -10,7 +10,7 @@ export const Route = createFileRoute('/test-tutorial')({
 
 function RouteComponent() {
   return (
-    <PageContainer title={'Test Tutorial'}>
+    <PageContainer title={'Simple App Tour'}>
       {/* <PositionPicker imageSrc={gHandOnWaist} /> */}
       <Tutorial isOpen={true} steps={WelcomeSteps} />
       <div className="flex flex-row gap-3 items-center justify-center h-screen">
