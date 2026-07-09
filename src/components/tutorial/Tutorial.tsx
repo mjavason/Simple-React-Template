@@ -234,7 +234,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
               textAlign: 'center',
             }}
           >
-            {step.title && <h3>{step.title}</h3>}
+            {step.title && <h3 className="text-3xl">{step.title}</h3>}
 
             <p>{step.content}</p>
 
