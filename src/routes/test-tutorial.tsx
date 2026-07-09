@@ -12,16 +12,16 @@ function RouteComponent() {
     <PageContainer title={'Test Tutorial'}>
       <Tutorial isOpen={true} steps={WelcomeSteps} />
       <div className="flex flex-row gap-3 items-center justify-center h-screen">
-        <div id="eco-house-svg" className="bg-gray-200 p-4 rounded-lg">
+        <div id="eco-house-svg" className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer">
           Eco House
         </div>
-        <div id="hq-svg" className="bg-gray-200 p-4 rounded-lg">
+        <div id="hq-svg" className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer">
           HQ
         </div>
-        <div id="spotlight-svg" className="bg-gray-200 p-4 rounded-lg">
+        <div id="spotlight-svg" className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer">
           Spotlight
         </div>
-        <div id="hub-tv-svg" className="bg-gray-200 p-4 rounded-lg">
+        <div id="hub-tv-svg" className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer">
           Hub TV
         </div>
       </div>

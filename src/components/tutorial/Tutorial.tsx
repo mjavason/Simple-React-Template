@@ -11,6 +11,7 @@ interface Props {
 export default function Tutorial({ isOpen, steps, onFinish }: Props) {
   const { step, next } = useTutorial(steps, onFinish);
   const [rects, setRects] = useState<DOMRect[]>([]);
+  const overlayColor = 'rgba(0, 0, 0, 0.7)';
 
   useEffect(() => {
     if (!step.highlight) {
@@ -44,22 +45,88 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
   return (
     <>
       {/* Highlight overlay */}
+      {/* Dark overlay */}
       {rects.map((rect, i) => (
+        <div key={i}>
+          {/* Top */}
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: rect.top,
+              background: overlayColor,
+              zIndex: 9997,
+            }}
+          />
+
+          {/* Bottom */}
+          <div
+            style={{
+              position: 'fixed',
+              top: rect.bottom,
+              left: 0,
+              width: '100vw',
+              bottom: 0,
+              background: overlayColor,
+              zIndex: 9997,
+            }}
+          />
+
+          {/* Left */}
+          <div
+            style={{
+              position: 'fixed',
+              top: rect.top,
+              left: 0,
+              width: rect.left,
+              height: rect.height,
+              background: overlayColor,
+              zIndex: 9997,
+            }}
+          />
+
+          {/* Right */}
+          <div
+            style={{
+              position: 'fixed',
+              top: rect.top,
+              left: rect.right,
+              right: 0,
+              height: rect.height,
+              background: overlayColor,
+              zIndex: 9997,
+            }}
+          />
+
+          {/* Highlight border */}
+          <div
+            style={{
+              position: 'fixed',
+              left: rect.left,
+              top: rect.top,
+              width: rect.width,
+              height: rect.height,
+              border: '4px solid gold',
+              borderRadius: 12,
+              pointerEvents: step.highlight?.some(h => h.action === "click") ? "none" : "auto",
+              zIndex: 9998,
+            }}
+          />
+        </div>
+      ))}
+
+      {rects.length === 0 && (
         <div
-          key={i}
           style={{
             position: 'fixed',
-            left: rect.left,
-            top: rect.top,
-            width: rect.width,
-            height: rect.height,
-            border: '4px solid gold',
-            borderRadius: 12,
-            pointerEvents: 'none',
-            zIndex: 9998,
+            inset: 0,
+            background: 'rgba(0,0,0,0.7)',
+            zIndex: 9997,
           }}
         />
-      ))}
+      )}
 
       {/* Pointer */}
       {step.pointerPosition && (
