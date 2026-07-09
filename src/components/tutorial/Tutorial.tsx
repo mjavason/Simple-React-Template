@@ -196,34 +196,62 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
         />
       )}
 
-      <div
-        style={{
-          position: 'fixed',
-          zIndex: 10000,
-          left: characterPositions[
-            step.characterPosition?.placement ?? 'bottom'
-          ].left,
-          top: characterPositions[step.characterPosition?.placement ?? 'bottom']
-            .top,
-          display: textPositions[step.textPlacement ?? 'bottom'].display,
-          flexDirection:
-            textPositions[step.textPlacement ?? 'bottom'].flexDirection,
-        }}
-      >
-        {/* Character */}
-        {step.characterPosition && (
-          <img
-            src={step.characterPosition.icon}
-            style={{
-              zIndex: 9999,
-              width: step.characterPosition.width ?? 400,
-            }}
-          />
-        )}
-
-        {/* Speech bubble */}
+      {step.characterPosition ? (
         <div
           style={{
+            position: 'fixed',
+            zIndex: 10000,
+            left: characterPositions[
+              step.characterPosition?.placement ?? 'bottom'
+            ].left,
+            top: characterPositions[
+              step.characterPosition?.placement ?? 'bottom'
+            ].top,
+            display: textPositions[step.textPlacement ?? 'bottom'].display,
+            flexDirection:
+              textPositions[step.textPlacement ?? 'bottom'].flexDirection,
+          }}
+        >
+          {/* Character */}
+          {step.characterPosition && (
+            <img
+              src={step.characterPosition.icon}
+              style={{
+                zIndex: 9999,
+                width: step.characterPosition.width ?? 400,
+              }}
+            />
+          )}
+
+          {/* Speech bubble */}
+          <div
+            style={{
+              width: 350,
+              background: 'white',
+              borderRadius: 12,
+              padding: 20,
+              zIndex: 10000,
+              textAlign: 'center',
+            }}
+          >
+            {step.title && <h3>{step.title}</h3>}
+
+            <p>{step.content}</p>
+
+            {!step.highlight?.action || step.highlight.action === 'none' ? (
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer"
+                onClick={next}
+              >
+                {step.actionButtonText ?? 'Continue'}
+              </button>
+            ) : null}
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{
+            position: 'fixed',
             width: 350,
             background: 'white',
             borderRadius: 12,
@@ -238,14 +266,14 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
 
           {!step.highlight?.action || step.highlight.action === 'none' ? (
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+              className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer"
               onClick={next}
             >
               {step.actionButtonText ?? 'Continue'}
             </button>
           ) : null}
         </div>
-      </div>
+      )}
     </>
   );
 }
