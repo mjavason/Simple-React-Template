@@ -1,11 +1,11 @@
-import gHandOnWaist from '@/assets/grandmawura-hand-on-waist.png';
-import gPointLeft from '@/assets/grandmawura-point-left.png';
-import gPointRight from '@/assets/grandmawura-point-right.png';
-import gPointUp from '@/assets/grandmawura-point-up.png';
-import pointerLeftDown from '@/assets/pointer-left-down.png';
-import pointerLeft from '@/assets/pointer-left.png';
-import pointerRightUp from '@/assets/pointer-right-up.png';
-import pointerRight from '@/assets/pointer-right.png';
+import {
+  gHandOnWaist,
+  gPointRight,
+  gPointUp,
+  pointerLeft,
+  pointerRight,
+  pointerRightUp,
+} from '@/assets';
 
 export interface TutorialStep {
   title?: string;
@@ -42,7 +42,7 @@ export const WelcomeSteps: TutorialStep[] = [
     },
     characterPosition: {
       icon: gHandOnWaist,
-      top: 230,
+      top: 200,
       left: 1080,
     },
     highlight: [],
@@ -53,19 +53,19 @@ export const WelcomeSteps: TutorialStep[] = [
     content:
       'Over here we will learn about our environment and how our actions can make the world a cleaner and safer place',
     textPosition: {
-      top: 60,
-      left: 720,
+      top: 340,
+      left: 570,
     },
-    characterPosition: {
-      icon: gPointLeft,
-      top: 450,
-      left: 1080,
-    },
-    pointerPosition: {
-      icon: pointerLeftDown,
-      top: 530,
-      left: 624,
-    },
+    // characterPosition: {
+    //   icon: gPointLeft,
+    //   top: 450,
+    //   left: 1080,
+    // },
+    // pointerPosition: {
+    //   icon: pointerLeftDown,
+    //   top: 530,
+    //   left: 324,
+    // },
     highlight: [
       {
         elementId: 'eco-house-svg',
