@@ -1,4 +1,6 @@
 import PageContainer from '@/components/PageContainer';
+import { WelcomeSteps } from '@/components/tutorial/steps';
+import Tutorial from '@/components/tutorial/Tutorial';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/posts')({
@@ -7,7 +9,8 @@ export const Route = createFileRoute('/posts')({
 
 function RouteComponent() {
   return (
-    <PageContainer title={"Posts"}>
+    <PageContainer title={'Posts'}>
+      <Tutorial isOpen={true} steps={WelcomeSteps} />
       <div>
         <div className="text-center">
           <h1>Posts</h1>
