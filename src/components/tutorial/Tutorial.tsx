@@ -214,6 +214,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
               zIndex: 10000,
               textAlign: 'center',
               fontSize: getSpeechBubbleFontSize(breakpoint),
+              height: 'fit-content',
             }}
           >
             {step.title && (

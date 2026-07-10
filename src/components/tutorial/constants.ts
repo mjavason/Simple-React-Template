@@ -59,8 +59,15 @@ export const textPositions: Record<
   'top-right': {
     top: '10%',
     left: '80%',
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
+    'top-left': {
+    top: '10%',
+    left: '5%',
+    flexDirection: 'row-reverse',
+  },
+
+  // not needed but just in case
   right: {
     top: '40%',
     left: '80%',
@@ -86,9 +93,5 @@ export const textPositions: Record<
     left: '5%',
     flexDirection: 'row',
   },
-  'top-left': {
-    top: '10%',
-    left: '5%',
-    flexDirection: 'column',
-  },
+
 };
