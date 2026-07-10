@@ -30,12 +30,10 @@ export const WelcomeSteps: TutorialStep[] = [
       icon: gPointLeft,
       placement: 'top-right',
     },
-
     pointerPosition: {
       icon: pointerLeftDown,
       placement: 'top-right',
     },
-
     highlight: {
       elementId: 'eco-house-svg',
       action: 'none',
