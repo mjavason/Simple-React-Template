@@ -200,6 +200,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
                 zIndex: 9999,
                 width: getCharacterWidth(breakpoint),
               }}
+              className="py-4"
             />
           )}
 
