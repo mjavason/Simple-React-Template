@@ -1,4 +1,4 @@
-import gHandOnWaist from '@/assets/grandmawura-hand-on-waist.png';
+import gHandOnWaist from '@/assets/grandmawura-center.png';
 import gPointLeft from '@/assets/grandmawura-point-left.png';
 import gPointRight from '@/assets/grandmawura-point-right.png';
 import gPointUp from '@/assets/grandmawura-point-up.png';

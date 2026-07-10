@@ -1,7 +1,3 @@
-import {
-  HeaderTailwindClasses,
-  ParagraphTailwindClasses,
-} from '@/common/constants/constants';
 import { useEffect, useState } from 'react';
 import { characterPositions, textPositions } from './constants';
 import {
@@ -200,7 +196,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
                 zIndex: 9999,
                 width: getCharacterWidth(breakpoint),
               }}
-              className="py-4"
+              className="pt-4"
             />
           )}
 
@@ -209,23 +205,21 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
             style={{
               width: getSpeechBubbleWidth(breakpoint),
               background: 'white',
-              borderRadius: 12,
-              padding: 20,
+              borderRadius: 8,
+              padding: 12,
               zIndex: 10000,
               textAlign: 'center',
               fontSize: getSpeechBubbleFontSize(breakpoint),
               height: 'fit-content',
             }}
           >
-            {step.title && (
-              <h3 className={`${ParagraphTailwindClasses} pb-4 font-bold`}>{step.title}</h3>
-            )}
+            {step.title && <h3 className={`pb-4 font-bold`}>{step.title}</h3>}
 
-            <p className={`${ParagraphTailwindClasses}`}>{step.content}</p>
+            <p>{step.content}</p>
 
             {!step.highlight?.action || step.highlight.action === 'none' ? (
               <button
-                className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer ${ParagraphTailwindClasses}`}
+                className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer`}
                 onClick={next}
               >
                 {step.actionButtonText ?? 'Continue'}
@@ -236,28 +230,23 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
       ) : (
         <div
           style={{
-            position: 'fixed',
             width: getSpeechBubbleWidth(breakpoint),
             background: 'white',
-            borderRadius: 12,
-            padding: 20,
+            borderRadius: 8,
+            padding: 12,
             zIndex: 10000,
             textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            left: textPositions[step.textPlacement ?? 'bottom'].left,
-            top: textPositions[step.textPlacement ?? 'bottom'].top,
+            fontSize: getSpeechBubbleFontSize(breakpoint),
+            height: 'fit-content',
           }}
         >
-          {step.title && (
-            <h3 className={HeaderTailwindClasses}>{step.title}</h3>
-          )}
+          {step.title && <h3 className={`pb-4 font-bold`}>{step.title}</h3>}
 
-          <p className={ParagraphTailwindClasses}>{step.content}</p>
+          <p>{step.content}</p>
 
           {!step.highlight?.action || step.highlight.action === 'none' ? (
             <button
-              className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer ${ParagraphTailwindClasses}`}
+              className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer`}
               onClick={next}
             >
               {step.actionButtonText ?? 'Continue'}
