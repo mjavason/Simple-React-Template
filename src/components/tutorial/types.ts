@@ -3,6 +3,8 @@ export type Globals =
 export type FlexDirection =
   Globals | 'column' | 'column-reverse' | 'row' | 'row-reverse';
 
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
 export type Placement =
   | 'top-left'
   | 'top'

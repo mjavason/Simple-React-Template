@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { characterPositions, textPositions } from './constants';
-import type { Placement, TutorialStep } from './types';
+import {
+  getCharacterWidth,
+  getPointerPosition,
+  getPointerWidth,
+  getSpeechBubbleWidth,
+} from './functions';
+import type { TutorialStep } from './types';
+import { useBreakpoint } from './useBreakpoint';
 import { useTutorial } from './useTutorial';
 
 interface Props {
@@ -9,59 +16,11 @@ interface Props {
   onFinish?: () => void;
 }
 
-// Fairly stabilized, but may need some tweaking for different screen sizes
-function getPointerPosition(rect: DOMRect, placement: Placement) {
-  switch (placement) {
-    case 'top':
-      return {
-        left: rect.left, // ✅
-        top: rect.top - rect.height * 2,
-      };
-    case 'top-right':
-      return {
-        left: rect.left + rect.width / 2, // ✅
-        top: rect.top - rect.height * 2,
-      };
-    case 'right':
-      return {
-        left: rect.right + 40,
-        top: rect.top, // ✅
-      };
-    case 'bottom-right':
-      return {
-        left: rect.right - rect.width / 2, // ✅
-        top: rect.bottom + 20,
-      };
-    case 'bottom':
-      return {
-        left: rect.left, // ✅
-        top: rect.bottom + 20,
-      };
-
-    case 'bottom-left':
-      return {
-        left: rect.left - rect.width / 2, // ✅
-        top: rect.bottom + 20,
-      };
-
-    case 'left':
-      return {
-        left: rect.left - rect.width - 40,
-        top: rect.top, // ✅
-      };
-
-    case 'top-left':
-      return {
-        left: rect.left - rect.width / 2, // ✅
-        top: rect.top - rect.height * 2,
-      };
-  }
-}
-
 export default function Tutorial({ isOpen, steps, onFinish }: Props) {
   const { step, next } = useTutorial(steps, onFinish);
+  const breakpoint = useBreakpoint();
   const [rects, setRects] = useState<DOMRect[]>([]);
-  const overlayColor = 'rgba(0, 0, 0, 0.7)';
+  const overlayColor = 'rgba(0, 0, 0, 0.4)';
 
   useEffect(() => {
     if (!step.highlight) {
@@ -187,11 +146,17 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
           src={step.pointerPosition.icon}
           style={{
             position: 'fixed',
-            width: step.pointerPosition.width ?? 100,
-            left: getPointerPosition(rects[0], step.pointerPosition?.placement)
-              .left,
-            top: getPointerPosition(rects[0], step.pointerPosition?.placement)
-              .top,
+            width: getPointerWidth(breakpoint),
+            left: getPointerPosition(
+              rects[0],
+              step.pointerPosition?.placement,
+              breakpoint,
+            ).left,
+            top: getPointerPosition(
+              rects[0],
+              step.pointerPosition?.placement,
+              breakpoint,
+            ).top,
             zIndex: 9999,
           }}
         />
@@ -220,7 +185,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
               src={step.characterPosition.icon}
               style={{
                 zIndex: 9999,
-                width: step.characterPosition.width ?? 400,
+                width: getCharacterWidth(breakpoint),
               }}
             />
           )}
@@ -228,7 +193,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
           {/* Speech bubble */}
           <div
             style={{
-              width: 350,
+              width: getSpeechBubbleWidth(breakpoint),
               background: 'white',
               borderRadius: 12,
               padding: 20,
@@ -254,7 +219,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
         <div
           style={{
             position: 'fixed',
-            width: 350,
+            width: getSpeechBubbleWidth(breakpoint),
             background: 'white',
             borderRadius: 12,
             padding: 20,
