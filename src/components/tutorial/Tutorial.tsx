@@ -96,7 +96,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
 
   return (
     <>
-      {/* Dark overlay */}
+      {/* Dark overlay with highlight */}
       {rects.map((rect, i) => (
         <div key={i}>
           {/* Top */}
@@ -169,6 +169,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
         </div>
       ))}
 
+      {/* Complete dark overlay when no highlight is present */}
       {rects.length === 0 && (
         <div
           style={{
@@ -196,6 +197,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
         />
       )}
 
+      {/* Character and speech bubble */}
       {step.characterPosition ? (
         <div
           style={{
@@ -207,7 +209,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
             top: characterPositions[
               step.characterPosition?.placement ?? 'bottom'
             ].top,
-            display: textPositions[step.textPlacement ?? 'bottom'].display,
+            display: 'flex',
             flexDirection:
               textPositions[step.textPlacement ?? 'bottom'].flexDirection,
           }}
@@ -258,6 +260,10 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
             padding: 20,
             zIndex: 10000,
             textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            left: textPositions[step.textPlacement ?? 'bottom'].left,
+            top: textPositions[step.textPlacement ?? 'bottom'].top,
           }}
         >
           {step.title && <h3>{step.title}</h3>}
