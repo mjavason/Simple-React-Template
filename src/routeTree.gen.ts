@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TestTutorialRouteImport } from './routes/test-tutorial'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,11 +16,6 @@ import { Route as PostsPostIdRouteImport } from './routes/posts_/$postId'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as PostsSearchSearchRouteImport } from './routes/posts_/search_/search'
 
-const TestTutorialRoute = TestTutorialRouteImport.update({
-  id: '/test-tutorial',
-  path: '/test-tutorial',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PostsRoute = PostsRouteImport.update({
   id: '/posts',
   path: '/posts',
@@ -57,7 +51,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/posts': typeof PostsRoute
-  '/test-tutorial': typeof TestTutorialRoute
   '/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/posts/search/search': typeof PostsSearchSearchRoute
@@ -66,7 +59,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/posts': typeof PostsRoute
-  '/test-tutorial': typeof TestTutorialRoute
   '/login': typeof AuthLoginRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/posts/search/search': typeof PostsSearchSearchRoute
@@ -76,7 +68,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/posts': typeof PostsRoute
-  '/test-tutorial': typeof TestTutorialRoute
   '/_auth/login': typeof AuthLoginRoute
   '/posts_/$postId': typeof PostsPostIdRoute
   '/posts_/search_/search': typeof PostsSearchSearchRoute
@@ -87,7 +78,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/posts'
-    | '/test-tutorial'
     | '/login'
     | '/posts/$postId'
     | '/posts/search/search'
@@ -96,7 +86,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/posts'
-    | '/test-tutorial'
     | '/login'
     | '/posts/$postId'
     | '/posts/search/search'
@@ -105,7 +94,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/posts'
-    | '/test-tutorial'
     | '/_auth/login'
     | '/posts_/$postId'
     | '/posts_/search_/search'
@@ -115,7 +103,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   PostsRoute: typeof PostsRoute
-  TestTutorialRoute: typeof TestTutorialRoute
   AuthLoginRoute: typeof AuthLoginRoute
   PostsPostIdRoute: typeof PostsPostIdRoute
   PostsSearchSearchRoute: typeof PostsSearchSearchRoute
@@ -123,13 +110,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/test-tutorial': {
-      id: '/test-tutorial'
-      path: '/test-tutorial'
-      fullPath: '/test-tutorial'
-      preLoaderRoute: typeof TestTutorialRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/posts': {
       id: '/posts'
       path: '/posts'
@@ -179,7 +159,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   PostsRoute: PostsRoute,
-  TestTutorialRoute: TestTutorialRoute,
   AuthLoginRoute: AuthLoginRoute,
   PostsPostIdRoute: PostsPostIdRoute,
   PostsSearchSearchRoute: PostsSearchSearchRoute,

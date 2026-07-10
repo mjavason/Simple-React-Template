@@ -7,7 +7,6 @@ export const Routes: Record<string, RoutePath> = {
   ABOUT: '/about',
   POSTS: '/posts',
   SEARCH: '/posts/search/search',
-  'TEST TUTORIAL': '/test-tutorial',
 };
 
 export const API_BASE_URL = 'https://fpl-ultimate-team-pv6i.onrender.com';
