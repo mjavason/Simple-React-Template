@@ -8,7 +8,7 @@ function PageContainer({
   return (
     <div>
       <h1 className="text-center text-9xl font-bold">{title}</h1>
-      <div className="min-h-[90vh] p-4">{children}</div>;
+      <div className="min-h-[60vh] p-4">{children}</div>;
     </div>
   );
 }

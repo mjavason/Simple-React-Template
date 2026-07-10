@@ -13,7 +13,7 @@ function RouteComponent() {
     <PageContainer title={'Simple App Tour'}>
       {/* <PositionPicker imageSrc={gHandOnWaist} /> */}
       <Tutorial isOpen={true} steps={WelcomeSteps} />
-      <div className="flex flex-row gap-3 items-center justify-center h-screen">
+      <div className="flex flex-row gap-3 items-center justify-center h-[20vh]">
         <a href={Routes['TEST TUTORIAL']}>
           <div
             id="eco-house-svg"
