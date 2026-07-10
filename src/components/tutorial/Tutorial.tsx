@@ -4,9 +4,9 @@ import {
   getCharacterWidth,
   getPointerPosition,
   getPointerWidth,
-  getSpeechBubbleClass,
   getSpeechBubbleFontSize,
   getSpeechBubbleWidth,
+  getTailStyle,
 } from './functions';
 import type { TutorialStep } from './types';
 import { useBreakpoint } from './useBreakpoint';
@@ -203,30 +203,33 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
 
           {/* Speech bubble */}
           <div
-            className={`relative rounded-lg bg-white p-4 shadow-lg ${getSpeechBubbleClass(step.characterPosition.placement)}`}
             style={{
+              position: 'relative',
               width: getSpeechBubbleWidth(breakpoint),
               background: 'white',
               borderRadius: 8,
               padding: 12,
-              zIndex: 10000,
               textAlign: 'center',
               fontSize: getSpeechBubbleFontSize(breakpoint),
               height: 'fit-content',
+              zIndex: 10000,
             }}
           >
-            {step.title && <h3 className={`pb-4 font-bold`}>{step.title}</h3>}
+            {/* Tail */}
+            <div style={getTailStyle(step.characterPosition.placement)} />
+
+            {step.title && <h3 className="pb-4 font-bold">{step.title}</h3>}
 
             <p>{step.content}</p>
 
-            {!step.highlight?.action || step.highlight.action === 'none' ? (
+            {(!step.highlight?.action || step.highlight.action === 'none') && (
               <button
-                className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer`}
+                className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:cursor-pointer"
                 onClick={next}
               >
                 {step.actionButtonText ?? 'Continue'}
               </button>
-            ) : null}
+            )}
           </div>
         </div>
       ) : (

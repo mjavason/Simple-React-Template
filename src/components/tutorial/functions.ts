@@ -392,7 +392,36 @@ export function getSpeechBubbleClass(placement: Placement) {
     case 'right':
       return 'bubble-right';
 
-    default: 
-    return 'bubble-right';
+    default:
+      return 'bubble-right';
+  }
+}
+
+export function getTailStyle(placement: Placement): React.CSSProperties {
+  const base: React.CSSProperties = {
+    position: 'absolute',
+    width: 20,
+    height: 20,
+    background: 'white',
+    transform: 'rotate(45deg)',
+  };
+
+  switch (placement) {
+    case 'left':
+      return {
+        ...base,
+        left: -10,
+        top: 32,
+      };
+
+    case 'right':
+      return {
+        ...base,
+        right: -10,
+        top: 32,
+      };
+
+    default:
+      return base;
   }
 }
