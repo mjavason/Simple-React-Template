@@ -18,12 +18,10 @@ export function useBreakpoint() {
 
   useEffect(() => {
     const handler = () => setBreakpoint(getBreakpoint());
-
     window.addEventListener('resize', handler);
 
     return () => window.removeEventListener('resize', handler);
   }, []);
 
-  console.log('Breakpoint:', breakpoint);
   return breakpoint;
 }
