@@ -1,9 +1,14 @@
+import {
+  HeaderTailwindClasses,
+  ParagraphTailwindClasses,
+} from '@/common/constants/constants';
 import { useEffect, useState } from 'react';
 import { characterPositions, textPositions } from './constants';
 import {
   getCharacterWidth,
   getPointerPosition,
   getPointerWidth,
+  getSpeechBubbleFontSize,
   getSpeechBubbleWidth,
 } from './functions';
 import type { TutorialStep } from './types';
@@ -168,13 +173,21 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
           style={{
             position: 'fixed',
             zIndex: 10000,
-            left: characterPositions[
-              step.characterPosition?.placement ?? 'bottom'
-            ].left,
-            top: characterPositions[
-              step.characterPosition?.placement ?? 'bottom'
-            ].top,
             display: 'flex',
+
+            left: characterPositions[step.characterPosition?.placement]?.left
+              ? characterPositions[step.characterPosition?.placement].left
+              : undefined,
+
+            right: characterPositions[step.characterPosition?.placement].right
+              ? characterPositions[step.characterPosition?.placement].right
+              : undefined,
+
+            bottom: characterPositions[step.characterPosition?.placement]
+              ?.bottom
+              ? characterPositions[step.characterPosition?.placement].bottom
+              : undefined,
+
             flexDirection:
               textPositions[step.textPlacement ?? 'bottom'].flexDirection,
           }}
@@ -199,15 +212,18 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
               padding: 20,
               zIndex: 10000,
               textAlign: 'center',
+              fontSize: getSpeechBubbleFontSize(breakpoint),
             }}
           >
-            {step.title && <h3 className="text-3xl">{step.title}</h3>}
+            {step.title && (
+              <h3 className={`${ParagraphTailwindClasses} pb-4 font-bold`}>{step.title}</h3>
+            )}
 
-            <p>{step.content}</p>
+            <p className={`${ParagraphTailwindClasses}`}>{step.content}</p>
 
             {!step.highlight?.action || step.highlight.action === 'none' ? (
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer"
+                className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer ${ParagraphTailwindClasses}`}
                 onClick={next}
               >
                 {step.actionButtonText ?? 'Continue'}
@@ -231,13 +247,15 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
             top: textPositions[step.textPlacement ?? 'bottom'].top,
           }}
         >
-          {step.title && <h3>{step.title}</h3>}
+          {step.title && (
+            <h3 className={HeaderTailwindClasses}>{step.title}</h3>
+          )}
 
-          <p>{step.content}</p>
+          <p className={ParagraphTailwindClasses}>{step.content}</p>
 
           {!step.highlight?.action || step.highlight.action === 'none' ? (
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer"
+              className={`bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:cursor-pointer ${ParagraphTailwindClasses}`}
               onClick={next}
             >
               {step.actionButtonText ?? 'Continue'}

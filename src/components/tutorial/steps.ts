@@ -17,7 +17,7 @@ export const WelcomeSteps: TutorialStep[] = [
     textPlacement: 'top',
     characterPosition: {
       icon: gHandOnWaist,
-      placement: 'top-left',
+      placement: 'left',
     },
   },
 
@@ -28,7 +28,7 @@ export const WelcomeSteps: TutorialStep[] = [
     textPlacement: 'top',
     characterPosition: {
       icon: gPointLeft,
-      placement: 'top-right',
+      placement: 'right',
     },
     pointerPosition: {
       icon: pointerLeftDown,
@@ -47,7 +47,7 @@ export const WelcomeSteps: TutorialStep[] = [
     textPlacement: 'top',
     characterPosition: {
       icon: gPointUp,
-      placement: 'top-left',
+      placement: 'left',
     },
     pointerPosition: {
       icon: pointerLeftDown,
@@ -66,7 +66,7 @@ export const WelcomeSteps: TutorialStep[] = [
     textPlacement: 'top',
     characterPosition: {
       icon: gPointRight,
-      placement: 'top-left',
+      placement: 'left',
     },
     pointerPosition: {
       icon: pointerRightUp,
@@ -85,7 +85,7 @@ export const WelcomeSteps: TutorialStep[] = [
     textPlacement: 'top',
     characterPosition: {
       icon: gPointRight,
-      placement: 'top-left',
+      placement: 'left',
     },
     pointerPosition: {
       icon: pointerRight,
@@ -103,7 +103,7 @@ export const WelcomeSteps: TutorialStep[] = [
     textPlacement: 'top',
     characterPosition: {
       icon: gHandOnWaist,
-      placement: 'top-left',
+      placement: 'left',
     },
     pointerPosition: {
       icon: pointerLeftDown,

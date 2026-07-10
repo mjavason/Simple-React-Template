@@ -1,3 +1,5 @@
+import { HeaderTailwindClasses } from '@/common/constants/constants';
+
 function PageContainer({
   children,
   title,
@@ -7,7 +9,9 @@ function PageContainer({
 }) {
   return (
     <div>
-      <h1 className="text-center text-9xl font-bold">{title}</h1>
+      <h1 className={`${HeaderTailwindClasses} text-center font-bold`}>
+        {title}
+      </h1>
       <div className="min-h-[60vh] p-4">{children}</div>;
     </div>
   );

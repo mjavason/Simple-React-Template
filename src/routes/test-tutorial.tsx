@@ -1,4 +1,4 @@
-import { Routes } from '@/common/constants/constants';
+import { ParagraphTailwindClasses, Routes } from '@/common/constants/constants';
 import PageContainer from '@/components/PageContainer';
 import { WelcomeSteps } from '@/components/tutorial/steps';
 import Tutorial from '@/components/tutorial/Tutorial';
@@ -8,44 +8,41 @@ export const Route = createFileRoute('/test-tutorial')({
   component: RouteComponent,
 });
 
+const data = [
+  {
+    id: 'eco-house-svg',
+    title: 'Eco House',
+  },
+  {
+    id: 'hq-svg',
+    title: 'HQ',
+  },
+  {
+    id: 'spotlight-svg',
+    title: 'Spotlight',
+  },
+  {
+    id: 'hub-tv-svg',
+    title: 'Hub TV',
+  },
+];
+
 function RouteComponent() {
   return (
     <PageContainer title={'Simple App Tour'}>
       {/* <PositionPicker imageSrc={gHandOnWaist} /> */}
       <Tutorial isOpen={true} steps={WelcomeSteps} />
-      <div className="flex flex-row gap-3 items-center justify-center h-[20vh]">
-        <a href={Routes['TEST TUTORIAL']}>
-          <div
-            id="eco-house-svg"
-            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-          >
-            Eco House
-          </div>
-        </a>
-        <a href={Routes['TEST TUTORIAL']}>
-          <div
-            id="hq-svg"
-            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-          >
-            HQ
-          </div>
-        </a>
-        <a href={Routes['TEST TUTORIAL']}>
-          <div
-            id="spotlight-svg"
-            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-          >
-            Spotlight
-          </div>
-        </a>
-        <a href={Routes['TEST TUTORIAL']}>
-          <div
-            id="hub-tv-svg"
-            className="bg-gray-200 p-4 rounded-lg hover:cursor-pointer"
-          >
-            Hub TV
-          </div>
-        </a>
+      <div className="flex flex-row gap-3 items-center justify-center h-[50vh]">
+        {data.map((item) => (
+          <a href={Routes['TEST TUTORIAL']} key={item.id}>
+            <div
+              id={item.id}
+              className={`bg-gray-200 p-4 rounded-lg hover:cursor-pointer ${ParagraphTailwindClasses}`}
+            >
+              {item.title}
+            </div>
+          </a>
+        ))}
       </div>
     </PageContainer>
   );

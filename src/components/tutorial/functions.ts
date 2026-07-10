@@ -319,17 +319,17 @@ export function getPointerPosition(
 export function getCharacterWidth(breakpoint: string) {
   switch (breakpoint) {
     case 'xs':
-      return 180;
+      return 160;
     case 'sm':
-      return 300;
+      return 180;
     case 'md':
-      return 400;
+      return 200;
     case 'lg':
-      return 400;
+      return 240;
     case 'xl':
-      return 400;
+      return 280;
     case '2xl':
-      return 400;
+      return 300;
   }
 }
 
@@ -364,5 +364,22 @@ export function getSpeechBubbleWidth(breakpoint: string) {
       return 350;
     case '2xl':
       return 350;
+  }
+}
+
+export function getSpeechBubbleFontSize(breakpoint: string) {
+  switch (breakpoint) {
+    case 'xs':
+      return 12;
+    case 'sm':
+      return 14;
+    case 'md':
+      return 16;
+    case 'lg':
+      return 16;
+    case 'xl':
+      return 16;
+    case '2xl':
+      return 16;
   }
 }

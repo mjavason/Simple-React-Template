@@ -9,7 +9,17 @@ export const characterPositions: Record<
     right?: string;
   }
 > = {
- top: {
+  left: {
+    left: '1rem',
+    bottom: '0',
+  },
+  right: {
+    right: '1rem',
+    bottom: '0',
+  },
+
+  // not needed but just in case
+  top: {
     top: '10%',
     left: '40%',
   },
@@ -17,10 +27,7 @@ export const characterPositions: Record<
     top: '10%',
     left: '80%',
   },
-  right: {
-    top: '40%',
-    left: '80%',
-  },
+
   'bottom-right': {
     top: '70%',
     left: '80%',
@@ -33,10 +40,7 @@ export const characterPositions: Record<
     top: '70%',
     left: '5%',
   },
-  left: {
-    top: '40%',
-    left: '5%',
-  },
+
   'top-left': {
     top: '10%',
     left: '5%',
