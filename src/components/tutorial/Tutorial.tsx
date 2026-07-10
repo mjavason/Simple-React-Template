@@ -4,6 +4,7 @@ import {
   getCharacterWidth,
   getPointerPosition,
   getPointerWidth,
+  getSpeechBubbleClass,
   getSpeechBubbleFontSize,
   getSpeechBubbleWidth,
 } from './functions';
@@ -202,6 +203,7 @@ export default function Tutorial({ isOpen, steps, onFinish }: Props) {
 
           {/* Speech bubble */}
           <div
+            className={`relative rounded-lg bg-white p-4 shadow-lg ${getSpeechBubbleClass(step.characterPosition.placement)}`}
             style={{
               width: getSpeechBubbleWidth(breakpoint),
               background: 'white',

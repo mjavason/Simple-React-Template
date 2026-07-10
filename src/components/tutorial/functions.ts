@@ -383,3 +383,16 @@ export function getSpeechBubbleFontSize(breakpoint: string) {
       return 16;
   }
 }
+
+export function getSpeechBubbleClass(placement: Placement) {
+  switch (placement) {
+    case 'left':
+      return 'bubble-left';
+
+    case 'right':
+      return 'bubble-right';
+
+    default: 
+    return 'bubble-right';
+  }
+}
