@@ -1,11 +1,7 @@
 import PageContainer from '@/components/PageContainer';
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { Link } from 'react-router-dom';
 
-export const Route = createFileRoute('/posts')({
-  component: RouteComponent,
-});
-
-function RouteComponent() {
+export default function PostsPage() {
   return (
     <PageContainer title={'Posts'}>
       <div>
@@ -16,9 +12,7 @@ function RouteComponent() {
         <ul>
           {[1, 2, 3].map((postId) => (
             <li key={postId} className="mb-2">
-              <Link to="/posts/$postId" params={{ postId: String(postId) }}>
-                Post {postId}
-              </Link>
+              <Link to={`/posts/$postId/${postId}`}>Post {postId}</Link>
             </li>
           ))}
         </ul>

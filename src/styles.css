@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss/preflight";
 
 body {
   font-family:

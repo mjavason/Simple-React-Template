@@ -1,18 +1,18 @@
-import type { LinkProps } from '@tanstack/react-router';
-
-type RoutePath = LinkProps['to'];
-export const Routes: Record<string, RoutePath> = {
+export const RoutesConst = {
   HOME: '/',
   LOGIN: '/login',
   ABOUT: '/about',
   POSTS: '/posts',
+  POST_CONTENT: (param?: string) => `/posts/${param ?? ':uuid'}`,
   SEARCH: '/posts/search/search',
 };
 
 export const API_BASE_URL = 'https://fpl-ultimate-team-pv6i.onrender.com';
 
 export enum CookieKeys {
+  VISITED = 'visited',
   AUTH_TOKEN = 'auth_token',
+  REDIRECT_ROUTE = 'srt_redirect_route',
 }
 
 export enum ApiMethods {

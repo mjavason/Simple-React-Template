@@ -1,15 +1,11 @@
 import PageContainer from '@/components/PageContainer';
-import { createFileRoute } from '@tanstack/react-router';
+import { useParams } from 'react-router-dom';
 
-export const Route = createFileRoute('/posts_/$postId')({
-  component: RouteComponent,
-});
-
-function RouteComponent() {
-  const params = Route.useParams();
+export default function PostContentPage() {
+  const { uuid } = useParams();
 
   return (
-    <PageContainer title={`Post ${params.postId}`}>
+    <PageContainer title={`Post ${uuid}`}>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel a vitae
         officiis ea distinctio aliquid magni eos commodi? Itaque sequi ut, ab
