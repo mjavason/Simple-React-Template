@@ -24,9 +24,9 @@ export const SkeletonLoader = ({
   isRound?: boolean;
 }) => {
   const skeletonClass =
-    'relative overflow-hidden bg-gray-200 before:absolute before:inset-0 before:w-1/2 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent before:animate-shimmer';
-
-  return (
+    'relative overflow-hidden bg-gray-200 before:absolute before:inset-y-0 before:left-0 before:w-2/3 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent before:animate-shimmer';
+ 
+    return (
     <div className="flex flex-col items-start gap-3">
       <div
         className={`${skeletonClass} ${

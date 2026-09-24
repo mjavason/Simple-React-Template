@@ -16,14 +16,17 @@ function HomePage() {
           Toast Me!
         </button>
 
-        <SkeletonLoader width="100%" height="10vh" />
+        <div className="flex gap-4">
+          <SkeletonLoader width="100px" height="100px" isRound={true} />
+          <SkeletonLoader width="300px" height="100px" isRound={false} />
+        </div>
 
         <div>
           <p className="sm:hidden">base</p>
-        <p className="md:hidden">sm</p>
-        <p className="lg:hidden">md</p>
-        <p className="xl:hidden">lg</p>
-        <p className="2xl:hidden">xl</p>
+          <p className="md:hidden">sm</p>
+          <p className="lg:hidden">md</p>
+          <p className="xl:hidden">lg</p>
+          <p className="2xl:hidden">xl</p>
         </div>
       </div>
     </PageContainer>
