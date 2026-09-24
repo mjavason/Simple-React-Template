@@ -4,7 +4,7 @@ import { lazy } from 'react';
 const HomePage = lazy(() => import('@/routes/public/home.page'));
 const LoginPage = lazy(() => import('@/routes/public/auth/login.page'));
 const AboutPage = lazy(() => import('@/routes/public/about.page'));
-const SearchDemoPage = lazy(() => import('@/routes/public/search'));
+const SearchDemoPage = lazy(() => import('@/routes/public/search.page'));
 
 export const publicRoutes = [
   { name: 'Home', path: '/', component: HomePage },

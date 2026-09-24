@@ -8,11 +8,11 @@ function PageContainer({
   title: string;
 }) {
   return (
-    <div>
+    <div className="w-full">
       <h1 className={`${HeaderTailwindClasses} text-center font-bold`}>
         {title}
       </h1>
-      <div className="min-h-[60vh] p-4">{children}</div>
+      <div className="min-h-[80vh]">{children}</div>
     </div>
   );
 }

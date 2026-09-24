@@ -9,36 +9,30 @@ export const Loader = ({
 }) => {
   return (
     <div className="flex items-center justify-center" style={{ height }}>
-      <p className="max-w-70 text-center font-semibold text-[#944000]">
-        {title}
-      </p>
+      <p className="max-w-70 text-center font-semibold">{title}</p>
     </div>
   );
 };
 
-export const PageLoader = ({ squares }: { squares?: boolean }) => {
+export const SkeletonLoader = ({
+  width,
+  height,
+  isRound,
+}: {
+  width: string;
+  height: string;
+  isRound?: boolean;
+}) => {
+  const skeletonClass =
+    'relative overflow-hidden bg-gray-200 before:absolute before:inset-0 before:w-1/2 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent before:animate-shimmer';
+
   return (
-    <div
-      className={`flex w-full flex-col items-start ${
-        squares ? 'gap-3' : 'gap-2'
-      }`}
-    >
+    <div className="flex flex-col items-start gap-3">
       <div
-        className={`h-8 w-full animate-pulse bg-gray-200 ${
-          squares ? 'rounded-lg' : 'rounded-none'
+        className={`${skeletonClass} ${
+          isRound ? 'rounded-full' : 'rounded-none'
         }`}
-      />
-
-      <div
-        className={`h-${squares ? '8' : '4'} animate-pulse bg-gray-200 ${
-          squares ? 'w-full rounded-none' : 'w-[80%] rounded-none'
-        }`}
-      />
-
-      <div
-        className={`h-${squares ? '8' : '4'} animate-pulse bg-gray-200 ${
-          squares ? 'w-full rounded-lg' : 'w-[60%] rounded-none'
-        }`}
+        style={{ width, height }}
       />
     </div>
   );

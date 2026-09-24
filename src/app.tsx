@@ -16,18 +16,20 @@ function App() {
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
             <ReactLenis root options={{ autoRaf: true }}>
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  success: {
-                    duration: 3000,
-                  },
-                  error: {
-                    duration: 5000,
-                  },
-                }}
-              />
-              <AppRouter />
+              <div className="w-screen overflow-x-hidden min-h-screen p-4">
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    success: {
+                      duration: 3000,
+                    },
+                    error: {
+                      duration: 5000,
+                    },
+                  }}
+                />
+                <AppRouter />
+              </div>
             </ReactLenis>
           </QueryClientProvider>
         </BrowserRouter>
