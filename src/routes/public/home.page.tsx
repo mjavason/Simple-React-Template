@@ -17,8 +17,28 @@ function HomePage() {
         </button>
 
         <div className="flex gap-4">
-          <SkeletonLoader width="100px" height="100px" isRound={true} />
-          <SkeletonLoader width="300px" height="100px" isRound={false} />
+          <SkeletonLoader
+            width={{
+              base: '100px',
+            }}
+            height={{
+              base: '100px',
+            }}
+            isRound={true}
+          />
+          <SkeletonLoader
+            width={{
+              base: '210px',
+              sm: '490px',
+              md: '610px',
+              lg: '870px',
+              xl: '1120px'
+            }}
+            height={{
+              base: '100px',
+            }}
+            isRound={false}
+          />
         </div>
 
         <div>
