@@ -10,17 +10,18 @@ function HomePage() {
         <div>Hello</div>
 
         <Button
-          variant={'destructive'}
+          variant={'default'}
           onClick={() => {
             toast.success('Hello world');
           }}
+          className={'max-w-50'}
         >
           Click Me
         </Button>
 
         <div className="flex gap-4">
           <SkeletonLoader className={'w-25 h-25 rounded-full'} />
-          <SkeletonLoader className="w-25 h-10" />
+          <SkeletonLoader className="w-full h-25" />
         </div>
 
         <div>
