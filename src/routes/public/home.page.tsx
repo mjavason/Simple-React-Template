@@ -1,5 +1,6 @@
 import { SkeletonLoader } from '@/components/loaders';
 import PageContainer from '@/components/PageContainer';
+import { Button } from '@/components/ui/button';
 import { toast } from 'react-hot-toast';
 
 function HomePage() {
@@ -7,38 +8,19 @@ function HomePage() {
     <PageContainer title="Home">
       <div className="flex flex-col gap-8">
         <div>Hello</div>
-        <button
-          className="bg-blue border-b-2"
+
+        <Button
+          variant={'destructive'}
           onClick={() => {
             toast.success('Hello world');
           }}
         >
-          Toast Me!
-        </button>
+          Click Me
+        </Button>
 
         <div className="flex gap-4">
-          <SkeletonLoader
-            width={{
-              base: '100px',
-            }}
-            height={{
-              base: '100px',
-            }}
-            isRound={true}
-          />
-          <SkeletonLoader
-            width={{
-              base: '210px',
-              sm: '490px',
-              md: '610px',
-              lg: '870px',
-              xl: '1120px'
-            }}
-            height={{
-              base: '100px',
-            }}
-            isRound={false}
-          />
+          <SkeletonLoader className={'w-25 h-25 rounded-full'} />
+          <SkeletonLoader className="w-25 h-10" />
         </div>
 
         <div>
