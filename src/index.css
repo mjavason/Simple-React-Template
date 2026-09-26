@@ -18,6 +18,7 @@ code {
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* custom skeleton animation */
 @theme {
   --animate-shimmer: shimmer 0.7s linear infinite;
 

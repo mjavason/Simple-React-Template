@@ -20,7 +20,7 @@ export function SkeletonLoader({
   ...props
 }: React.ComponentProps<'div'>) {
   const skeletonClass =
-    'relative overflow-hidden bg-border before:absolute before:inset-y-0 before:left-0 before:w-2/3 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent before:animate-shimmer';
+    'relative overflow-hidden bg-muted before:absolute before:inset-y-0 before:left-0 before:w-6/7 before:bg-gradient-to-r before:from-transparent before:via-accent/10 before:to-transparent before:animate-shimmer';
 
   return (
     <div
