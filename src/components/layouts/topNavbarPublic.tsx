@@ -1,4 +1,4 @@
-import { RoutesConst } from '@/common/constants/constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

@@ -1,4 +1,4 @@
-import { HeaderTailwindClasses } from '@/common/constants/constants';
+import { HeaderTailwindClasses } from '@/common/constants/index.constants';
 
 function PageContainer({
   children,

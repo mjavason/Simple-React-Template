@@ -1,4 +1,4 @@
-import { RoutesConst } from '@/common/constants/constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';

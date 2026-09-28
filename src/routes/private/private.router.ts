@@ -1,4 +1,4 @@
-import { RoutesConst } from '@/common/constants/constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
 import { lazy } from 'react';
 
 const PostsPage = lazy(() => import('@/routes/private/posts/posts.page'));

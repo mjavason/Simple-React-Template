@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 import { useMutation, useQueryClient } from 'react-query';
 import { mutateJson } from '../utils/api.util';
-import { API_BASE_URL } from '../utils/env';
+import { API_BASE_URL } from '../common/constants/env.constants';
 
 export function useApiMutation<TBodyInput, TOutput>(
   url: string,

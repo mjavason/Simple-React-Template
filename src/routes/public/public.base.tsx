@@ -1,4 +1,5 @@
-import { CookieKeys, RoutesConst } from '@/common/constants/constants';
+import { CookieKeys } from '@/common/constants/keys.constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
 import cookie from 'js-cookie';
 import { Navigate, Outlet } from 'react-router-dom';
 

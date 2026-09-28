@@ -1,4 +1,5 @@
-import { CookieKeys, RoutesConst } from '@/common/constants/constants';
+import { CookieKeys } from '@/common/constants/keys.constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
 import BaseLayout from '@/components/layouts/base';
 import cookie from 'js-cookie';
 import { useEffect } from 'react';
