@@ -19,7 +19,7 @@ function HomePage() {
           Click Me
         </Button>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <SkeletonLoader className={'w-25 h-25 rounded-full'} />
           <SkeletonLoader className="w-full h-25" />
         </div>

@@ -15,6 +15,8 @@ export const Loader = ({
   );
 };
 
+// Remember, text fontsize can also count as height.
+// If a p tag is sized 16px you can size the skeleton to that same height and it'll match perfectly
 export function SkeletonLoader({
   className,
   ...props
@@ -24,16 +26,15 @@ export function SkeletonLoader({
 
   return (
     <div
-      className={cn('flex flex-col items-start gap-3', className)}
-      {...props}
-    >
-      <div
-        className={cn(`
+      className={cn(
+        `
           ${skeletonClass}
           w-full
           h-full
-        `, className)}
-      />
-    </div>
+        `,
+        className,
+        { ...props },
+      )}
+    />
   );
 }
