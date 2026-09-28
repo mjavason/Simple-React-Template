@@ -1,4 +1,4 @@
-export type DashboardAnalyticsType = {
+export type DashboardAnalyticsResponseType = {
   activeUsers: number;
   activeSubscriptions: number;
   revenueGenerated: number;
