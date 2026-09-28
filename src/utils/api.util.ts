@@ -1,10 +1,10 @@
+import { CookieKeys } from '@/common/constants/keys.constants';
 import cookie from 'js-cookie';
-import { CookieKeys } from './constants';
 
 function handleAuthError(status: number) {
   if (status === 401) {
     // clear auth state
-    cookie.remove(CookieKeys.TOKEN);
+    cookie.remove(CookieKeys.AUTH_TOKEN);
     cookie.set(CookieKeys.ERROR_MESSAGE, 'Session expired');
 
     // optional: clear other client caches
@@ -24,7 +24,7 @@ function handleAuthError(status: number) {
 }
 
 export async function getJson<T>(url: string): Promise<T> {
-  const token = cookie.get(CookieKeys.TOKEN);
+  const token = cookie.get(CookieKeys.AUTH_TOKEN);
   const headers: HeadersInit = {};
   if (token) headers.Authorization = `Bearer ${token}`;
 
@@ -56,7 +56,7 @@ export async function mutateJson<TOutput>(
   param: Record<string, string | number> = {},
   query: Record<string, string> = {},
 ): Promise<TOutput> {
-  const token = cookie.get(CookieKeys.TOKEN);
+  const token = cookie.get(CookieKeys.AUTH_TOKEN);
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
   if (token) headers.Authorization = `Bearer ${token}`;
 

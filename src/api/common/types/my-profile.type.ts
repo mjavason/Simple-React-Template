@@ -1,4 +1,4 @@
-export type MyProfileType = {
+export type MyProfileResponseType = {
   id: string;
   uuid: string;
   email: string;
@@ -34,7 +34,7 @@ export type MyProfileType = {
   orgSize: string | null;
   parentEmail: string | null;
   parentId: string | null;
-  parent: MyProfileType | null; // Recursive type for parent user
+  parent: MyProfileResponseType | null; // Recursive type for parent user
   parentalControlStartTime: string | null; // ISO timestamp
   parentalControlEndTime: string | null; // ISO timestamp
   isOnboardingCompleted: boolean;
@@ -49,9 +49,9 @@ export type MyProfileType = {
 };
 
 export enum UserTypeEnum {
-  PARENT = "parent",
-  CHILD = "child",
-  ORGANIZATION = "organization",
-  ADMIN = "admin",
-  SUPER = "super",
+  PARENT = 'parent',
+  CHILD = 'child',
+  ORGANIZATION = 'organization',
+  ADMIN = 'admin',
+  SUPER = 'super',
 }
