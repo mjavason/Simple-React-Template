@@ -4,5 +4,5 @@ export const RoutesConst = {
   ABOUT: '/about',
   POSTS: '/posts',
   POST_CONTENT: (param?: string) => `/posts/${param ?? ':uuid'}`,
-  SEARCH: '/posts/search/search',
+  SEARCH: '/search',
 };

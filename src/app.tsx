@@ -7,9 +7,9 @@ import './app.css';
 import ErrorBoundary from './components/errorBoundary';
 import AppRouter from './routes/app.router';
 
-function App() {
-  const queryClient = new QueryClient(); // 1
+const queryClient = new QueryClient();
 
+function App() {
   return (
     <ErrorBoundary>
       <HelmetProvider>
