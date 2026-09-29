@@ -1,7 +1,7 @@
-import { toast } from 'react-hot-toast';
 import { SkeletonLoader } from '@/components/loaders';
 import PageContainer from '@/components/PageContainer';
 import { Button } from '@/components/ui/button';
+import { toast } from 'react-hot-toast';
 
 function HomePage() {
   return (
