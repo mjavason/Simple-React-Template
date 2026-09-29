@@ -166,7 +166,28 @@ This is a good base for:
 
 ## Testing
 
-Vitest and Testing Library are already installed, but this template does not yet include a meaningful test suite. You can add tests under a `src/**/*.test.tsx` structure as the app grows.
+Vitest and Testing Library are already installed, and the project includes a working sample page test at `src/routes/public/home.page.test.tsx`.
+
+This is a simple example of testing rendered UI in the app:
+
+```tsx
+// @vitest-environment jsdom
+
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import HomePage from './home.page';
+
+describe('HomePage', () => {
+  it('renders the home page content', () => {
+    render(<HomePage />);
+
+    expect(screen.getByText('Hello')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /click me/i })).toBeTruthy();
+  });
+});
+```
+
+Run tests with:
 
 ```bash
 yarn test
@@ -179,7 +200,7 @@ This is a template, not a finished product. A few things to decide before using 
 - Replace the demo pages with your actual product pages
 - Connect the API layer to your real backend
 - Add persistent auth/session handling if required by your app
-- Add a real test strategy for route guards and data fetching
+- Expand the test suite beyond the sample home-page test as the app grows
 
 ## Summary
 
