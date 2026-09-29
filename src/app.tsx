@@ -8,7 +8,12 @@ import ErrorBoundary from './components/errorBoundary';
 import AppRouter from './routes/app.router';
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient(); // 1
+
+
+
+
+
 
   return (
     <ErrorBoundary>
