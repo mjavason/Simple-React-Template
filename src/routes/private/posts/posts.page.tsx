@@ -1,5 +1,5 @@
-import PageContainer from '@/components/PageContainer';
 import { Link } from 'react-router-dom';
+import PageContainer from '@/components/PageContainer';
 
 export default function PostsPage() {
   return (

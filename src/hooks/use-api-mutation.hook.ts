@@ -1,12 +1,12 @@
 import toast from 'react-hot-toast';
 import { useMutation, useQueryClient } from 'react-query';
-import { mutateJson } from '../utils/api.util';
 import { API_BASE_URL } from '../common/constants/env.constants';
+import { mutateJson } from '../utils/api.util';
 
 export function useApiMutation<TBodyInput, TOutput>(
   url: string,
   method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE',
-  invalidate: string[],
+  invalidate: Array<string>,
   options?: {
     onSuccess?: (data: TOutput) => void;
     onError?: (error: Error) => void;
@@ -48,7 +48,7 @@ export function useApiMutation<TBodyInput, TOutput>(
       if (options?.onError) {
         options.onError(error);
       } else {
-        toast.error(error.message ?? 'An error occurred');
+        toast.error(error.message);
       }
     },
   });

@@ -5,7 +5,7 @@ export type MyProfileResponseType = {
   pictureUrl: string | null;
   isEmailVerified: boolean;
   role: string | null;
-  permissions: string[];
+  permissions: Array<string>;
   status: string;
   isSuper: boolean;
   is2FAEnabled: boolean;
@@ -17,7 +17,7 @@ export type MyProfileResponseType = {
     subscriptionPlan: {
       id: string;
       title: string;
-      benefits: string[];
+      benefits: Array<string>;
     } | null;
   } | null;
   isAutoSubscriptionEnabled: boolean;
@@ -41,7 +41,7 @@ export type MyProfileResponseType = {
   isExpressRegistration: boolean;
   controlPin: string;
 
-  //virtual
+  // virtual
   age?: string;
 
   createdAt: Date;

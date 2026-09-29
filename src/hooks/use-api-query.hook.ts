@@ -4,7 +4,7 @@ import { getJson } from '../utils/api.util';
 import { API_BASE_URL } from '../common/constants/env.constants';
 
 export function useApiQuery<TOutput>(
-  keys: string[],
+  keys: Array<string>,
   url: string,
   options?: {
     onSuccess?: (data: TOutput) => void;
@@ -28,7 +28,7 @@ export function useApiQuery<TOutput>(
       if (options?.onError) {
         options.onError(error);
       } else {
-        toast.error(error.message ?? 'An error occurred');
+        toast.error(error.message);
         // toast.error('An unknown error occurred');
       }
     },

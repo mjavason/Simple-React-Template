@@ -1,6 +1,6 @@
-import { RoutesConst } from '@/common/constants/routes.constant';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RoutesConst } from '@/common/constants/routes.constant';
 
 export const TopNavbarPublic = ({ title }: { title?: string }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +26,7 @@ export const TopNavbarPublic = ({ title }: { title?: string }) => {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="rounded-full focus:outline-none focus:ring-2 focus:ring-white"
+            className="rounded-full focus:ring-2 focus:ring-white focus:outline-none"
             aria-label="Open user menu"
             aria-expanded={menuOpen}
           >
@@ -38,7 +38,7 @@ export const TopNavbarPublic = ({ title }: { title?: string }) => {
           </button>
 
           {menuOpen && (
-            <div className="absolute right-0 top-full z-50 mt-3 min-w-37.5 overflow-hidden rounded-md border-2 border-[#f2f2f2] bg-white py-0 shadow-lg">
+            <div className="absolute top-full right-0 z-50 mt-3 min-w-37.5 overflow-hidden rounded-md border-2 border-[#f2f2f2] bg-white py-0 shadow-lg">
               <button
                 type="button"
                 className="block w-full bg-transparent px-4 py-2 text-left font-semibold hover:bg-[#FFE8B6]"

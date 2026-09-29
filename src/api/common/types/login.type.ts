@@ -1,4 +1,4 @@
-import { UserTypeEnum } from "./my-profile.type";
+import type { UserTypeEnum } from './my-profile.type';
 
 export type LoginInputType = {
   email: string;

@@ -1,7 +1,7 @@
+import { toast } from 'react-hot-toast';
 import { SkeletonLoader } from '@/components/loaders';
 import PageContainer from '@/components/PageContainer';
 import { Button } from '@/components/ui/button';
-import { toast } from 'react-hot-toast';
 
 function HomePage() {
   return (
@@ -19,9 +19,9 @@ function HomePage() {
           Click Me
         </Button>
 
-        <div className="flex gap-4 items-center">
-          <SkeletonLoader className={'w-25 h-25 rounded-full'} />
-          <SkeletonLoader className="w-full h-25" />
+        <div className="flex items-center gap-4">
+          <SkeletonLoader className={'h-25 w-25 rounded-full'} />
+          <SkeletonLoader className="h-25 w-full" />
         </div>
 
         <div>

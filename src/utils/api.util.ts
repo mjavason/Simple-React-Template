@@ -1,5 +1,5 @@
-import { CookieKeys } from '@/common/constants/keys.constants';
 import cookie from 'js-cookie';
+import { CookieKeys } from '@/common/constants/keys.constants';
 
 function handleAuthError(status: number) {
   if (status === 401) {

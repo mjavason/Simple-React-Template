@@ -1,5 +1,5 @@
-import { RoutesConst } from '@/common/constants/routes.constant';
 import { lazy } from 'react';
+import { RoutesConst } from '@/common/constants/routes.constant';
 
 const HomePage = lazy(() => import('@/routes/public/home.page'));
 const LoginPage = lazy(() => import('@/routes/public/auth/login.page'));

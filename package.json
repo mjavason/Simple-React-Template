@@ -7,9 +7,8 @@
     "build": "vite build && tsc",
     "start": "vite preview",
     "test": "vitest run",
-    "lint": "eslint",
+    "lint": "eslint . --fix && prettier --write .",
     "check": "prettier --write . && eslint --fix",
-    "format": "prettier --write . --plugin=prettier-plugin-organize-imports",
     "prepare": "husky"
   },
   "dependencies": {

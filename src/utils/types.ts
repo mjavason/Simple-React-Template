@@ -4,9 +4,9 @@ export interface ChakraDisclosureProps {
   onClose: () => void;
   onToggle: () => void;
   isControlled: boolean;
-  //   eslint-disable-next-line
+
   getButtonProps: (props?: any) => any;
-  //   eslint-disable-next-line
+
   getDisclosureProps: (props?: any) => any;
 }
 
@@ -15,36 +15,33 @@ export interface QueryParamsProp {
   limit: number;
   // filter is search
   filter?: string;
-  isActive?: "true";
-  isInactive?: "true";
-  sort?: "asc" | "desc";
+  isActive?: 'true';
+  isInactive?: 'true';
+  sort?: 'asc' | 'desc';
   search?: string;
-  status?: "pending" | "success" | "failed";
+  status?: 'pending' | 'success' | 'failed';
   category?: string;
 }
 
 export type UserType =
-  | "child"
-  | "parent"
-  | "organization"
-  | "par_admin"
-  | "par_super_admin"
-  | "user";
+  | 'child'
+  | 'parent'
+  | 'organization'
+  | 'par_admin'
+  | 'par_super_admin'
+  | 'user';
 
-export type ContentType = "movie" | "series" | "pdf" | "audio";
+export type ContentType = 'movie' | 'series' | 'pdf' | 'audio';
 
-export type ContentFormat = "audio" | "video" | "pdf";
+export type ContentFormat = 'audio' | 'video' | 'pdf';
 
 export type BillingPeriodType =
-  | "monthly"
-  | "quarterly"
-  | "bi-annually"
-  | "annually";
+  'monthly' | 'quarterly' | 'bi-annually' | 'annually';
 
 export interface SubscriptionType {
   title: string;
   desc: string;
-  benefits: string[];
+  benefits: Array<string>;
   price: string;
   billing_period: BillingPeriodType;
 
@@ -52,7 +49,7 @@ export interface SubscriptionType {
   is_subscribed?: boolean;
 }
 
-export type PaymentGateways = "Flutterwave" | "Stripe";
+export type PaymentGateways = 'Flutterwave' | 'Stripe';
 
 export interface PaginationMetaType {
   totalItems: number;
@@ -118,19 +115,19 @@ export interface UserAuthDataType {
     userSubscriptionPlan: {
       isActive: boolean;
       subscriptionPlan: {
-        benefits: string; //json
-      }
+        benefits: string; // json
+      };
     };
   } | null;
-  boughtSubscription: SubscriptionType[];
+  boughtSubscription: Array<SubscriptionType>;
 
-  views: {
+  views: Array<{
     name: string;
     watched: number;
     uuid: string;
     id: number;
     totalContent: number;
-  }[];
+  }>;
 }
 
 export interface ParentalControlDataType {
@@ -139,7 +136,7 @@ export interface ParentalControlDataType {
   dailyStartTime: string;
   controlPin: string;
   dailyEndTime: string;
-  contentCategories: string[];
+  contentCategories: Array<string>;
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
@@ -186,7 +183,7 @@ export interface ListHookProps {
   currentPage?: number;
   dataToShow?: number;
   searchValue?: string;
-  filterBy?: "active" | "inactive" | "all";
+  filterBy?: 'active' | 'inactive' | 'all';
 }
 
 export interface QuizListQuestionType {
@@ -223,7 +220,7 @@ export interface QuizListType {
   name: string;
   content: string | null;
   badge: string | null;
-  questions: QuizListQuestionType[];
+  questions: Array<QuizListQuestionType>;
 
   createdAt?: string;
   updatedAt?: string;

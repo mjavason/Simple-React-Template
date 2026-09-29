@@ -1,5 +1,5 @@
-import PageContainer from '@/components/PageContainer';
 import { useSearchParams } from 'react-router-dom';
+import PageContainer from '@/components/PageContainer';
 
 export default function SearchDemoPage() {
   const [SearchParams] = useSearchParams();

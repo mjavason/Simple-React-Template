@@ -1,9 +1,9 @@
-import { CookieKeys } from '@/common/constants/keys.constants';
-import { RoutesConst } from '@/common/constants/routes.constant';
-import BaseLayout from '@/components/layouts/base';
 import cookie from 'js-cookie';
 import { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import { CookieKeys } from '@/common/constants/keys.constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
+import BaseLayout from '@/components/layouts/base';
 
 export const PrivateRoute = () => {
   const { pathname } = useLocation();

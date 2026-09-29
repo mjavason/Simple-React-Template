@@ -1,5 +1,5 @@
 import { cn } from 'cn';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export const Loader = ({
   title = 'Please wait...',
@@ -26,15 +26,7 @@ export function SkeletonLoader({
 
   return (
     <div
-      className={cn(
-        `
-          ${skeletonClass}
-          w-full
-          h-full
-        `,
-        className,
-        { ...props },
-      )}
+      className={cn(` ${skeletonClass} h-full w-full`, className, { ...props })}
     />
   );
 }

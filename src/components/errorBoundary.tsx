@@ -1,6 +1,6 @@
-import type { ErrorInfo } from 'react';
 import { Component } from 'react';
 import BrokenPage from './brokenPageUI';
+import type { ErrorInfo } from 'react';
 
 interface PropsType {
   children: React.ReactNode;

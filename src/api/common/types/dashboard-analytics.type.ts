@@ -6,7 +6,7 @@ export type DashboardAnalyticsResponseType = {
   children: number;
   organizations: number;
   admins: number;
-  mostPopularContent: string[];
+  mostPopularContent: Array<string>;
   badgesAwarded: number;
   quizCompletionRate: number;
   pastWeekUserEngagement: {

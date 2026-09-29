@@ -10,18 +10,13 @@ import AppRouter from './routes/app.router';
 function App() {
   const queryClient = new QueryClient(); // 1
 
-
-
-
-
-
   return (
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
             <ReactLenis root options={{ autoRaf: true }}>
-              <div className="w-screen overflow-x-hidden min-h-screen p-4">
+              <div className="min-h-screen w-screen overflow-x-hidden p-4">
                 <Toaster
                   position="top-right"
                   toastOptions={{

@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 
 export const ScaleIn = ({
   children,
