@@ -134,6 +134,30 @@
       };
     </script>
     <style>
+      .copy-theme-button {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 9999;
+        border: 1px solid var(--border);
+        background: var(--primary);
+        color: var(--primary-foreground);
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+      }
+
+      .copy-theme-button:hover {
+        opacity: 0.9;
+      }
+
+      .copy-theme-button:active {
+        transform: translateY(1px);
+      }
+
       * {
         box-sizing: border-box;
       }
@@ -178,7 +202,74 @@
     </style>
   </head>
 
+    <script>
+      async function copyThemeVariables() {
+        const styles = getComputedStyle(document.documentElement);
+
+        const tokens = [
+          'background',
+          'foreground',
+          'card',
+          'card-foreground',
+          'popover',
+          'popover-foreground',
+          'primary',
+          'primary-foreground',
+          'secondary',
+          'secondary-foreground',
+          'muted',
+          'muted-foreground',
+          'accent',
+          'accent-foreground',
+          'destructive',
+          'destructive-foreground',
+          'border',
+          'input',
+          'ring',
+          'chart-1',
+          'chart-2',
+          'chart-3',
+          'chart-4',
+          'chart-5',
+          'sidebar',
+          'sidebar-foreground',
+          'sidebar-primary',
+          'sidebar-primary-foreground',
+          'sidebar-accent',
+          'sidebar-accent-foreground',
+          'sidebar-border',
+          'sidebar-ring',
+        ];
+
+        const css = `:root {
+${tokens
+  .map((token) => `  --${token}: ${styles.getPropertyValue(`--${token}`).trim()};`)
+  .join('\n')}
+}`;
+
+        await navigator.clipboard.writeText(css);
+
+        const button = document.getElementById('copy-theme-button');
+        const originalText = button.textContent;
+
+        button.textContent = 'Copied';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 1500);
+      }
+    </script>
+
   <body>
+    <button
+      id="copy-theme-button"
+      class="copy-theme-button"
+      type="button"
+      onclick="copyThemeVariables()"
+    >
+      Copy CSS Variables
+    </button>
+
     <div class="min-h-screen">
       <header class="border-border bg-background border-b px-6 py-5">
         <div class="mx-auto max-w-7xl">
