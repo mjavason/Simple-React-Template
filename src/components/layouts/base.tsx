@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { ScaleIn } from '../animate/scaleIn';
 import Box from '../box';
-import { Loader } from '../loaders';
+import { PageLoader } from '../loaders';
 
 const BaseLayout = () => {
   return (
@@ -12,7 +12,7 @@ const BaseLayout = () => {
         <ScaleIn key="layoutready" scale={1}>
           <Box>
             <AnimatePresence>
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<PageLoader />}>
                 <Outlet />
               </Suspense>
             </AnimatePresence>

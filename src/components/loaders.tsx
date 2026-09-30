@@ -1,7 +1,7 @@
 import { cn } from 'cn';
 import type { ReactNode } from 'react';
 
-export const Loader = ({
+export const PageLoader = ({
   title = 'Please wait...',
   height = '90vh',
 }: {
@@ -26,7 +26,7 @@ export function SkeletonLoader({
 
   return (
     <div
-      className={cn(` ${skeletonClass} h-full w-full`, className, { ...props })}
+      className={cn(`${skeletonClass} h-full w-full`, className, { ...props })}
     />
   );
 }

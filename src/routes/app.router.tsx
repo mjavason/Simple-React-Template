@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Loader } from '../components/loaders';
+import { PageLoader } from '../components/loaders';
 import NotFound from '../components/notFound';
 import { PrivateRoute } from './private/private.base';
 import { privateRoutes } from './private/private.router';
@@ -9,7 +9,7 @@ import { publicRoutes } from './public/public.router';
 
 export default function AppRouter() {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route element={<PublicRoute />}>
           {publicRoutes.map((route) => {

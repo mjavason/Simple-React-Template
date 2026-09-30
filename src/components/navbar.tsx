@@ -1,20 +1,14 @@
+import { RoutesConst } from '@/common/constants/routes.constant';
 import { Globe, Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { Link, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <header className="flex items-center bg-gray-800 p-4 text-white shadow-lg">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="rounded-lg p-2 transition-colors hover:bg-gray-700"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
+      <header className="flex justify-between bg-gray-800 p-4 text-white shadow-lg">
         <h1 className="ml-4 text-xl font-semibold">
           <Link to="/about">
             <img
@@ -24,6 +18,13 @@ export default function Header() {
             />
           </Link>
         </h1>
+        <button
+          onClick={() => setIsOpen(true)}
+          className="rounded-lg p-2 transition-colors hover:bg-gray-700"
+          aria-label="Open menu"
+        >
+          <Menu size={24} />
+        </button>
       </header>
 
       <aside
@@ -43,10 +44,10 @@ export default function Header() {
         </div>
 
         <nav className="flex-1 overflow-y-auto p-4">
-          {Object.entries(Routes).map(([key, path]) => (
+          {Object.entries(RoutesConst).map(([key, path]) => (
             <Link
               key={key}
-              to={path}
+              to={typeof path === 'function' ? path() : path}
               onClick={() => setIsOpen(false)}
               className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
             >
