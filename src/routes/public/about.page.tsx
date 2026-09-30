@@ -1,8 +1,8 @@
-import PageContainer from '@/components/PageContainer';
+import PageContainer from '@/components/page-container';
 
 export default function AboutPage() {
   return (
-    <PageContainer title={'About'}>
+    <PageContainer>
       <div className="text-center">
         <h1>About Page</h1>
       </div>

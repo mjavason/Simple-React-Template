@@ -17,7 +17,7 @@ export default function Navbar() {
           <Menu size={24} />
         </button>
         <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/about">
+          <Link to={RoutesConst.HOME}>
             <img
               src="/tanstack-word-logo-white.svg"
               alt="TanStack Logo"
@@ -48,7 +48,7 @@ export default function Navbar() {
             <Link
               key={key}
               to={typeof path === 'function' ? path() : path}
-              onClick={() => setIsOpen(false)}
+              // onClick={() => setIsOpen(false)}
               className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
             >
               <Globe size={20} />

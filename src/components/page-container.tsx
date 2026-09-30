@@ -1,4 +1,4 @@
-import Navbar from './navbar';
+import Navbar from './nav/mobile-navbar';
 
 function PageContainer({ children }: { children: React.ReactNode }) {
   return (

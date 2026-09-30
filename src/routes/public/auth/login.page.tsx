@@ -1,8 +1,8 @@
-import PageContainer from '@/components/PageContainer';
+import PageContainer from '@/components/page-container';
 
 export default function LoginPage() {
   return (
-    <PageContainer title={'Login'}>
+    <PageContainer>
       <div className="text-center">
         <h1>Login Page</h1>
       </div>

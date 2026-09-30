@@ -1,11 +1,11 @@
 import { toast } from 'react-hot-toast';
 import { SkeletonLoader } from '@/components/loaders';
-import PageContainer from '@/components/PageContainer';
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 
 function HomePage() {
   return (
-    <PageContainer title="Home">
+    <PageContainer>
       <div className="flex flex-col gap-8">
         <div>Hello</div>
 

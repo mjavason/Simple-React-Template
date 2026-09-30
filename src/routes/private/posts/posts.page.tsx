@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import PageContainer from '@/components/PageContainer';
+import PageContainer from '@/components/page-container';
 
 export default function PostsPage() {
   return (
-    <PageContainer title={'Posts'}>
+    <PageContainer>
       <div>
         <div className="text-center">
           <h1>Posts</h1>
