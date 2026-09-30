@@ -1,10 +1,16 @@
 import Navbar from './nav/mobile-navbar';
 
-function PageContainer({ children }: { children: React.ReactNode }) {
+function PageContainer({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="w-full">
+    <div id="page-container" className={`min-h-full max-w-screen ${className}`}>
       <Navbar />
-      <div className="min-h-[80vh]">{children}</div>
+      <div>{children}</div>
     </div>
   );
 }

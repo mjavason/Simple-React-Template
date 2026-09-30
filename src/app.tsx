@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
             <ReactLenis root options={{ autoRaf: true }}>
-              <div className="min-h-screen w-screen overflow-x-hidden">
+              <div className="min-h-screen max-w-screen overflow-x-hidden">
                 <Toaster
                   position="top-center"
                   toastOptions={{
