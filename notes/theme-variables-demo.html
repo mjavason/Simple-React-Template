@@ -202,63 +202,65 @@
     </style>
   </head>
 
-    <script>
-      async function copyThemeVariables() {
-        const styles = getComputedStyle(document.documentElement);
+  <script>
+    async function copyThemeVariables() {
+      const styles = getComputedStyle(document.documentElement);
 
-        const tokens = [
-          'background',
-          'foreground',
-          'card',
-          'card-foreground',
-          'popover',
-          'popover-foreground',
-          'primary',
-          'primary-foreground',
-          'secondary',
-          'secondary-foreground',
-          'muted',
-          'muted-foreground',
-          'accent',
-          'accent-foreground',
-          'destructive',
-          'destructive-foreground',
-          'border',
-          'input',
-          'ring',
-          'chart-1',
-          'chart-2',
-          'chart-3',
-          'chart-4',
-          'chart-5',
-          'sidebar',
-          'sidebar-foreground',
-          'sidebar-primary',
-          'sidebar-primary-foreground',
-          'sidebar-accent',
-          'sidebar-accent-foreground',
-          'sidebar-border',
-          'sidebar-ring',
-        ];
+      const tokens = [
+        'background',
+        'foreground',
+        'card',
+        'card-foreground',
+        'popover',
+        'popover-foreground',
+        'primary',
+        'primary-foreground',
+        'secondary',
+        'secondary-foreground',
+        'muted',
+        'muted-foreground',
+        'accent',
+        'accent-foreground',
+        'destructive',
+        'destructive-foreground',
+        'border',
+        'input',
+        'ring',
+        'chart-1',
+        'chart-2',
+        'chart-3',
+        'chart-4',
+        'chart-5',
+        'sidebar',
+        'sidebar-foreground',
+        'sidebar-primary',
+        'sidebar-primary-foreground',
+        'sidebar-accent',
+        'sidebar-accent-foreground',
+        'sidebar-border',
+        'sidebar-ring',
+      ];
 
-        const css = `:root {
+      const css = `:root {
 ${tokens
-  .map((token) => `  --${token}: ${styles.getPropertyValue(`--${token}`).trim()};`)
+  .map(
+    (token) => `  --${token}: ${styles.getPropertyValue(`--${token}`).trim()};`,
+  )
   .join('\n')}
 }`;
 
-        await navigator.clipboard.writeText(css);
+      await navigator.clipboard.writeText(css);
 
-        const button = document.getElementById('copy-theme-button');
-        const originalText = button.textContent;
+      const button = document.getElementById('copy-theme-button');
+      const originalText = button.textContent;
 
-        button.textContent = 'Copied';
+      button.textContent = 'Copied';
 
-        setTimeout(() => {
-          button.textContent = originalText;
-        }, 1500);
-      }
-    </script>
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 1500);
+    }
+  </script>
 
   <body>
     <button
