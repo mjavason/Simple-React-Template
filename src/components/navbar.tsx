@@ -8,7 +8,14 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="flex justify-between bg-gray-800 p-4 text-white shadow-lg">
+      <header className="flex items-center bg-gray-800 p-4 text-white shadow-lg">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="rounded-lg p-2 transition-colors hover:bg-gray-700"
+          aria-label="Open menu"
+        >
+          <Menu size={24} />
+        </button>
         <h1 className="ml-4 text-xl font-semibold">
           <Link to="/about">
             <img
@@ -18,13 +25,6 @@ export default function Navbar() {
             />
           </Link>
         </h1>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="rounded-lg p-2 transition-colors hover:bg-gray-700"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
       </header>
 
       <aside
