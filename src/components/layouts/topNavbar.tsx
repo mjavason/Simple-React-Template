@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useAppNavigate } from '@/hooks/use-app-navigate.hook';
 import { RoutesConst } from '@/common/constants/routes.constant';
 
 export const TopNavbar = ({ title }: { title?: string }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navigate = useNavigate();
+  const navigate = useAppNavigate();
 
   return (
     <header className="w-full border-b-2 border-transparent">

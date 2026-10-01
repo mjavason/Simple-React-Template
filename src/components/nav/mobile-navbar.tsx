@@ -1,6 +1,7 @@
 import { Globe, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AppLink } from '../app-link';
 import { RoutesConst } from '@/common/constants/routes.constant';
 
 export default function Navbar() {
@@ -17,7 +18,7 @@ export default function Navbar() {
           <Menu size={24} />
         </button>
         <h1 className="ml-4 text-xl font-semibold">
-          <Link to={RoutesConst.HOME}>
+          <Link to={RoutesConst.HOME} key="home">
             <img
               src="/tanstack-word-logo-white.svg"
               alt="TanStack Logo"
@@ -45,15 +46,20 @@ export default function Navbar() {
 
         <nav className="flex-1 overflow-y-auto p-4">
           {Object.entries(RoutesConst).map(([key, path]) => (
-            <Link
-              key={key}
-              to={typeof path === 'function' ? path() : path}
-              // onClick={() => setIsOpen(false)}
-              className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
-            >
-              <Globe size={20} />
-              <span className="font-medium">{key}</span>
-            </Link>
+            <div key={key}>
+              {typeof path === 'string' && (
+                <AppLink
+                  key={key}
+                  to={path}
+                  onClick={() => setIsOpen(false)}
+                  className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
+                  prefetch="intent"
+                >
+                  <Globe size={20} />
+                  <span className="font-medium">{key}</span>
+                </AppLink>
+              )}
+            </div>
           ))}
         </nav>
       </aside>

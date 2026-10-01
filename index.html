@@ -12,10 +12,51 @@
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
     <title>Simple React App</title>
+    <!-- TODO: Setup your initial loader -->
+    <style>
+      :root {
+        --accent: #00a8cc;
+      }
+
+      .initial-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        background: #fff;
+      }
+
+      .initial-spinner {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 3px solid rgba(0, 0, 0, 0.08);
+        border-top-color: var(--accent);
+        animation: initial-spin 0.8s linear infinite;
+      }
+
+      @keyframes initial-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes initial-spin-reverse {
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="initial-loader" aria-label="Loading">
+        <div class="initial-spinner"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

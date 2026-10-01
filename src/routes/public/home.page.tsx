@@ -1,9 +1,15 @@
+import cookie from 'js-cookie';
 import { toast } from 'react-hot-toast';
+import { CookieKeys } from '@/common/constants/keys.constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
 import { SkeletonLoader } from '@/components/loaders';
 import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
+import { useAppNavigate } from '@/hooks/use-app-navigate.hook';
 
 function HomePage() {
+  const navigate = useAppNavigate();
+
   return (
     <PageContainer>
       <div className="flex flex-col gap-8">
@@ -16,13 +22,24 @@ function HomePage() {
           }}
           className={'max-w-50'}
         >
-          Click Me
+          Show Toast
         </Button>
 
         <div className="flex items-center gap-4">
           <SkeletonLoader className={'h-25 w-25 rounded-full'} />
           <SkeletonLoader className="h-25 w-full" />
         </div>
+
+        <Button
+          variant={'default'}
+          className={'bg-accent w-50'}
+          onClick={() => {
+            cookie.set(CookieKeys.AUTH_TOKEN, 'test-auth-token');
+            navigate(RoutesConst.POSTS);
+          }}
+        >
+          Login
+        </Button>
 
         <div>
           <p className="sm:hidden">base</p>

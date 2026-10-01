@@ -3,13 +3,13 @@ import type { ReactNode } from 'react';
 
 export const PageLoader = ({
   title = 'Please wait...',
-  height = '90vh',
 }: {
   title?: string | ReactNode;
-  height?: string;
 }) => {
   return (
-    <div className="flex items-center justify-center" style={{ height }}>
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3">
+      <div className="border-accent size-8 animate-spin rounded-full border-4 border-t-transparent" />
+
       <p className="max-w-70 text-center font-semibold">{title}</p>
     </div>
   );
