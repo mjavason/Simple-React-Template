@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { CookieKeys } from '@/common/constants/keys.constants';
 import { RoutesConst } from '@/common/constants/routes.constant';
 import { SkeletonLoader } from '@/components/loaders';
@@ -5,7 +6,6 @@ import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { setCookie } from '@/helpers/cookie.helper';
 import { useAppNavigate } from '@/hooks/use-app-navigate.hook';
-import { toast } from 'react-hot-toast';
 
 function HomePage() {
   const navigate = useAppNavigate();

@@ -1,6 +1,6 @@
+import { AppLink } from '../app-link';
 import { RoutesConst } from '@/common/constants/routes.constant';
 import { capitalizeFirstLetter } from '@/utils/string.util';
-import { AppLink } from '../app-link';
 
 export default function DesktopNavbar() {
   return (

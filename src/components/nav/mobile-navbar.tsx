@@ -11,7 +11,7 @@ export default function MobileNavbar() {
 
   return (
     <>
-      <header className="relative md:hidden z-40 flex items-center bg-gray-800 p-4 text-white shadow-lg">
+      <header className="relative z-40 flex items-center bg-gray-800 p-4 text-white shadow-lg md:hidden">
         <button
           type="button"
           onClick={open}

@@ -1,5 +1,5 @@
-import { useMobileNavStore } from '@/stores/nav-store';
 import { useEffect, useRef } from 'react';
+import { useMobileNavStore } from '@/stores/nav-store';
 
 const SWIPE_THRESHOLD = 125;
 

@@ -23,7 +23,7 @@ export const getPageNumbers = (
   }
 
   if (startPage > 2) {
-    pages.push("...");
+    pages.push('...');
   }
 
   for (let i = startPage; i <= endPage; i++) {
@@ -33,7 +33,7 @@ export const getPageNumbers = (
   }
 
   if (endPage < totalPages - 1) {
-    pages.push("...");
+    pages.push('...');
   }
 
   if (totalPages > 1) {
