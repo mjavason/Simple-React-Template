@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import { useMobileNavStore } from '@/stores/nav-store';
+import { useEffect, useRef } from 'react';
 
 const SWIPE_THRESHOLD = 125;
 
@@ -13,6 +13,12 @@ export function MobileNavSwipe() {
   const isOpen = useMobileNavStore((state) => state.isOpen);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+    if (!mediaQuery.matches) {
+      return;
+    }
+
     const handleTouchStart = (event: TouchEvent) => {
       const touch = event.touches[0];
 

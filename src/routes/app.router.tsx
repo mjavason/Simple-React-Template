@@ -2,10 +2,10 @@ import React, { Suspense } from 'react';
 import { Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import TopBarProgress from 'react-topbar-progress-indicator';
 import NotFound from '../components/notFound';
-import { PrivateRoute, privateRouteLoader } from './private/private.base';
-import { privateRoutes } from './private/private.router';
-import { PublicRoute, publicRouteLoader } from './public/public.base';
-import { publicRoutes } from './public/public.router';
+import { PrivateRoute, privateRouteLoader } from './private.base';
+import { privateRoutes } from './private.router';
+import { PublicRoute, publicRouteLoader } from './public.base';
+import { publicRoutes } from './public.router';
 import { ProgressContext } from '@/context/progress-context';
 import { PageLoader } from '@/components/loaders';
 

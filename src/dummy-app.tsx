@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import cookie from 'js-cookie';
 import React, { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from 'react-hot-toast';
@@ -12,6 +11,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import TopBarProgress from 'react-topbar-progress-indicator';
+import { getCookie } from './helpers/cookie.helper';
 
 // -----------------------------------------------------------------------------
 // Constants
@@ -112,7 +112,7 @@ function PublicRoute() {
 
 function PrivateRoute() {
   const location = useLocation();
-  const authToken = cookie.get(AUTH_TOKEN);
+  const authToken = getCookie(AUTH_TOKEN);
 
   if (!authToken) {
     sessionStorage.setItem('redirect_route', location.pathname);

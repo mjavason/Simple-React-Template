@@ -1,15 +1,15 @@
-import cookie from 'js-cookie';
-import { useQueryClient } from 'react-query';
 import type { ApiResponseType } from '@/api/api-response.type';
+import { ApiMethods } from '@/common/constants/index.constants';
+import { CookieKeys } from '@/common/constants/keys.constants';
+import { RoutesConst } from '@/common/constants/routes.constant';
+import { getCookie, setCookie } from '@/helpers/cookie.helper';
+import { useApiMutation } from '@/hooks/use-api-mutation.hook';
+import { useAppNavigate } from '@/hooks/use-app-navigate.hook';
+import { useQueryClient } from 'react-query';
 import type {
   LoginInputType,
   LoginResponseType,
 } from '../common/types/login.type';
-import { ApiMethods } from '@/common/constants/index.constants';
-import { CookieKeys } from '@/common/constants/keys.constants';
-import { RoutesConst } from '@/common/constants/routes.constant';
-import { useApiMutation } from '@/hooks/use-api-mutation.hook';
-import { useAppNavigate } from '@/hooks/use-app-navigate.hook';
 
 export function useLogin() {
   const navigate = useAppNavigate();
@@ -24,11 +24,11 @@ export function useLogin() {
         qc.clear();
         const res = data.data;
 
-        cookie.set(CookieKeys.AUTH_TOKEN, res.token);
-        cookie.set(CookieKeys.USER_TYPE, res.userType);
+        setCookie(CookieKeys.AUTH_TOKEN, res.token);
+        setCookie(CookieKeys.USER_TYPE, res.userType);
 
         const redirectRoute =
-          cookie.get(CookieKeys.REDIRECT_ROUTE) ?? RoutesConst.POSTS;
+          getCookie(CookieKeys.REDIRECT_ROUTE) ?? RoutesConst.POSTS;
 
         navigate(redirectRoute);
       },

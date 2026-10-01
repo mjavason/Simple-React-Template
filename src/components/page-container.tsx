@@ -1,4 +1,4 @@
-import Navbar from './nav/mobile-navbar';
+import Navbar from './nav/navbar';
 
 function PageContainer({
   children,

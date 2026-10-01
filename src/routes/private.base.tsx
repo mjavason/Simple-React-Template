@@ -1,10 +1,10 @@
-import cookie from 'js-cookie';
-import { Outlet, redirect } from 'react-router-dom';
 import { CookieKeys } from '@/common/constants/keys.constants';
 import { RoutesConst } from '@/common/constants/routes.constant';
+import { getCookie } from '@/helpers/cookie.helper';
+import { Outlet, redirect } from 'react-router-dom';
 
 export function privateRouteLoader() {
-  const authToken = cookie.get(CookieKeys.AUTH_TOKEN);
+  const authToken = getCookie(CookieKeys.AUTH_TOKEN);
 
   if (!authToken) {
     return redirect(RoutesConst.LOGIN);

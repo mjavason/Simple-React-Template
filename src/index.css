@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 @import '@fontsource-variable/inter';
 
+:root {
+  font-family: 'Heebo', sans-serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Heebo', sans-serif, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -67,6 +70,24 @@ code {
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+
+  /* core theme colors */
+  --color-black: var(--core-black);
+  --color-black-light: var(--core-black-light);
+  --color-white: var(--core-white);
+  --color-white-dark: var(--core-white-dark);
+  --color-gray: var(--core-gray);
+  --color-gray-dark: var(--core-gray-dark);
+  --color-gray-light: var(--core-gray-light);
+  --color-primary: var(--core-primary);
+  --color-secondary: var(--core-secondary);
+  --color-tertiary: var(--core-tertiary);
+  --color-destructive: var(--core-destructive);
+  --color-success: var(--core-success);
+  --color-warning: var(--core-warning);
+  --color-info: var(--core-info);
+
+  /* radius vars */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -85,7 +106,7 @@ code {
   --popover-foreground: #21243d;
   --primary: #ff6464;
   --primary-foreground: #ffffff;
-  --secondary: #ff7c7c;
+  --secondary: #00a8cc;
   --secondary-foreground: #ffffff;
   --muted: #edf7fa;
   --muted-foreground: #334155;
@@ -109,8 +130,23 @@ code {
   --sidebar-accent-foreground: #edf7fa;
   --sidebar-border: #edf7fa;
   --sidebar-ring: #ff6464;
-}
 
+  /* core colors */
+  --core-black: #21243d;
+  --core-black-light: #0b1120;
+  --core-white: #ffffff;
+  --core-white-dark: #e2e8f0;
+  --core-gray: #334155;
+  --core-gray-dark: #1e293b;
+  --core-gray-light: #edf7fa;
+  --core-primary: #ff6464;
+  --core-secondary: #00a8cc;
+  --core-tertiary: #ff7c7c;
+  --core-destructive: #f43f5e;
+  --core-success: #22c55e;
+  --core-warning: #f59e0b;
+  --core-info: #38bdf8;
+}
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -143,6 +179,22 @@ code {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* core colors */
+  --core-black: #21243d;
+  --core-black-light: #0b1120;
+  --core-white: #ffffff;
+  --core-white-dark: #e2e8f0;
+  --core-gray: #334155;
+  --core-gray-dark: #1e293b;
+  --core-gray-light: #edf7fa;
+  --core-primary: #ff6464;
+  --core-secondary: #00a8cc;
+  --core-tertiary: #ff7c7c;
+  --core-destructive: #f43f5e;
+  --core-success: #22c55e;
+  --core-warning: #f59e0b;
+  --core-info: #38bdf8;
 }
 
 @layer base {
