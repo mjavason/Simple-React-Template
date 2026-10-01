@@ -6,6 +6,7 @@ import { RouterProvider } from 'react-router-dom';
 import './app.css';
 import ErrorBoundary from './components/errorBoundary';
 import { router } from './routes/app.router';
+import { MobileNavSwipe } from './components/nav/mobile-nav-swipe';
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function App() {
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
           <ReactLenis root options={{ autoRaf: true }}>
+            <MobileNavSwipe />
             <div className="min-h-screen max-w-screen overflow-x-hidden">
               <Toaster
                 position="top-center"

@@ -9,7 +9,7 @@ import { publicRoutes } from './public/public.router';
 import { ProgressContext } from '@/context/progress-context';
 import { PageLoader } from '@/components/loaders';
 
-// TODO: Update your top bar color
+// TODO: Update top bar progress color
 TopBarProgress.config({
   barColors: {
     '1.0': '#00a8cc',
