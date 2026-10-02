@@ -3,10 +3,10 @@ import MobileNavbar from './mobile-navbar';
 
 function Navbar() {
   return (
-    <div>
+    <header>
       <DesktopNavbar />
       <MobileNavbar />
-    </div>
+    </header>
   );
 }
 

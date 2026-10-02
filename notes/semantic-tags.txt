@@ -1,0 +1,7 @@
+<header>      <!-- Intro/header for a page or section -->
+<nav>         <!-- Navigation links -->
+<main>        <!-- Primary content of the page -->
+<section>     <!-- Thematic section of content -->
+<article>     <!-- Self-contained piece of content -->
+<aside>       <!-- Related/sidebar content -->
+<footer>      <!-- Footer for a page or section -->
