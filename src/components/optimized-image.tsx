@@ -10,28 +10,25 @@ type ImageProps = Omit<
   fetchPriority?: 'high' | 'low' | 'auto';
 };
 
-function BaseImage({ width, height, className = '', ...props }: ImageProps) {
+function BaseImage({ className = '', onLoad, ...props }: ImageProps) {
   const [loaded, setLoaded] = React.useState(false);
 
-  const handleLoad = () => {
+  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     setLoaded(true);
+    onLoad?.(event);
   };
 
   return (
-    <div className="relative overflow-hidden" style={{ width, height }}>
+    <div className="relative overflow-hidden">
       {!loaded && <SkeletonLoader className="absolute inset-0 h-full w-full" />}
 
       <img
         {...props}
-        width={width}
-        height={height}
         onLoad={handleLoad}
         className={`block object-cover transition-opacity duration-200 ${
           loaded ? 'opacity-100' : 'opacity-0'
         } ${className}`}
         style={{
-          width,
-          height,
           ...props.style,
         }}
       />
