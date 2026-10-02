@@ -1,7 +1,7 @@
-import { RoutesConst } from '@/common/constants/routes.constant';
-import { useMobileNavStore } from '@/common/stores/nav-store';
 import { Menu, X } from 'lucide-react';
 import { AppLink } from '../app-link';
+import { RoutesConst } from '@/common/constants/routes.constant';
+import { useMobileNavStore } from '@/common/stores/nav-store';
 
 export default function MobileNavbar() {
   const isOpen = useMobileNavStore((state) => state.isOpen);

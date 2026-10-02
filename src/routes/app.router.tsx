@@ -1,6 +1,3 @@
-import { ProgressContext } from '@/common/context/progress-context';
-import { ErrorElement } from '@/components/error-element';
-import { PageLoader } from '@/components/loaders';
 import React, { Suspense } from 'react';
 import { Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import TopBarProgress from 'react-topbar-progress-indicator';
@@ -9,6 +6,9 @@ import { PrivateRoute, privateRouteLoader } from './private.base';
 import { privateRoutes } from './private.router';
 import { PublicRoute, publicRouteLoader } from './public.base';
 import { publicRoutes } from './public.router';
+import { PageLoader } from '@/components/loaders';
+import { ErrorElement } from '@/components/error-element';
+import { ProgressContext } from '@/common/context/progress-context';
 
 // TODO: Update top bar progress color
 TopBarProgress.config({

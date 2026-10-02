@@ -16,7 +16,10 @@ export default function DesktopNavbar() {
                 className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
                 prefetch="intent"
               >
-                <NavLink to={path} text={capitalizeFirstLetter(key.toLowerCase())} />
+                <NavLink
+                  to={path}
+                  text={capitalizeFirstLetter(key.toLowerCase())}
+                />
               </AppLink>
             ),
         )}

@@ -1,6 +1,6 @@
-import { useProgress } from '@/common/context/progress-context';
-import type { NavLinkProps } from 'react-router-dom';
 import { NavLink, useLocation, useResolvedPath } from 'react-router-dom';
+import type { NavLinkProps } from 'react-router-dom';
+import { useProgress } from '@/common/context/progress-context';
 
 export function AppLink({ onClick, to, ...props }: NavLinkProps) {
   const { start } = useProgress();
