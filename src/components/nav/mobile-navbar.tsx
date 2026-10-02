@@ -1,8 +1,7 @@
-import { Globe, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { AppLink } from '../app-link';
-import { useMobileNavStore } from '@/stores/nav-store';
 import { RoutesConst } from '@/common/constants/routes.constant';
+import { useMobileNavStore } from '@/common/stores/nav-store';
+import { Menu, X } from 'lucide-react';
+import { AppLink } from '../app-link';
 
 export default function MobileNavbar() {
   const isOpen = useMobileNavStore((state) => state.isOpen);
@@ -11,25 +10,15 @@ export default function MobileNavbar() {
 
   return (
     <>
-      <header className="relative z-40 flex items-center bg-gray-800 p-4 text-white shadow-lg md:hidden">
+      <header className="text-core-black relative z-40 flex items-center p-4 lg:hidden">
         <button
           type="button"
           onClick={open}
-          className="rounded-lg p-2 transition-colors hover:bg-gray-700"
+          className="rounded-lg p-2 transition hover:translate-0.5"
           aria-label="Open menu"
         >
           <Menu size={24} />
         </button>
-
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to={RoutesConst.HOME}>
-            <img
-              src="/tanstack-word-logo-white.svg"
-              alt="TanStack Logo"
-              className="h-10"
-            />
-          </Link>
-        </h1>
       </header>
 
       {isOpen && (
@@ -42,17 +31,17 @@ export default function MobileNavbar() {
       )}
 
       <aside
-        className={`fixed top-0 left-0 z-50 flex h-dvh w-80 flex-col bg-gray-900 text-white shadow-2xl transition-transform duration-300 ease-in-out ${
+        className={`bg-core-white text-core-black fixed top-0 left-0 z-50 flex h-dvh w-80 flex-col shadow-2xl transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between border-b border-gray-700 p-4">
+        <div className="border-core-gray-light flex items-center justify-between border-b p-4">
           <h2 className="text-xl font-bold">Navigation</h2>
 
           <button
             type="button"
             onClick={close}
-            className="rounded-lg p-2 transition-colors hover:bg-gray-800"
+            className="rounded-lg p-2 transition hover:translate-0.5"
             aria-label="Close menu"
           >
             <X size={24} />
@@ -67,11 +56,18 @@ export default function MobileNavbar() {
                   key={key}
                   to={path}
                   onClick={close}
-                  className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
+                  className="mb-2 flex items-center gap-3 rounded-lg p-3 transition hover:translate-0.5"
                   prefetch="intent"
                 >
-                  <Globe size={20} />
-                  <span className="font-medium">{key}</span>
+                  {({ isActive }) => (
+                    <span
+                      className={`text-base leading-none font-medium ${
+                        isActive ? 'text-core-primary' : 'text-core-black'
+                      }`}
+                    >
+                      {key}
+                    </span>
+                  )}
                 </AppLink>
               ),
           )}

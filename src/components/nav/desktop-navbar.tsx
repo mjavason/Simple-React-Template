@@ -16,7 +16,7 @@ export default function DesktopNavbar() {
                 className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
                 prefetch="intent"
               >
-                <NavLink text={capitalizeFirstLetter(key.toLowerCase())} />
+                <NavLink to={path} text={capitalizeFirstLetter(key.toLowerCase())} />
               </AppLink>
             ),
         )}
@@ -25,10 +25,18 @@ export default function DesktopNavbar() {
   );
 }
 
-function NavLink({ text }: { text: string }) {
+function NavLink({ to, text }: { to: string; text: string }) {
   return (
-    <p className="text-card-foreground text-[20px] leading-none font-medium">
-      {text}
-    </p>
+    <AppLink to={to}>
+      {({ isActive }) => (
+        <p
+          className={`text-[20px] leading-none font-medium ${
+            isActive ? 'text-core-primary' : 'text-core-black'
+          }`}
+        >
+          {text}
+        </p>
+      )}
+    </AppLink>
   );
 }

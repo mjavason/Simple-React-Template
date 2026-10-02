@@ -1,7 +1,7 @@
+import { useProgress } from '@/common/context/progress-context';
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import type { NavigateFunction } from 'react-router-dom';
-import { useProgress } from '@/context/progress-context';
+import { useNavigate } from 'react-router-dom';
 
 export function useAppNavigate(): NavigateFunction {
   const navigate = useNavigate();

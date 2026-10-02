@@ -1,8 +1,8 @@
-import { Link, useLocation, useResolvedPath } from 'react-router-dom';
-import type { LinkProps } from 'react-router-dom';
-import { useProgress } from '@/context/progress-context';
+import { useProgress } from '@/common/context/progress-context';
+import type { NavLinkProps } from 'react-router-dom';
+import { NavLink, useLocation, useResolvedPath } from 'react-router-dom';
 
-export function AppLink({ onClick, to, ...props }: LinkProps) {
+export function AppLink({ onClick, to, ...props }: NavLinkProps) {
   const { start } = useProgress();
   const location = useLocation();
   const resolvedPath = useResolvedPath(to);
@@ -13,7 +13,7 @@ export function AppLink({ onClick, to, ...props }: LinkProps) {
     resolvedPath.hash === location.hash;
 
   return (
-    <Link
+    <NavLink
       {...props}
       to={to}
       onClick={(event) => {
