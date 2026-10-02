@@ -7,7 +7,7 @@
     "build": "vite build && tsc",
     "start": "vite preview",
     "test": "vitest run",
-    "lint": "eslint . --fix && prettier --write .",
+    "lint": "prettier --write .",
     "check": "prettier --write . && eslint --fix",
     "prepare": "husky"
   },
