@@ -72,20 +72,20 @@ code {
   --color-background: var(--background);
 
   /* core theme colors */
-  --color-black: var(--core-black);
-  --color-black-light: var(--core-black-light);
-  --color-white: var(--core-white);
-  --color-white-dark: var(--core-white-dark);
-  --color-gray: var(--core-gray);
-  --color-gray-dark: var(--core-gray-dark);
-  --color-gray-light: var(--core-gray-light);
-  --color-primary: var(--core-primary);
-  --color-secondary: var(--core-secondary);
-  --color-tertiary: var(--core-tertiary);
-  --color-destructive: var(--core-destructive);
-  --color-success: var(--core-success);
-  --color-warning: var(--core-warning);
-  --color-info: var(--core-info);
+  --color-core-black: var(--core-black);
+  --color-core-black-light: var(--core-black-light);
+  --color-core-white: var(--core-white);
+  --color-core-white-dark: var(--core-white-dark);
+  --color-core-gray: var(--core-gray);
+  --color-core-gray-dark: var(--core-gray-dark);
+  --color-core-gray-light: var(--core-gray-light);
+  --color-core-primary: var(--core-primary);
+  --color-core-secondary: var(--core-secondary);
+  --color-core-tertiary: var(--core-tertiary);
+  --color-core-destructive: var(--core-destructive);
+  --color-core-success: var(--core-success);
+  --color-core-warning: var(--core-warning);
+  --color-core-info: var(--core-info);
 
   /* radius vars */
   --radius-sm: calc(var(--radius) * 0.6);

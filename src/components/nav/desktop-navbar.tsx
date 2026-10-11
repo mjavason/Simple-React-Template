@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '@/utils/string.util';
 
 export default function DesktopNavbar() {
   return (
-    <div className="mt-6 hidden w-full justify-end border border-red-500 px-15 md:flex">
+    <div className="mt-6 hidden w-full justify-end px-15 md:flex">
       <div className="flex justify-between gap-8">
         {Object.entries(RoutesConst).map(
           ([key, path]) =>
@@ -13,7 +13,7 @@ export default function DesktopNavbar() {
                 key={key}
                 to={path}
                 onClick={close}
-                className="mb-2 flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-800"
+                className="mb-2 flex items-center gap-3 rounded-lg p-3"
                 prefetch="intent"
               >
                 <NavLink
@@ -33,7 +33,7 @@ function NavLink({ to, text }: { to: string; text: string }) {
     <AppLink to={to}>
       {({ isActive }) => (
         <p
-          className={`text-[20px] leading-none font-medium ${
+          className={`text-[20px] leading-none font-medium hover:text-core-primary ${
             isActive ? 'text-core-primary' : 'text-core-black'
           }`}
         >

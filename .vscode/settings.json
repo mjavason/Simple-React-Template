@@ -8,5 +8,14 @@
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
   },
-  "cSpell.words": ["grandmawura", "layoutready", "topbar", "Wura"]
+  "cSpell.words": [
+    "Claymorphism",
+    "gamified",
+    "Glassmorphism",
+    "grandmawura",
+    "layoutready",
+    "Skeuomorphism",
+    "topbar",
+    "Wura"
+  ]
 }
