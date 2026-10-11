@@ -33,7 +33,7 @@ function NavLink({ to, text }: { to: string; text: string }) {
     <AppLink to={to}>
       {({ isActive }) => (
         <p
-          className={`text-[20px] leading-none font-medium hover:text-core-primary ${
+          className={`hover:text-core-primary text-[20px] leading-none font-medium ${
             isActive ? 'text-core-primary' : 'text-core-black'
           }`}
         >
