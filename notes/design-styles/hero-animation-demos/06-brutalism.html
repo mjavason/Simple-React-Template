@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Brutalism</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #000;
+        --muted: #333;
+        --bf: 'Courier New', monospace;
+        --rr: 0;
+        --btnbg: #ffe500;
+        --btnborder: 3px solid #000;
+        --btnshadow: 4px 4px 0 #000;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(
+          --bf,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif
+        );
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 18px 90px;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      h1.title {
+        font-size: 30px;
+        margin: 16px 0 8px;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        color: var(--muted);
+        margin-bottom: 40px;
+        max-width: 62ch;
+      }
+      .strat {
+        margin-bottom: 56px;
+      }
+      .strat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .strat-head h2 {
+        font-size: 17px;
+      }
+      .replay {
+        font: inherit;
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: var(--rr, 8px);
+        cursor: pointer;
+        background: var(--btnbg, transparent);
+        color: var(--ink);
+        border: var(--btnborder, 1px solid var(--muted));
+        box-shadow: var(--btnshadow, none);
+      }
+      .stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        display: flex;
+        border-radius: 16px;
+      }
+      dl.meta {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 6px 16px;
+        font-size: 14px;
+        margin-top: 16px;
+        color: var(--muted);
+      }
+      dl.meta dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .avoid {
+        margin-top: 8px;
+        padding-top: 18px;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 14px;
+        max-width: 70ch;
+      }
+      .avoid strong {
+        color: var(--ink);
+      }
+      .center {
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        dl.meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stage * {
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      .stage {
+        background: #ffe500;
+        border: 4px solid #000;
+        border-radius: 0;
+        font-family: 'Courier New', monospace;
+        color: #000;
+      }
+      .br-col {
+        margin: auto 0;
+        padding: 34px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .br-blk {
+        display: inline-block;
+        background: #000;
+        color: #ffe500;
+        font-weight: 900;
+        font-size: clamp(32px, 7vw, 62px);
+        padding: 2px 12px;
+        line-height: 1.1;
+      }
+      .br-blk.alt {
+        background: #ff3d8b;
+        color: #000;
+        border: 4px solid #000;
+      }
+      .br-p {
+        font-weight: 700;
+        max-width: 46ch;
+      }
+      .br-cta {
+        font: inherit;
+        font-weight: 900;
+        text-transform: uppercase;
+        background: #000;
+        color: #fff;
+        border: 4px solid #000;
+        padding: 12px 24px;
+        box-shadow: 6px 6px 0 #ff3d8b;
+        cursor: pointer;
+      }
+      .br-bar {
+        height: 70px;
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        font-weight: 900;
+        font-size: 28px;
+        border: 4px solid #000;
+        width: 62%;
+      }
+      .br-bar.one {
+        background: #000;
+        color: #ffe500;
+      }
+      .br-bar.two {
+        background: #fff;
+        margin-left: auto;
+        margin-top: -18px;
+      }
+      .br-h {
+        font-size: clamp(40px, 8vw, 72px);
+        font-weight: 900;
+        line-height: 1;
+      }
+      .br-frags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .br-frag {
+        display: inline-block;
+        font-size: clamp(30px, 6vw, 54px);
+        font-weight: 900;
+        border: 4px solid #000;
+        padding: 2px 12px;
+        background: #fff;
+      }
+      .br-frag:nth-child(2) {
+        background: #000;
+        color: #ffe500;
+      }
+      .br-frag:nth-child(3) {
+        background: #ff3d8b;
+      }
+      .br-sq {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 4px solid #000;
+        background: #fff;
+      }
+      .br-sq.q1 {
+        right: 8%;
+        top: 12%;
+        background: #ff3d8b;
+      }
+      .br-sq.q2 {
+        right: 20%;
+        bottom: 14%;
+      }
+      .br-sq.q3 {
+        left: 46%;
+        top: 8%;
+        width: 24px;
+        height: 24px;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Index</a
+        ><a href="01-neumorphism.html">Neumorphism</a
+        ><a href="02-glassmorphism.html">Glassmorphism</a
+        ><a href="03-minimalist-flat.html">Minimalist / Flat Design</a
+        ><a href="04-material.html">Material Design</a
+        ><a href="05-skeuomorphism-retro.html">Skeuomorphism / Retro</a
+        ><a href="06-brutalism.html">Brutalism</a
+        ><a href="07-swiss-international.html">Swiss / International Style</a
+        ><a href="08-claymorphism.html">Claymorphism</a
+        ><a href="09-dark-mode.html">Dark Mode Aesthetics</a>
+      </nav>
+      <h1 class="title">Brutalism</h1>
+      <p class="lead">
+        Confrontation, contrast, and deliberate visual disruption. Motion can be
+        abrupt, oversized, or unconventional.
+      </p>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy A: Hard-cut typography</h2>
+          <button class="replay" data-i="0">Replay</button>
+        </div>
+        <div class="stage" data-i="0">
+          <div class="br-col">
+            <div>
+              <span class="br-blk">NO</span>
+              <span class="br-blk alt">RULES.</span>
+            </div>
+            <div><span class="br-blk">JUST THE POINT.</span></div>
+            <p class="br-p">A studio for work that refuses to blend in.</p>
+            <button class="br-cta">Hire us</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Oversized heading appears in large blocks with no easing, secondary
+            text follows, CTA snaps into view.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Instant opacity cuts at timed delays, short decisive scale snap on
+            CTA.
+          </dd>
+          <dt>Use when</dt>
+          <dd>Typography is the central visual statement.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy B: Directional collision</h2>
+          <button class="replay" data-i="1">Replay</button>
+        </div>
+        <div class="stage" data-i="1">
+          <div class="br-col">
+            <div class="br-bar one">IN YOUR FACE</div>
+            <div class="br-bar two">NO WAY AROUND</div>
+            <h3 class="br-h">COLLIDE.</h3>
+            <button class="br-cta">Start</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Two graphic elements enter from opposing directions, stop abruptly
+            in a composed arrangement, headline becomes the focal point.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Large but short translations with sharp easing.</dd>
+          <dt>Use when</dt>
+          <dd>
+            Overlapping blocks, strong borders, confrontational compositions.
+          </dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy C: Chaotic-to-ordered reveal</h2>
+          <button class="replay" data-i="2">Replay</button>
+        </div>
+        <div class="stage" data-i="2">
+          <div class="br-sq q1"></div>
+          <div class="br-sq q2"></div>
+          <div class="br-sq q3"></div>
+          <div class="br-col">
+            <div class="br-frags">
+              <span class="br-frag">BREAK</span><span class="br-frag">THE</span
+              ><span class="br-frag">GRID</span>
+            </div>
+            <p class="br-p">Then put it back, on purpose.</p>
+            <button class="br-cta">Join the riot</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Typography and graphic fragments appear at different positions,
+            align into a deliberate composition, CTA becomes clear.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Staggered transforms with selective rotation.</dd>
+          <dt>Use when</dt>
+          <dd>
+            Experimental brand where controlled disorder supports the concept.
+          </dd>
+        </dl>
+      </section>
+      <p class="avoid">
+        <strong>Avoid:</strong> Confusing randomness with expression. The result
+        still needs a clear focal point and a readable message.
+      </p>
+    </div>
+    <script>
+      const fns = [
+        function (s, $, $$) {
+          $$('.br-blk').forEach((b, i) =>
+            A(b, FADE, { duration: 1, delay: i * 260, easing: 'linear' }),
+          );
+          A($('.br-p'), FADE, { duration: 1, delay: 950, easing: 'linear' });
+          A(
+            $('.br-cta'),
+            [
+              { opacity: 0, transform: 'scale(1.25)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 140, delay: 1300, easing: E.hard },
+          );
+        },
+        function (s, $, $$) {
+          A(
+            $('.br-bar.one'),
+            [{ transform: 'translateX(-120%)' }, { transform: 'none' }],
+            { duration: 450, easing: E.hard },
+          );
+          A(
+            $('.br-bar.two'),
+            [{ transform: 'translateX(120%)' }, { transform: 'none' }],
+            { duration: 450, easing: E.hard },
+          );
+          A($('.br-h'), FADE, { duration: 1, delay: 600, easing: 'linear' });
+          A(
+            $('.br-cta'),
+            [
+              { opacity: 0, transform: 'translateY(20px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 160, delay: 900, easing: E.hard },
+          );
+        },
+        function (s, $, $$) {
+          const off = [
+            [-160, -90, -14],
+            [180, -50, 10],
+            [-80, 120, -7],
+          ];
+          $$('.br-frag').forEach((f, i) =>
+            A(
+              f,
+              [
+                {
+                  transform: `translate(${off[i][0]}px,${off[i][1]}px) rotate(${off[i][2]}deg)`,
+                },
+                { transform: 'none' },
+              ],
+              {
+                duration: 800,
+                delay: 300 + i * 130,
+                easing: 'cubic-bezier(.7,0,.2,1)',
+              },
+            ),
+          );
+          const so = [
+            [120, -80, 40],
+            [-100, 90, -30],
+            [60, 140, 70],
+          ];
+          $$('.br-sq').forEach((q, i) =>
+            A(
+              q,
+              [
+                {
+                  transform: `translate(${so[i][0]}px,${so[i][1]}px) rotate(${so[i][2]}deg)`,
+                  opacity: 0.2,
+                },
+                { transform: 'none', opacity: 1 },
+              ],
+              {
+                duration: 900,
+                delay: 200 + i * 100,
+                easing: 'cubic-bezier(.7,0,.2,1)',
+              },
+            ),
+          );
+          A($('.br-p'), FADE, { duration: 1, delay: 1250, easing: 'linear' });
+          A(
+            $('.br-cta'),
+            [
+              { opacity: 0, transform: 'scale(1.25)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 140, delay: 1500, easing: E.hard },
+          );
+        },
+      ];
+
+      const E = {
+        out: 'cubic-bezier(.22,1,.36,1)',
+        spring: 'cubic-bezier(.34,1.56,.64,1)',
+        hard: 'cubic-bezier(.9,0,.1,1)',
+      };
+      const A = (el, kf, o = {}) =>
+        el.animate(kf, {
+          fill: 'backwards',
+          easing: E.out,
+          duration: 600,
+          ...o,
+        });
+      const stagger = (els, kf, o = {}, step = 120) =>
+        [...els].forEach((e, i) =>
+          A(e, kf, { ...o, delay: (o.delay || 0) + i * step }),
+        );
+      const FADEUP = [
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'none' },
+      ];
+      const FADE = [{ opacity: 0 }, { opacity: 1 }];
+      function pointer(s, $$) {
+        const mv = (e) => {
+          const r = s.getBoundingClientRect(),
+            x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          $$('[data-d]').forEach((el) => {
+            const d = +el.dataset.d;
+            el.style.translate = x * d + 'px ' + y * d + 'px';
+          });
+        };
+        s.addEventListener('mousemove', mv);
+        s._off = () => {
+          s.removeEventListener('mousemove', mv);
+          $$('[data-d]').forEach((el) => (el.style.translate = ''));
+        };
+      }
+      const stages = [...document.querySelectorAll('.stage')];
+      function run(i) {
+        const s = stages[i];
+        s.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+        if (s._off) {
+          s._off();
+          s._off = null;
+        }
+        fns[i](
+          s,
+          (q) => s.querySelector(q),
+          (q) => s.querySelectorAll(q),
+        );
+      }
+      document
+        .querySelectorAll('.replay')
+        .forEach((b) => b.addEventListener('click', () => run(+b.dataset.i)));
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              io.unobserve(e.target);
+              run(stages.indexOf(e.target));
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      stages.forEach((s) => io.observe(s));
+    </script>
+  </body>
+</html>

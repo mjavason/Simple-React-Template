@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Skeuomorphism / Retro</title>
+    <style>
+      :root {
+        --bg: #1d140d;
+        --ink: #f3e6d0;
+        --muted: #bda98a;
+        --bf: Georgia, serif;
+        --btnbg: #3a2a1a;
+        --btnborder: 1px solid #7a5c35;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(
+          --bf,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif
+        );
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 18px 90px;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      h1.title {
+        font-size: 30px;
+        margin: 16px 0 8px;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        color: var(--muted);
+        margin-bottom: 40px;
+        max-width: 62ch;
+      }
+      .strat {
+        margin-bottom: 56px;
+      }
+      .strat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .strat-head h2 {
+        font-size: 17px;
+      }
+      .replay {
+        font: inherit;
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: var(--rr, 8px);
+        cursor: pointer;
+        background: var(--btnbg, transparent);
+        color: var(--ink);
+        border: var(--btnborder, 1px solid var(--muted));
+        box-shadow: var(--btnshadow, none);
+      }
+      .stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        display: flex;
+        border-radius: 16px;
+      }
+      dl.meta {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 6px 16px;
+        font-size: 14px;
+        margin-top: 16px;
+        color: var(--muted);
+      }
+      dl.meta dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .avoid {
+        margin-top: 8px;
+        padding-top: 18px;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 14px;
+        max-width: 70ch;
+      }
+      .avoid strong {
+        color: var(--ink);
+      }
+      .center {
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        dl.meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stage * {
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      .stage {
+        background: repeating-linear-gradient(
+          90deg,
+          #6b4423 0 7px,
+          #603c1e 7px 14px
+        );
+        box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.55);
+        color: #f3e6d0;
+      }
+      .col {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 30px 20px;
+      }
+      .sk-h {
+        font-size: clamp(26px, 4.5vw, 38px);
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+        text-align: center;
+      }
+      .sk-row {
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .sk-plate {
+        width: 150px;
+        height: 70px;
+        border-radius: 8px;
+        background: linear-gradient(145deg, #f1d98a, #b88a2e 55%, #e8c767);
+        color: #4a3210;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        box-shadow:
+          0 4px 10px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+      .sk-radio {
+        width: 190px;
+        height: 120px;
+        border-radius: 14px;
+        background: linear-gradient(#efe2c4, #d3bf94);
+        box-shadow:
+          0 8px 18px rgba(0, 0, 0, 0.55),
+          inset 0 2px 0 rgba(255, 255, 255, 0.6);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+      }
+      .sk-grille {
+        flex: 1;
+        height: 100%;
+        border-radius: 8px;
+        background: repeating-linear-gradient(
+          0deg,
+          #3b2a1a 0 3px,
+          #6a5236 3px 6px
+        );
+      }
+      .sk-dial {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #666, #111);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+      }
+      .sk-gauge {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #faf2dc 55%, #d9c79b);
+        border: 8px solid #b88a2e;
+        box-shadow:
+          0 8px 18px rgba(0, 0, 0, 0.55),
+          inset 0 2px 6px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+      .sk-needle {
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        width: 3px;
+        height: 42px;
+        margin-left: -1.5px;
+        background: #a1261a;
+        transform-origin: bottom center;
+        transform: rotate(30deg);
+      }
+      .sk-device {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 22px;
+        border-radius: 18px;
+        background: linear-gradient(#e9dcbd, #cdb98c);
+        box-shadow:
+          0 10px 24px rgba(0, 0, 0, 0.6),
+          inset 0 2px 0 rgba(255, 255, 255, 0.6);
+      }
+      .sk-knob {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        position: relative;
+        flex: none;
+        background: radial-gradient(circle at 35% 30%, #666, #151515);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.65);
+        transform: rotate(40deg);
+      }
+      .sk-ind {
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        width: 4px;
+        height: 22px;
+        margin-left: -2px;
+        background: #f1d98a;
+        border-radius: 2px;
+      }
+      .sk-lcd {
+        width: 150px;
+        height: 60px;
+        background: #2c3a22;
+        color: #b6f08a;
+        font-family: 'Courier New', monospace;
+        border-radius: 8px;
+        position: relative;
+        box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.65);
+      }
+      .sk-lcd span {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        letter-spacing: 0.15em;
+      }
+      .sk-lcd .off {
+        opacity: 0;
+      }
+      .sk-led {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ff5a3c;
+        box-shadow: 0 0 12px 3px rgba(255, 90, 60, 0.7);
+        flex: none;
+      }
+      .sk-cta {
+        font: inherit;
+        font-weight: 700;
+        color: #4a3210;
+        background: linear-gradient(#f1d98a, #c79a3a);
+        border: 0;
+        border-radius: 8px;
+        padding: 12px 26px;
+        cursor: pointer;
+        box-shadow:
+          0 4px 0 #7a5c1f,
+          0 8px 14px rgba(0, 0, 0, 0.5);
+      }
+      .sk-cta:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 #7a5c1f;
+      }
+      .sk-medal {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        flex: none;
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        background: conic-gradient(
+          from 20deg,
+          #f1d98a,
+          #b88a2e,
+          #f1d98a,
+          #8a6420,
+          #f1d98a
+        );
+        box-shadow:
+          0 12px 26px rgba(0, 0, 0, 0.65),
+          inset 0 0 0 10px rgba(0, 0, 0, 0.12);
+      }
+      .sk-medal b {
+        font-size: 46px;
+        color: #4a3210;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      .sk-shine {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.6) 50%,
+          transparent 60%
+        );
+        transform: translateX(120%);
+      }
+      .sk-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+        max-width: 260px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Index</a
+        ><a href="01-neumorphism.html">Neumorphism</a
+        ><a href="02-glassmorphism.html">Glassmorphism</a
+        ><a href="03-minimalist-flat.html">Minimalist / Flat Design</a
+        ><a href="04-material.html">Material Design</a
+        ><a href="05-skeuomorphism-retro.html">Skeuomorphism / Retro</a
+        ><a href="06-brutalism.html">Brutalism</a
+        ><a href="07-swiss-international.html">Swiss / International Style</a
+        ><a href="08-claymorphism.html">Claymorphism</a
+        ><a href="09-dark-mode.html">Dark Mode Aesthetics</a>
+      </nav>
+      <h1 class="title">Skeuomorphism / Retro</h1>
+      <p class="lead">
+        Physical metaphor. Motion suggests weight, pressure, mechanical
+        movement, or an object being revealed.
+      </p>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy A: Physical assembly</h2>
+          <button class="replay" data-i="0">Replay</button>
+        </div>
+        <div class="stage" data-i="0">
+          <div class="col">
+            <h3 class="sk-h">Built to be felt</h3>
+            <div class="sk-row">
+              <div class="sk-plate">MODEL 7</div>
+              <div class="sk-radio">
+                <div class="sk-grille"></div>
+                <div class="sk-dial"></div>
+              </div>
+              <div class="sk-gauge"><div class="sk-needle"></div></div>
+            </div>
+            <button class="sk-cta">Order yours</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Background surface appears, physical-looking objects slide into
+            position, headline and controls settle.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Directional translation, opacity, restrained overshoot.</dd>
+          <dt>Use when</dt>
+          <dd>
+            Layered objects, devices, instruments, retro interface elements.
+          </dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy B: Mechanical activation</h2>
+          <button class="replay" data-i="1">Replay</button>
+        </div>
+        <div class="stage" data-i="1">
+          <div class="col">
+            <h3 class="sk-h">Turn it on</h3>
+            <div class="sk-device">
+              <div class="sk-knob"><div class="sk-ind"></div></div>
+              <div class="sk-lcd">
+                <span class="off">STANDBY</span><span class="on">ON AIR</span>
+              </div>
+              <div class="sk-led"></div>
+            </div>
+            <button class="sk-cta">Start broadcasting</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            A dial rotates, an indicator lights up, the display state reveals
+            the product's purpose, CTA becomes prominent.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Rotation, glow state transition, crossfade of display text.</dd>
+          <dt>Use when</dt>
+          <dd>Hero built around a recognizable physical control or machine.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy C: Object spotlight</h2>
+          <button class="replay" data-i="2">Replay</button>
+        </div>
+        <div class="stage" data-i="2">
+          <div class="col">
+            <div class="sk-row" style="gap: 40px">
+              <div class="sk-medal">
+                <b>No. 7</b>
+                <div class="sk-shine"></div>
+              </div>
+              <div class="sk-copy">
+                <h3 class="sk-h" style="text-align: left">Cast in brass</h3>
+                <p>Solid, heavy, made to last for decades.</p>
+                <button class="sk-cta">See it up close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Main object is revealed through a mask, light changes subtly across
+            it, supporting copy appears.
+          </dd>
+          <dt>Motion</dt>
+          <dd>clip-path, small scale, translating highlight band.</dd>
+          <dt>Use when</dt>
+          <dd>A single textured object or retro product image dominates.</dd>
+        </dl>
+      </section>
+      <p class="avoid">
+        <strong>Avoid:</strong> Making every element bounce. Physical motion
+        needs consistent weight and believable stopping behavior.
+      </p>
+    </div>
+    <script>
+      const fns = [
+        function (s, $, $$) {
+          const ov = 'cubic-bezier(.34,1.3,.64,1)';
+          A(
+            $('.sk-plate'),
+            [
+              { opacity: 0, transform: 'translateX(-120px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 800, easing: ov },
+          );
+          A(
+            $('.sk-radio'),
+            [
+              { opacity: 0, transform: 'translateY(90px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 900, delay: 200, easing: ov },
+          );
+          A(
+            $('.sk-gauge'),
+            [
+              { opacity: 0, transform: 'translateX(120px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 800, delay: 400, easing: ov },
+          );
+          A(
+            $('.sk-needle'),
+            [{ transform: 'rotate(-70deg)' }, { transform: 'rotate(30deg)' }],
+            { duration: 900, delay: 1100, easing: ov },
+          );
+          A(
+            $('.sk-h'),
+            [
+              { opacity: 0, transform: 'translateY(-14px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 700, delay: 800 },
+          );
+          A($('.sk-cta'), FADE, { duration: 500, delay: 1300 });
+        },
+        function (s, $, $$) {
+          A(
+            $('.sk-knob'),
+            [{ transform: 'rotate(-130deg)' }, { transform: 'rotate(40deg)' }],
+            {
+              duration: 1000,
+              delay: 300,
+              easing: 'cubic-bezier(.34,1.35,.64,1)',
+            },
+          );
+          A(
+            $('.sk-led'),
+            [
+              {
+                backgroundColor: '#4a1a14',
+                boxShadow: '0 0 0 0 rgba(255,90,60,0)',
+              },
+              {
+                backgroundColor: '#ff5a3c',
+                boxShadow: '0 0 12px 3px rgba(255,90,60,.7)',
+              },
+            ],
+            { duration: 300, delay: 1000 },
+          );
+          A($('.sk-lcd .off'), [{ opacity: 1 }, { opacity: 0 }], {
+            duration: 200,
+            delay: 1000,
+            easing: 'linear',
+          });
+          A($('.sk-lcd .on'), [{ opacity: 0 }, { opacity: 1 }], {
+            duration: 200,
+            delay: 1000,
+            easing: 'linear',
+          });
+          A(
+            $('.sk-cta'),
+            [
+              { opacity: 0, transform: 'translateY(10px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 500, delay: 1500 },
+          );
+        },
+        function (s, $, $$) {
+          A(
+            $('.sk-medal'),
+            [
+              { clipPath: 'circle(0% at 50% 50%)', transform: 'scale(1.12)' },
+              { clipPath: 'circle(75% at 50% 50%)', transform: 'none' },
+            ],
+            { duration: 1100, easing: 'cubic-bezier(.65,0,.35,1)' },
+          );
+          A(
+            $('.sk-shine'),
+            [
+              { transform: 'translateX(-120%)' },
+              { transform: 'translateX(120%)' },
+            ],
+            { duration: 1100, delay: 900, easing: 'ease-in-out' },
+          );
+          stagger(
+            $$('.sk-copy>*'),
+            FADEUP,
+            { duration: 600, delay: 1000 },
+            130,
+          );
+        },
+      ];
+
+      const E = {
+        out: 'cubic-bezier(.22,1,.36,1)',
+        spring: 'cubic-bezier(.34,1.56,.64,1)',
+        hard: 'cubic-bezier(.9,0,.1,1)',
+      };
+      const A = (el, kf, o = {}) =>
+        el.animate(kf, {
+          fill: 'backwards',
+          easing: E.out,
+          duration: 600,
+          ...o,
+        });
+      const stagger = (els, kf, o = {}, step = 120) =>
+        [...els].forEach((e, i) =>
+          A(e, kf, { ...o, delay: (o.delay || 0) + i * step }),
+        );
+      const FADEUP = [
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'none' },
+      ];
+      const FADE = [{ opacity: 0 }, { opacity: 1 }];
+      function pointer(s, $$) {
+        const mv = (e) => {
+          const r = s.getBoundingClientRect(),
+            x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          $$('[data-d]').forEach((el) => {
+            const d = +el.dataset.d;
+            el.style.translate = x * d + 'px ' + y * d + 'px';
+          });
+        };
+        s.addEventListener('mousemove', mv);
+        s._off = () => {
+          s.removeEventListener('mousemove', mv);
+          $$('[data-d]').forEach((el) => (el.style.translate = ''));
+        };
+      }
+      const stages = [...document.querySelectorAll('.stage')];
+      function run(i) {
+        const s = stages[i];
+        s.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+        if (s._off) {
+          s._off();
+          s._off = null;
+        }
+        fns[i](
+          s,
+          (q) => s.querySelector(q),
+          (q) => s.querySelectorAll(q),
+        );
+      }
+      document
+        .querySelectorAll('.replay')
+        .forEach((b) => b.addEventListener('click', () => run(+b.dataset.i)));
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              io.unobserve(e.target);
+              run(stages.indexOf(e.target));
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      stages.forEach((s) => io.observe(s));
+    </script>
+  </body>
+</html>

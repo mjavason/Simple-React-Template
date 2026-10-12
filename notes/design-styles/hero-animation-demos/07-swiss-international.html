@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Swiss / International Style</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #111;
+        --muted: #666;
+        --bf: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        --rr: 0;
+        --btnborder: 1px solid #111;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(
+          --bf,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif
+        );
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 18px 90px;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      h1.title {
+        font-size: 30px;
+        margin: 16px 0 8px;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        color: var(--muted);
+        margin-bottom: 40px;
+        max-width: 62ch;
+      }
+      .strat {
+        margin-bottom: 56px;
+      }
+      .strat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .strat-head h2 {
+        font-size: 17px;
+      }
+      .replay {
+        font: inherit;
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: var(--rr, 8px);
+        cursor: pointer;
+        background: var(--btnbg, transparent);
+        color: var(--ink);
+        border: var(--btnborder, 1px solid var(--muted));
+        box-shadow: var(--btnshadow, none);
+      }
+      .stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        display: flex;
+        border-radius: 16px;
+      }
+      dl.meta {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 6px 16px;
+        font-size: 14px;
+        margin-top: 16px;
+        color: var(--muted);
+      }
+      dl.meta dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .avoid {
+        margin-top: 8px;
+        padding-top: 18px;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 14px;
+        max-width: 70ch;
+      }
+      .avoid strong {
+        color: var(--ink);
+      }
+      .center {
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        dl.meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stage * {
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      .stage {
+        background: #fff;
+        border: 1px solid #111;
+        border-radius: 0;
+      }
+      .sw-grid {
+        width: 100%;
+        padding: 32px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0 16px;
+        align-content: center;
+      }
+      .sw-h {
+        grid-column: 1/10;
+        font-size: clamp(34px, 6vw, 64px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+      .mask {
+        display: block;
+        overflow: hidden;
+        padding-bottom: 0.08em;
+      }
+      .line {
+        display: block;
+      }
+      .sw-p {
+        grid-column: 1/6;
+        margin-top: 22px;
+        font-size: 15px;
+        color: #333;
+      }
+      .sw-cta {
+        grid-column: 1/5;
+        justify-self: start;
+        margin-top: 22px;
+        background: #e10600;
+        color: #fff;
+        border: 0;
+        padding: 12px 22px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .sw-text {
+        grid-column: 1/6;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-self: center;
+      }
+      .sw-text .sw-h {
+        font-size: clamp(30px, 4.5vw, 48px);
+      }
+      .sw-right {
+        grid-column: 7/13;
+      }
+      .sw-img {
+        height: 220px;
+        background:
+          radial-gradient(circle at 62% 45%, #e10600 0 26%, transparent 26.5%),
+          #111;
+      }
+      .sw-caps {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-top: 8px;
+        color: #444;
+      }
+      .sw-meta {
+        grid-column: 1/4;
+        font-size: 12px;
+        line-height: 1.6;
+        color: #444;
+      }
+      .sw-c-h {
+        grid-column: 4/13;
+        font-size: clamp(30px, 5vw, 54px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+      .sw-rule {
+        grid-column: 1/13;
+        height: 1px;
+        background: #111;
+        margin: 26px 0 16px;
+        transform-origin: left;
+      }
+      .sw-reg {
+        font-size: 14px;
+        color: #222;
+      }
+      .sw-reg b {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .sw-r1 {
+        grid-column: 1/4;
+      }
+      .sw-r2 {
+        grid-column: 4/9;
+      }
+      .sw-block {
+        grid-column: 9/13;
+        background: #e10600;
+        height: 92px;
+        color: #fff;
+        padding: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Index</a
+        ><a href="01-neumorphism.html">Neumorphism</a
+        ><a href="02-glassmorphism.html">Glassmorphism</a
+        ><a href="03-minimalist-flat.html">Minimalist / Flat Design</a
+        ><a href="04-material.html">Material Design</a
+        ><a href="05-skeuomorphism-retro.html">Skeuomorphism / Retro</a
+        ><a href="06-brutalism.html">Brutalism</a
+        ><a href="07-swiss-international.html">Swiss / International Style</a
+        ><a href="08-claymorphism.html">Claymorphism</a
+        ><a href="09-dark-mode.html">Dark Mode Aesthetics</a>
+      </nav>
+      <h1 class="title">Swiss / International Style</h1>
+      <p class="lead">
+        Typographic hierarchy, alignment, and disciplined composition. Motion
+        reinforces the grid rather than decorating it.
+      </p>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy A: Grid-aligned line reveal</h2>
+          <button class="replay" data-i="0">Replay</button>
+        </div>
+        <div class="stage" data-i="0">
+          <div class="sw-grid">
+            <h3 class="sw-h">
+              <span class="mask"><span class="line">Form follows</span></span
+              ><span class="mask"><span class="line">the grid.</span></span>
+            </h3>
+            <p class="sw-p">
+              Order is the content. Everything aligns to one column edge.
+            </p>
+            <button class="sw-cta">Read the manual</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Headline reveals line by line, supporting copy appears, CTA enters
+            along the same alignment.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Masked vertical translation, restrained stagger, CTA slides on the x
+            axis from the left edge.
+          </dd>
+          <dt>Use when</dt>
+          <dd>Large typography and a strict grid define the hero.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy B: Editorial image reveal</h2>
+          <button class="replay" data-i="1">Replay</button>
+        </div>
+        <div class="stage" data-i="1">
+          <div class="sw-grid">
+            <div class="sw-text">
+              <h3 class="sw-h">Architecture, quietly.</h3>
+              <p style="font-size: 15px; color: #333">
+                Selected works, 2019 to 2026.
+              </p>
+            </div>
+            <div class="sw-right">
+              <div class="sw-img"></div>
+              <div class="sw-caps">
+                <span>Plan</span><span>Section</span><span>Detail</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Text appears, image reveals through a rectangular mask, supporting
+            labels or captions appear.
+          </dd>
+          <dt>Motion</dt>
+          <dd>clip-path crop reveal, then small stagger on captions.</dd>
+          <dt>Use when</dt>
+          <dd>Publication, architecture portfolio, or editorial layout.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy C: Asymmetric grid assembly</h2>
+          <button class="replay" data-i="2">Replay</button>
+        </div>
+        <div class="stage" data-i="2">
+          <div class="sw-grid">
+            <div class="sw-meta">Issue 07<br />Zurich<br />2026</div>
+            <h3 class="sw-c-h">
+              <span class="mask"><span class="line">Seven ideas on</span></span
+              ><span class="mask"><span class="line">visual order.</span></span>
+            </h3>
+            <div class="sw-rule"></div>
+            <div class="sw-reg sw-r1"><b>Method</b>Grid first.</div>
+            <div class="sw-reg sw-r2">
+              <b>Principle</b>One axis per column, one size per level of
+              hierarchy.
+            </div>
+            <div class="sw-block">Subscribe</div>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Primary headline appears, secondary grid regions reveal in sequence,
+            the main image block completes the composition.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Rules scale from the left edge, regions translate along their grid
+            axes.
+          </dd>
+          <dt>Use when</dt>
+          <dd>
+            Asymmetry, numbered sections, metadata, multiple typographic
+            regions.
+          </dd>
+        </dl>
+      </section>
+      <p class="avoid">
+        <strong>Avoid:</strong> Arbitrary floating motion. Every movement should
+        respect the composition's alignment and hierarchy.
+      </p>
+    </div>
+    <script>
+      const fns = [
+        function (s, $, $$) {
+          stagger(
+            $$('.line'),
+            [{ transform: 'translateY(105%)' }, { transform: 'none' }],
+            { duration: 800 },
+            120,
+          );
+          A($('.sw-p'), FADE, { duration: 500, delay: 600 });
+          A(
+            $('.sw-cta'),
+            [
+              { opacity: 0, transform: 'translateX(-16px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 500, delay: 800 },
+          );
+        },
+        function (s, $, $$) {
+          stagger($$('.sw-text>*'), FADEUP, { duration: 550 }, 100);
+          A(
+            $('.sw-img'),
+            [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+            { duration: 1000, delay: 400, easing: 'cubic-bezier(.65,0,.35,1)' },
+          );
+          stagger(
+            $$('.sw-caps span'),
+            FADE,
+            { duration: 400, delay: 1300 },
+            120,
+          );
+        },
+        function (s, $, $$) {
+          A($('.sw-meta'), FADE, { duration: 500 });
+          stagger(
+            $$('.line'),
+            [{ transform: 'translateY(105%)' }, { transform: 'none' }],
+            { duration: 800, delay: 150 },
+            120,
+          );
+          A(
+            $('.sw-rule'),
+            [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+            { duration: 800, delay: 600, easing: 'cubic-bezier(.65,0,.35,1)' },
+          );
+          A(
+            $('.sw-r1'),
+            [
+              { opacity: 0, transform: 'translateX(-24px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 600, delay: 1000 },
+          );
+          A(
+            $('.sw-r2'),
+            [
+              { opacity: 0, transform: 'translateX(-24px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 600, delay: 1150 },
+          );
+          A(
+            $('.sw-block'),
+            [
+              { opacity: 0, transform: 'translateY(24px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 600, delay: 1400 },
+          );
+        },
+      ];
+
+      const E = {
+        out: 'cubic-bezier(.22,1,.36,1)',
+        spring: 'cubic-bezier(.34,1.56,.64,1)',
+        hard: 'cubic-bezier(.9,0,.1,1)',
+      };
+      const A = (el, kf, o = {}) =>
+        el.animate(kf, {
+          fill: 'backwards',
+          easing: E.out,
+          duration: 600,
+          ...o,
+        });
+      const stagger = (els, kf, o = {}, step = 120) =>
+        [...els].forEach((e, i) =>
+          A(e, kf, { ...o, delay: (o.delay || 0) + i * step }),
+        );
+      const FADEUP = [
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'none' },
+      ];
+      const FADE = [{ opacity: 0 }, { opacity: 1 }];
+      function pointer(s, $$) {
+        const mv = (e) => {
+          const r = s.getBoundingClientRect(),
+            x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          $$('[data-d]').forEach((el) => {
+            const d = +el.dataset.d;
+            el.style.translate = x * d + 'px ' + y * d + 'px';
+          });
+        };
+        s.addEventListener('mousemove', mv);
+        s._off = () => {
+          s.removeEventListener('mousemove', mv);
+          $$('[data-d]').forEach((el) => (el.style.translate = ''));
+        };
+      }
+      const stages = [...document.querySelectorAll('.stage')];
+      function run(i) {
+        const s = stages[i];
+        s.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+        if (s._off) {
+          s._off();
+          s._off = null;
+        }
+        fns[i](
+          s,
+          (q) => s.querySelector(q),
+          (q) => s.querySelectorAll(q),
+        );
+      }
+      document
+        .querySelectorAll('.replay')
+        .forEach((b) => b.addEventListener('click', () => run(+b.dataset.i)));
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              io.unobserve(e.target);
+              run(stages.indexOf(e.target));
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      stages.forEach((s) => io.observe(s));
+    </script>
+  </body>
+</html>

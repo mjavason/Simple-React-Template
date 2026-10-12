@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dark Mode Aesthetics</title>
+    <style>
+      :root {
+        --bg: #07070b;
+        --ink: #e8e8f0;
+        --muted: #8a8aa0;
+        --rr: 10px;
+        --btnbg: #14141f;
+        --btnborder: 1px solid #2a2a40;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(
+          --bf,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif
+        );
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 18px 90px;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      h1.title {
+        font-size: 30px;
+        margin: 16px 0 8px;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        color: var(--muted);
+        margin-bottom: 40px;
+        max-width: 62ch;
+      }
+      .strat {
+        margin-bottom: 56px;
+      }
+      .strat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .strat-head h2 {
+        font-size: 17px;
+      }
+      .replay {
+        font: inherit;
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: var(--rr, 8px);
+        cursor: pointer;
+        background: var(--btnbg, transparent);
+        color: var(--ink);
+        border: var(--btnborder, 1px solid var(--muted));
+        box-shadow: var(--btnshadow, none);
+      }
+      .stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        display: flex;
+        border-radius: 16px;
+      }
+      dl.meta {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 6px 16px;
+        font-size: 14px;
+        margin-top: 16px;
+        color: var(--muted);
+      }
+      dl.meta dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .avoid {
+        margin-top: 8px;
+        padding-top: 18px;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 14px;
+        max-width: 70ch;
+      }
+      .avoid strong {
+        color: var(--ink);
+      }
+      .center {
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        dl.meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stage * {
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      .stage {
+        background: #0a0a10;
+        border: 1px solid #1d1d2b;
+        color: #e8e8f0;
+        border-radius: 14px;
+      }
+      .dk-col {
+        margin: auto;
+        padding: 36px;
+        max-width: 520px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        position: relative;
+        z-index: 2;
+      }
+      .dk-h {
+        font-size: clamp(28px, 5vw, 46px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .dk-acc {
+        color: #9a8cff;
+        text-shadow: 0 0 22px rgba(124, 92, 255, 0.55);
+      }
+      .dk-rule {
+        height: 3px;
+        width: 120px;
+        background: linear-gradient(90deg, #7c5cff, #22d3ee);
+        transform-origin: left;
+        border-radius: 2px;
+      }
+      .dk-p {
+        color: #9a9ab2;
+        max-width: 42ch;
+      }
+      .dk-cta {
+        background: #7c5cff;
+        color: #fff;
+        border: 0;
+        font: inherit;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 10px;
+        box-shadow: 0 0 22px rgba(124, 92, 255, 0.35);
+        cursor: pointer;
+      }
+      .dk-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.5;
+      }
+      .k1 {
+        width: 320px;
+        height: 320px;
+        background: #6d4aff;
+        left: -60px;
+        top: -80px;
+      }
+      .k2 {
+        width: 280px;
+        height: 280px;
+        background: #0fb5d6;
+        right: -40px;
+        bottom: -90px;
+      }
+      .dk-split {
+        display: flex;
+        gap: 34px;
+        align-items: center;
+        margin: auto;
+        padding: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .dk-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+        max-width: 300px;
+      }
+      .dk-mock {
+        width: 290px;
+        border: 1px solid #23233a;
+        border-radius: 14px;
+        background: #0f0f18;
+        padding: 14px;
+      }
+      .dk-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        font-size: 12px;
+        color: #8a8aa0;
+      }
+      .dk-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #f0506e;
+      }
+      .dk-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .dk-cell {
+        height: 58px;
+        border-radius: 8px;
+        background: #14141f;
+        border: 1px solid #1f1f30;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Index</a
+        ><a href="01-neumorphism.html">Neumorphism</a
+        ><a href="02-glassmorphism.html">Glassmorphism</a
+        ><a href="03-minimalist-flat.html">Minimalist / Flat Design</a
+        ><a href="04-material.html">Material Design</a
+        ><a href="05-skeuomorphism-retro.html">Skeuomorphism / Retro</a
+        ><a href="06-brutalism.html">Brutalism</a
+        ><a href="07-swiss-international.html">Swiss / International Style</a
+        ><a href="08-claymorphism.html">Claymorphism</a
+        ><a href="09-dark-mode.html">Dark Mode Aesthetics</a>
+      </nav>
+      <h1 class="title">Dark Mode Aesthetics</h1>
+      <p class="lead">
+        Controlled contrast, luminous accents, and visual depth. Motion makes
+        important elements emerge from darkness without compromising
+        readability. The tenth category from the brief, Brutalist, uses the
+        Brutalism page.
+      </p>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy A: Luminous text reveal</h2>
+          <button class="replay" data-i="0">Replay</button>
+        </div>
+        <div class="stage" data-i="0">
+          <div class="dk-col">
+            <h3 class="dk-h">
+              Ship faster with <span class="dk-acc">clean logs</span>
+            </h3>
+            <div class="dk-rule"></div>
+            <p class="dk-p">
+              Structured logging for teams that debug at night.
+            </p>
+            <button class="dk-cta">Install the agent</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Headline fades into view, accent-colored detail appears, CTA becomes
+            prominent.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Opacity, small translation, restrained accent opacity change.</dd>
+          <dt>Use when</dt>
+          <dd>
+            Typography dominates a dark hero and the accent color carries the
+            brand.
+          </dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy B: Ambient background emergence</h2>
+          <button class="replay" data-i="1">Replay</button>
+        </div>
+        <div class="stage" data-i="1">
+          <div class="dk-blob k1"></div>
+          <div class="dk-blob k2"></div>
+          <div class="dk-col">
+            <h3 class="dk-h">Signal in the dark</h3>
+            <p class="dk-p">Monitoring that stays quiet until it matters.</p>
+            <button class="dk-cta">Start monitoring</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Background gradients emerge, hero content fades in, background
+            continues moving very slowly.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Opacity and transforms on separate background layers.</dd>
+          <dt>Use when</dt>
+          <dd>Atmospheric, technical, or futuristic design.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy C: Product interface illumination</h2>
+          <button class="replay" data-i="2">Replay</button>
+        </div>
+        <div class="stage" data-i="2">
+          <div class="dk-split">
+            <div class="dk-copy">
+              <h3 class="dk-h" style="font-size: clamp(26px, 4vw, 38px)">
+                See every service at once
+              </h3>
+              <p class="dk-p">Health, latency, and deploys in one view.</p>
+              <button class="dk-cta">Open console</button>
+            </div>
+            <div class="dk-mock">
+              <div class="dk-top"><span class="dk-dot"></span>api-gateway</div>
+              <div class="dk-grid">
+                <div class="dk-cell" data-lit="1"></div>
+                <div class="dk-cell"></div>
+                <div class="dk-cell"></div>
+                <div class="dk-cell" data-lit="1"></div>
+                <div class="dk-cell" data-lit="1"></div>
+                <div class="dk-cell"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Product mockup enters, selected panels illuminate in sequence,
+            heading and CTA remain the primary content.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Opacity and color transitions on selected cells, subtle entrance on
+            the mockup.
+          </dd>
+          <dt>Use when</dt>
+          <dd>
+            Developer tools, dashboards, gaming products, technical interfaces.
+          </dd>
+        </dl>
+      </section>
+      <p class="avoid">
+        <strong>Avoid:</strong> Large, persistent glows behind text or rapid
+        brightness changes. Keep the content readable and the emphasis
+        selective.
+      </p>
+    </div>
+    <script>
+      const fns = [
+        function (s, $, $$) {
+          A(
+            $('.dk-h'),
+            [
+              { opacity: 0, transform: 'translateY(10px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 900 },
+          );
+          A(
+            $('.dk-acc'),
+            [
+              { opacity: 0.15, textShadow: '0 0 0 rgba(124,92,255,0)' },
+              { opacity: 1, textShadow: '0 0 22px rgba(124,92,255,.55)' },
+            ],
+            { duration: 900, delay: 500 },
+          );
+          A(
+            $('.dk-rule'),
+            [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+            { duration: 700, delay: 700 },
+          );
+          A($('.dk-p'), FADE, { duration: 600, delay: 900 });
+          A(
+            $('.dk-cta'),
+            [
+              { opacity: 0, transform: 'translateY(8px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 600, delay: 1100 },
+          );
+        },
+        function (s, $, $$) {
+          $$('.dk-blob').forEach((b, i) => {
+            A(b, [{ opacity: 0 }, { opacity: 0.5 }], {
+              duration: 1600,
+              delay: i * 300,
+            });
+            A(
+              b,
+              [
+                { transform: 'translate(0,0)' },
+                { transform: `translate(${[50, -50][i]}px,${[40, -30][i]}px)` },
+              ],
+              {
+                duration: 9000 + i * 3000,
+                direction: 'alternate',
+                iterations: Infinity,
+                easing: 'ease-in-out',
+                fill: 'none',
+              },
+            );
+          });
+          stagger(
+            $$('.dk-h,.dk-p,.dk-cta'),
+            FADEUP,
+            { duration: 700, delay: 800 },
+            140,
+          );
+        },
+        function (s, $, $$) {
+          A(
+            $('.dk-mock'),
+            [
+              { opacity: 0, transform: 'translateY(24px) scale(.98)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 700 },
+          );
+          stagger(
+            $$('.dk-cell[data-lit]'),
+            [
+              { backgroundColor: '#14141f', borderColor: '#1f1f30' },
+              {
+                backgroundColor: 'rgba(124,92,255,.35)',
+                borderColor: '#7c5cff',
+              },
+            ],
+            { duration: 500, delay: 800, fill: 'both' },
+            350,
+          );
+          A(
+            $('.dk-dot'),
+            [{ backgroundColor: '#f0506e' }, { backgroundColor: '#3ddc97' }],
+            { duration: 400, delay: 1900, fill: 'both' },
+          );
+        },
+      ];
+
+      const E = {
+        out: 'cubic-bezier(.22,1,.36,1)',
+        spring: 'cubic-bezier(.34,1.56,.64,1)',
+        hard: 'cubic-bezier(.9,0,.1,1)',
+      };
+      const A = (el, kf, o = {}) =>
+        el.animate(kf, {
+          fill: 'backwards',
+          easing: E.out,
+          duration: 600,
+          ...o,
+        });
+      const stagger = (els, kf, o = {}, step = 120) =>
+        [...els].forEach((e, i) =>
+          A(e, kf, { ...o, delay: (o.delay || 0) + i * step }),
+        );
+      const FADEUP = [
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'none' },
+      ];
+      const FADE = [{ opacity: 0 }, { opacity: 1 }];
+      function pointer(s, $$) {
+        const mv = (e) => {
+          const r = s.getBoundingClientRect(),
+            x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          $$('[data-d]').forEach((el) => {
+            const d = +el.dataset.d;
+            el.style.translate = x * d + 'px ' + y * d + 'px';
+          });
+        };
+        s.addEventListener('mousemove', mv);
+        s._off = () => {
+          s.removeEventListener('mousemove', mv);
+          $$('[data-d]').forEach((el) => (el.style.translate = ''));
+        };
+      }
+      const stages = [...document.querySelectorAll('.stage')];
+      function run(i) {
+        const s = stages[i];
+        s.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+        if (s._off) {
+          s._off();
+          s._off = null;
+        }
+        fns[i](
+          s,
+          (q) => s.querySelector(q),
+          (q) => s.querySelectorAll(q),
+        );
+      }
+      document
+        .querySelectorAll('.replay')
+        .forEach((b) => b.addEventListener('click', () => run(+b.dataset.i)));
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              io.unobserve(e.target);
+              run(stages.indexOf(e.target));
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      stages.forEach((s) => io.observe(s));
+    </script>
+  </body>
+</html>

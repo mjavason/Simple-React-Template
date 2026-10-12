@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Material Design</title>
+    <style>
+      :root {
+        --bg: #f6f2fa;
+        --ink: #1c1b1f;
+        --muted: #625b71;
+        --rr: 20px;
+        --btnbg: #e8def8;
+        --btnborder: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(
+          --bf,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif
+        );
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 18px 90px;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      h1.title {
+        font-size: 30px;
+        margin: 16px 0 8px;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        color: var(--muted);
+        margin-bottom: 40px;
+        max-width: 62ch;
+      }
+      .strat {
+        margin-bottom: 56px;
+      }
+      .strat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .strat-head h2 {
+        font-size: 17px;
+      }
+      .replay {
+        font: inherit;
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: var(--rr, 8px);
+        cursor: pointer;
+        background: var(--btnbg, transparent);
+        color: var(--ink);
+        border: var(--btnborder, 1px solid var(--muted));
+        box-shadow: var(--btnshadow, none);
+      }
+      .stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        display: flex;
+        border-radius: 16px;
+      }
+      dl.meta {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 6px 16px;
+        font-size: 14px;
+        margin-top: 16px;
+        color: var(--muted);
+      }
+      dl.meta dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .avoid {
+        margin-top: 8px;
+        padding-top: 18px;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 14px;
+        max-width: 70ch;
+      }
+      .avoid strong {
+        color: var(--ink);
+      }
+      .center {
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        dl.meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stage * {
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      .stage {
+        background: #e8def8;
+        border-radius: 28px;
+      }
+      .md-surface {
+        margin: auto;
+        width: min(560px, 92%);
+        background: #fffbfe;
+        border-radius: 28px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.3),
+          0 1px 3px 1px rgba(0, 0, 0, 0.15);
+      }
+      .md-h {
+        font-size: 28px;
+        font-weight: 600;
+        color: #1c1b1f;
+      }
+      .md-p {
+        color: #49454f;
+        font-size: 15px;
+      }
+      .md-card {
+        background: #f3edf7;
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        box-shadow:
+          0 4px 8px 3px rgba(0, 0, 0, 0.15),
+          0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      .md-line {
+        display: block;
+        height: 10px;
+        border-radius: 5px;
+        background: #cac4d0;
+      }
+      .md-line.s {
+        width: 50%;
+        background: #6750a4;
+      }
+      .md-cta {
+        align-self: flex-start;
+        background: #6750a4;
+        color: #fff;
+        border: 0;
+        font: inherit;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .md-wrap {
+        margin: auto;
+        display: flex;
+        gap: 36px;
+        align-items: center;
+        padding: 30px;
+      }
+      .md-tiles {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .md-tile {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+      }
+      .md-slot {
+        width: 260px;
+        height: 200px;
+        border-radius: 24px;
+        border: 2px dashed #b9aed0;
+      }
+      .md-mover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+      }
+      .md-pv {
+        width: 260px;
+        padding: 22px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .md-pv b {
+        font-size: 18px;
+      }
+      .md-pv .md-line {
+        background: rgba(255, 255, 255, 0.55);
+      }
+      .md-split {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+        margin: auto;
+        padding: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .md-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+        max-width: 280px;
+      }
+      .md-app {
+        position: relative;
+        width: 260px;
+        background: #fffbfe;
+        border-radius: 28px;
+        padding: 0 0 70px;
+        overflow: hidden;
+        box-shadow:
+          0 4px 8px 3px rgba(0, 0, 0, 0.15),
+          0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      .md-bar {
+        background: #6750a4;
+        color: #fff;
+        padding: 16px;
+        font-weight: 600;
+      }
+      .md-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .md-row i {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #d0bcff;
+      }
+      .md-row span {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .md-fab {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: #6750a4;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 26px;
+        box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Index</a
+        ><a href="01-neumorphism.html">Neumorphism</a
+        ><a href="02-glassmorphism.html">Glassmorphism</a
+        ><a href="03-minimalist-flat.html">Minimalist / Flat Design</a
+        ><a href="04-material.html">Material Design</a
+        ><a href="05-skeuomorphism-retro.html">Skeuomorphism / Retro</a
+        ><a href="06-brutalism.html">Brutalism</a
+        ><a href="07-swiss-international.html">Swiss / International Style</a
+        ><a href="08-claymorphism.html">Claymorphism</a
+        ><a href="09-dark-mode.html">Dark Mode Aesthetics</a>
+      </nav>
+      <h1 class="title">Material Design</h1>
+      <p class="lead">
+        Meaningful state change, elevation, and spatial continuity. Motion
+        explains how interface elements relate and respond.
+      </p>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy A: Elevation build-up</h2>
+          <button class="replay" data-i="0">Replay</button>
+        </div>
+        <div class="stage" data-i="0">
+          <div class="md-surface">
+            <h3 class="md-h">Plan the week together</h3>
+            <p class="md-p">Shared lists with clear owners.</p>
+            <div class="md-card">
+              <span class="md-line s"></span><span class="md-line"></span
+              ><span class="md-line" style="width: 70%"></span>
+            </div>
+            <button class="md-cta">Create a plan</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Main surface appears, product card or mockup rises above it, CTA
+            becomes prominent.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Small translation and shadow changes, scale used sparingly.</dd>
+          <dt>Use when</dt>
+          <dd>Hero resembling an interactive product interface.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy B: Shared-element transition</h2>
+          <button class="replay" data-i="1">Replay</button>
+        </div>
+        <div class="stage" data-i="1">
+          <div class="md-wrap">
+            <div class="md-tiles">
+              <div class="md-tile" style="background: #6750a4"></div>
+              <div class="md-tile" style="background: #9a82db"></div>
+              <div class="md-tile" style="background: #d0bcff"></div>
+            </div>
+            <div class="md-slot"></div>
+          </div>
+          <div class="md-mover" style="background: #6750a4">
+            <div class="md-pv">
+              <b>Project Atlas</b><span class="md-line"></span
+              ><span class="md-line" style="width: 70%"></span
+              ><span class="md-line" style="width: 45%"></span>
+            </div>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            A small element expands into a larger product preview. The visual
+            keeps its identity across states.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Animated position, size, and radius of one element from tile rect to
+            preview rect.
+          </dd>
+          <dt>Use when</dt>
+          <dd>
+            An interactive control connects to a larger preview or detail view.
+          </dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy C: Structured reveal</h2>
+          <button class="replay" data-i="2">Replay</button>
+        </div>
+        <div class="stage" data-i="2">
+          <div class="md-split">
+            <div class="md-copy">
+              <h3 class="md-h">Everything in one app</h3>
+              <p class="md-p">Tasks, people, and deadlines in order.</p>
+              <button class="md-cta">Download</button>
+            </div>
+            <div class="md-app">
+              <div class="md-bar">Today</div>
+              <div class="md-row">
+                <i></i
+                ><span
+                  ><span class="md-line s"></span><span class="md-line"></span
+                ></span>
+              </div>
+              <div class="md-row">
+                <i></i
+                ><span
+                  ><span class="md-line s"></span><span class="md-line"></span
+                ></span>
+              </div>
+              <div class="md-row">
+                <i></i
+                ><span
+                  ><span class="md-line s"></span><span class="md-line"></span
+                ></span>
+              </div>
+              <div class="md-fab">+</div>
+            </div>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Main container enters, interface components appear in logical order,
+            interactive controls settle into final states.
+          </dd>
+          <dt>Motion</dt>
+          <dd>Container transition followed by modest stagger.</dd>
+          <dt>Use when</dt>
+          <dd>
+            Dashboard, mobile app, or interface with multiple related
+            components.
+          </dd>
+        </dl>
+      </section>
+      <p class="avoid">
+        <strong>Avoid:</strong> Ripples or elevation changes on decorative
+        elements without a functional reason. Material-style motion works best
+        when it communicates a state change.
+      </p>
+    </div>
+    <script>
+      const fns = [
+        function (s, $, $$) {
+          const e0 = '0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)';
+          A(
+            $('.md-surface'),
+            [
+              { opacity: 0, transform: 'scale(.98)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 450 },
+          );
+          A(
+            $('.md-card'),
+            [
+              { transform: 'translateY(30px)', opacity: 0, boxShadow: e0 },
+              {
+                transform: 'none',
+                opacity: 1,
+                boxShadow:
+                  '0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3)',
+              },
+            ],
+            { duration: 650, delay: 350 },
+          );
+          A(
+            $('.md-cta'),
+            [
+              { opacity: 0, transform: 'scale(.85)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 400, delay: 850 },
+          );
+          stagger($$('.md-h,.md-p'), FADEUP, { duration: 450, delay: 150 }, 80);
+        },
+        function (s, $, $$) {
+          const sr = s.getBoundingClientRect(),
+            t = $('.md-tile').getBoundingClientRect(),
+            p = $('.md-slot').getBoundingClientRect();
+          const g = (r) => ({
+            left: r.left - sr.left + 'px',
+            top: r.top - sr.top + 'px',
+            width: r.width + 'px',
+            height: r.height + 'px',
+          });
+          const m = $('.md-mover');
+          stagger(
+            $$('.md-tile'),
+            [
+              { opacity: 0, transform: 'scale(.8)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 400 },
+            80,
+          );
+          A(
+            $('.md-tile'),
+            [
+              { transform: 'scale(1)' },
+              { transform: 'scale(.9)' },
+              { transform: 'scale(1)' },
+            ],
+            { delay: 700, duration: 260 },
+          );
+          A(m, [{ opacity: 0 }, { opacity: 1 }], {
+            delay: 900,
+            duration: 1,
+            easing: 'linear',
+            fill: 'both',
+          });
+          A(
+            m,
+            [
+              { ...g(t), borderRadius: '14px' },
+              { ...g(p), borderRadius: '24px' },
+            ],
+            {
+              delay: 900,
+              duration: 700,
+              easing: 'cubic-bezier(.2,0,0,1)',
+              fill: 'both',
+            },
+          );
+          A($('.md-pv'), FADE, { delay: 1450, duration: 400, fill: 'both' });
+        },
+        function (s, $, $$) {
+          A(
+            $('.md-app'),
+            [
+              { opacity: 0, transform: 'translateY(36px) scale(.96)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 600 },
+          );
+          A(
+            $('.md-bar'),
+            [
+              { opacity: 0, transform: 'translateY(-12px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 400, delay: 400 },
+          );
+          stagger(
+            $$('.md-row'),
+            [
+              { opacity: 0, transform: 'translateX(-14px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 400, delay: 550 },
+            100,
+          );
+          A(
+            $('.md-fab'),
+            [{ transform: 'scale(0)' }, { transform: 'scale(1)' }],
+            { duration: 450, delay: 1000, easing: 'cubic-bezier(.2,0,0,1.4)' },
+          );
+        },
+      ];
+
+      const E = {
+        out: 'cubic-bezier(.22,1,.36,1)',
+        spring: 'cubic-bezier(.34,1.56,.64,1)',
+        hard: 'cubic-bezier(.9,0,.1,1)',
+      };
+      const A = (el, kf, o = {}) =>
+        el.animate(kf, {
+          fill: 'backwards',
+          easing: E.out,
+          duration: 600,
+          ...o,
+        });
+      const stagger = (els, kf, o = {}, step = 120) =>
+        [...els].forEach((e, i) =>
+          A(e, kf, { ...o, delay: (o.delay || 0) + i * step }),
+        );
+      const FADEUP = [
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'none' },
+      ];
+      const FADE = [{ opacity: 0 }, { opacity: 1 }];
+      function pointer(s, $$) {
+        const mv = (e) => {
+          const r = s.getBoundingClientRect(),
+            x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          $$('[data-d]').forEach((el) => {
+            const d = +el.dataset.d;
+            el.style.translate = x * d + 'px ' + y * d + 'px';
+          });
+        };
+        s.addEventListener('mousemove', mv);
+        s._off = () => {
+          s.removeEventListener('mousemove', mv);
+          $$('[data-d]').forEach((el) => (el.style.translate = ''));
+        };
+      }
+      const stages = [...document.querySelectorAll('.stage')];
+      function run(i) {
+        const s = stages[i];
+        s.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+        if (s._off) {
+          s._off();
+          s._off = null;
+        }
+        fns[i](
+          s,
+          (q) => s.querySelector(q),
+          (q) => s.querySelectorAll(q),
+        );
+      }
+      document
+        .querySelectorAll('.replay')
+        .forEach((b) => b.addEventListener('click', () => run(+b.dataset.i)));
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              io.unobserve(e.target);
+              run(stages.indexOf(e.target));
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      stages.forEach((s) => io.observe(s));
+    </script>
+  </body>
+</html>

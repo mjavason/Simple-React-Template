@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Neumorphism</title>
+    <style>
+      :root {
+        --bg: #e0e5ec;
+        --ink: #3d4852;
+        --muted: #6b7787;
+        --rr: 12px;
+        --btnbg: #e0e5ec;
+        --btnborder: 0;
+        --btnshadow: 4px 4px 8px #a3b1c6, -4px -4px 8px #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(
+          --bf,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif
+        );
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 18px 90px;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      h1.title {
+        font-size: 30px;
+        margin: 16px 0 8px;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        color: var(--muted);
+        margin-bottom: 40px;
+        max-width: 62ch;
+      }
+      .strat {
+        margin-bottom: 56px;
+      }
+      .strat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .strat-head h2 {
+        font-size: 17px;
+      }
+      .replay {
+        font: inherit;
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: var(--rr, 8px);
+        cursor: pointer;
+        background: var(--btnbg, transparent);
+        color: var(--ink);
+        border: var(--btnborder, 1px solid var(--muted));
+        box-shadow: var(--btnshadow, none);
+      }
+      .stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        display: flex;
+        border-radius: 16px;
+      }
+      dl.meta {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 6px 16px;
+        font-size: 14px;
+        margin-top: 16px;
+        color: var(--muted);
+      }
+      dl.meta dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .avoid {
+        margin-top: 8px;
+        padding-top: 18px;
+        border-top: 1px solid var(--muted);
+        color: var(--muted);
+        font-size: 14px;
+        max-width: 70ch;
+      }
+      .avoid strong {
+        color: var(--ink);
+      }
+      .center {
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      @media (max-width: 560px) {
+        dl.meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stage * {
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      .stage {
+        background: #e0e5ec;
+      }
+      .nu-h {
+        font-size: clamp(28px, 5vw, 42px);
+        color: #3d4852;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .nu-p {
+        color: #6b7787;
+        max-width: 42ch;
+      }
+      .nu-cta {
+        border: 0;
+        font: inherit;
+        font-weight: 600;
+        color: #3d4852;
+        background: #e0e5ec;
+        padding: 14px 30px;
+        border-radius: 14px;
+        cursor: pointer;
+        box-shadow:
+          6px 6px 12px #a3b1c6,
+          -6px -6px 12px #fff;
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .nu-cta:hover {
+        box-shadow:
+          3px 3px 6px #a3b1c6,
+          -3px -3px 6px #fff;
+      }
+      .nu-cta:active {
+        box-shadow:
+          inset 4px 4px 8px #a3b1c6,
+          inset -4px -4px 8px #fff;
+        transform: scale(0.98);
+      }
+      .nu-panel {
+        width: min(340px, 100%);
+        padding: 28px;
+        border-radius: 28px;
+        background: #e0e5ec;
+        box-shadow:
+          10px 10px 20px rgba(163, 177, 198, 1),
+          -10px -10px 20px rgba(255, 255, 255, 1),
+          inset 6px 6px 12px rgba(163, 177, 198, 0),
+          inset -6px -6px 12px rgba(255, 255, 255, 0);
+      }
+      .nu-panel b {
+        display: block;
+        font-size: 20px;
+      }
+      .nu-panel span {
+        color: #6b7787;
+        font-size: 14px;
+      }
+      .nu-row {
+        display: flex;
+        gap: 18px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .nu-knob {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: #e0e5ec;
+        box-shadow:
+          5px 5px 10px rgba(163, 177, 198, 1),
+          -5px -5px 10px rgba(255, 255, 255, 1),
+          inset 3px 3px 6px rgba(163, 177, 198, 0),
+          inset -3px -3px 6px rgba(255, 255, 255, 0);
+      }
+      .nu-back {
+        padding: 26px;
+        border-radius: 30px;
+        background: #e0e5ec;
+        box-shadow:
+          inset 8px 8px 16px #a3b1c6,
+          inset -8px -8px 16px #fff;
+      }
+      .nu-card {
+        width: 110px;
+        height: 120px;
+        border-radius: 20px;
+        background: #e0e5ec;
+        box-shadow:
+          8px 8px 16px #a3b1c6,
+          -8px -8px 16px #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Index</a
+        ><a href="01-neumorphism.html">Neumorphism</a
+        ><a href="02-glassmorphism.html">Glassmorphism</a
+        ><a href="03-minimalist-flat.html">Minimalist / Flat Design</a
+        ><a href="04-material.html">Material Design</a
+        ><a href="05-skeuomorphism-retro.html">Skeuomorphism / Retro</a
+        ><a href="06-brutalism.html">Brutalism</a
+        ><a href="07-swiss-international.html">Swiss / International Style</a
+        ><a href="08-claymorphism.html">Claymorphism</a
+        ><a href="09-dark-mode.html">Dark Mode Aesthetics</a>
+      </nav>
+      <h1 class="title">Neumorphism</h1>
+      <p class="lead">
+        Tactile softness. Motion makes elements feel pressed, raised, or gently
+        emerging from a soft surface.
+      </p>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy A: Soft emergence</h2>
+          <button class="replay" data-i="0">Replay</button>
+        </div>
+        <div class="stage" data-i="0">
+          <div class="center">
+            <h3 class="nu-h">Soft by design</h3>
+            <p class="nu-p">
+              A calm surface where every control feels within reach.
+            </p>
+            <button class="nu-cta">Get started</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Headline fades in and rises slightly, supporting copy follows, CTA
+            gently emerges last.
+          </dd>
+          <dt>Motion</dt>
+          <dd>opacity 0 to 1, y 12 to 0, short stagger.</dd>
+          <dt>Use when</dt>
+          <dd>Typography-led hero that needs a calm, polished entrance.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy B: Tactile press-and-release</h2>
+          <button class="replay" data-i="1">Replay</button>
+        </div>
+        <div class="stage" data-i="1">
+          <div class="center">
+            <div class="nu-panel">
+              <b>Thermostat</b><span>Tap a control</span>
+              <div class="nu-row">
+                <div class="nu-knob"></div>
+                <div class="nu-knob"></div>
+                <div class="nu-knob"></div>
+              </div>
+            </div>
+            <button class="nu-cta">Try it</button>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Elements start in a sunken state, the main visual rises, CTA
+            responds to hover and press with changing shadows.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Animated shadow values and a very small scale change. Hover and
+            press the CTA after the entrance.
+          </dd>
+          <dt>Use when</dt>
+          <dd>Floating controls, rounded panels, tactile product mockup.</dd>
+        </dl>
+      </section>
+      <section class="strat">
+        <div class="strat-head">
+          <h2>Strategy C: Layered soft reveal</h2>
+          <button class="replay" data-i="2">Replay</button>
+        </div>
+        <div class="stage" data-i="2">
+          <div class="center">
+            <div class="nu-back">
+              <div class="nu-row" style="margin: 0">
+                <div class="nu-card"></div>
+                <div class="nu-card"></div>
+                <div class="nu-card"></div>
+              </div>
+            </div>
+            <h3 class="nu-h">Layers of calm</h3>
+          </div>
+        </div>
+        <dl class="meta">
+          <dt>Sequence</dt>
+          <dd>
+            Recessed background panel appears, foreground cards rise at slightly
+            different intervals, headline settles into view.
+          </dd>
+          <dt>Motion</dt>
+          <dd>
+            Small vertical translations, opacity, stagger with uneven intervals.
+          </dd>
+          <dt>Use when</dt>
+          <dd>Hero with multiple layered UI elements.</dd>
+        </dl>
+      </section>
+      <p class="avoid">
+        <strong>Avoid:</strong> Large displacement or exaggerated bouncing.
+        Neumorphism depends on subtle differences in light and depth.
+      </p>
+    </div>
+    <script>
+      const fns = [
+        function (s, $, $$) {
+          stagger($$('.nu-h,.nu-p,.nu-cta'), FADEUP, { duration: 700 }, 140);
+        },
+        function (s, $, $$) {
+          const sh = (o, r, k) =>
+            `${o}px ${o}px ${o * 2}px rgba(163,177,198,${r}),-${o}px -${o}px ${o * 2}px rgba(255,255,255,${r}),inset ${o * 0.6}px ${o * 0.6}px ${o * 1.2}px rgba(163,177,198,${k}),inset -${o * 0.6}px -${o * 0.6}px ${o * 1.2}px rgba(255,255,255,${k})`;
+          A(
+            $('.nu-panel'),
+            [
+              { boxShadow: sh(10, 0, 1), transform: 'scale(.97)' },
+              { boxShadow: sh(10, 1, 0), transform: 'none' },
+            ],
+            { duration: 1000 },
+          );
+          stagger(
+            $$('.nu-knob'),
+            [
+              { boxShadow: sh(5, 0, 1), transform: 'scale(.92)' },
+              { boxShadow: sh(5, 1, 0), transform: 'none' },
+            ],
+            { duration: 800, delay: 500 },
+            140,
+          );
+          A($('.nu-cta'), FADE, { duration: 600, delay: 1000 });
+        },
+        function (s, $, $$) {
+          A(
+            $('.nu-back'),
+            [
+              { opacity: 0, transform: 'scale(.97)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 700 },
+          );
+          $$('.nu-card').forEach((c, i) =>
+            A(
+              c,
+              [
+                { opacity: 0, transform: 'translateY(22px)' },
+                { opacity: 1, transform: 'none' },
+              ],
+              { duration: 700, delay: 400 + [0, 140, 320][i] },
+            ),
+          );
+          A(
+            $('.nu-h'),
+            [
+              { opacity: 0, transform: 'translateY(-10px)' },
+              { opacity: 1, transform: 'none' },
+            ],
+            { duration: 700, delay: 1000 },
+          );
+        },
+      ];
+
+      const E = {
+        out: 'cubic-bezier(.22,1,.36,1)',
+        spring: 'cubic-bezier(.34,1.56,.64,1)',
+        hard: 'cubic-bezier(.9,0,.1,1)',
+      };
+      const A = (el, kf, o = {}) =>
+        el.animate(kf, {
+          fill: 'backwards',
+          easing: E.out,
+          duration: 600,
+          ...o,
+        });
+      const stagger = (els, kf, o = {}, step = 120) =>
+        [...els].forEach((e, i) =>
+          A(e, kf, { ...o, delay: (o.delay || 0) + i * step }),
+        );
+      const FADEUP = [
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'none' },
+      ];
+      const FADE = [{ opacity: 0 }, { opacity: 1 }];
+      function pointer(s, $$) {
+        const mv = (e) => {
+          const r = s.getBoundingClientRect(),
+            x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          $$('[data-d]').forEach((el) => {
+            const d = +el.dataset.d;
+            el.style.translate = x * d + 'px ' + y * d + 'px';
+          });
+        };
+        s.addEventListener('mousemove', mv);
+        s._off = () => {
+          s.removeEventListener('mousemove', mv);
+          $$('[data-d]').forEach((el) => (el.style.translate = ''));
+        };
+      }
+      const stages = [...document.querySelectorAll('.stage')];
+      function run(i) {
+        const s = stages[i];
+        s.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+        if (s._off) {
+          s._off();
+          s._off = null;
+        }
+        fns[i](
+          s,
+          (q) => s.querySelector(q),
+          (q) => s.querySelectorAll(q),
+        );
+      }
+      document
+        .querySelectorAll('.replay')
+        .forEach((b) => b.addEventListener('click', () => run(+b.dataset.i)));
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              io.unobserve(e.target);
+              run(stages.indexOf(e.target));
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      stages.forEach((s) => io.observe(s));
+    </script>
+  </body>
+</html>
