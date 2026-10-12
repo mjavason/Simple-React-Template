@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from 'motion/react';
 
 interface AnimatedTextProps {
   text: string;
@@ -44,10 +44,10 @@ export function AnimatedText({ text }: AnimatedTextProps) {
           }}
           className="inline-block"
           style={{
-            whiteSpace: character === " " ? "pre" : undefined,
+            whiteSpace: character === ' ' ? 'pre' : undefined,
           }}
         >
-          {character === " " ? "\u00A0" : character}
+          {character === ' ' ? '\u00A0' : character}
         </motion.span>
       ))}
     </motion.h1>

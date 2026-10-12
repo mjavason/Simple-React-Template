@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from 'motion/react';
 
 export default function AnimatedSignature() {
   return (
@@ -19,7 +19,7 @@ export default function AnimatedSignature() {
         animate={{ pathLength: 1 }}
         transition={{
           duration: 2,
-          ease: "linear",
+          ease: 'linear',
         }}
       />
     </svg>

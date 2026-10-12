@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function TravelingBorder() {
   return (
@@ -34,7 +34,7 @@ export default function TravelingBorder() {
         transition={{
           duration: 2,
           repeat: Infinity,
-          ease: "linear",
+          ease: 'linear',
         }}
       />
     </svg>

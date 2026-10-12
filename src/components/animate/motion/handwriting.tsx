@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from 'motion/react';
 
 export function Handwriting() {
   return (
@@ -10,7 +10,7 @@ export function Handwriting() {
         strokeLinecap="round"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
+        transition={{ duration: 1.2, ease: 'easeInOut' }}
       />
     </svg>
   );
@@ -20,15 +20,15 @@ export function HandwritingReveal() {
   return (
     <div className="overflow-hidden">
       <motion.p
-        initial={{ clipPath: "inset(0 100% 0 0)" }}
-        animate={{ clipPath: "inset(0 0% 0 0)" }}
+        initial={{ clipPath: 'inset(0 100% 0 0)' }}
+        animate={{ clipPath: 'inset(0 0% 0 0)' }}
         transition={{
           duration: 2.5,
-          ease: "linear",
+          ease: 'linear',
         }}
-        className="whitespace-nowrap font-serif text-5xl italic"
+        className="font-serif text-5xl whitespace-nowrap italic"
         style={{
-          fontFamily: "cursive",
+          fontFamily: 'cursive',
         }}
       >
         Made with intention
