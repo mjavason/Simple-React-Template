@@ -1,6 +1,6 @@
-import { AppLink } from '../app-link';
 import { RoutesConst } from '@/common/constants/routes.constant';
 import { capitalizeFirstLetter } from '@/utils/string.util';
+import { AppLink } from '../app-link';
 
 export default function DesktopNavbar() {
   return (
@@ -9,18 +9,15 @@ export default function DesktopNavbar() {
         {Object.entries(RoutesConst).map(
           ([key, path]) =>
             typeof path === 'string' && (
-              <AppLink
+              <div
                 key={key}
-                to={path}
-                onClick={close}
                 className="mb-2 flex items-center gap-3 rounded-lg p-3"
-                prefetch="intent"
               >
                 <NavLink
                   to={path}
                   text={capitalizeFirstLetter(key.toLowerCase())}
                 />
-              </AppLink>
+              </div>
             ),
         )}
       </div>
@@ -30,7 +27,7 @@ export default function DesktopNavbar() {
 
 function NavLink({ to, text }: { to: string; text: string }) {
   return (
-    <AppLink to={to}>
+    <AppLink to={to} prefetch="intent">
       {({ isActive }) => (
         <p
           className={`hover:text-core-primary text-[20px] leading-none font-medium ${
