@@ -1,4 +1,4 @@
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { ScaleIn } from '../animate/scaleIn';
