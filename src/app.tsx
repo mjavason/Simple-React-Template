@@ -13,6 +13,8 @@ function App() {
     <ErrorBoundary>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
+          {/* disabled temporarily until a faster alternative is found */}
+          {/* <MobileNavSwipe /> */}
           <div className="min-h-screen max-w-screen overflow-x-hidden">
             <Toaster
               position="top-center"
