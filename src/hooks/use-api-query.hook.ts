@@ -36,7 +36,7 @@ export function useApiQuery<TOutput>(
 type ApiEndpoint<TOutput> = {
   key: string;
   url: string;
-  
+
   // Used for compile-time type inference.
   __output?: TOutput;
 };
