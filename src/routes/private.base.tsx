@@ -8,6 +8,10 @@ export function privateRouteLoader() {
   const authToken = getCookie(CookieKeys.AUTH_TOKEN);
 
   if (!authToken) {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('stop-progress'));
+    }, 0);
+
     toast.error('Please login', { duration: 1500 });
     return redirect(RoutesConst.LOGIN);
   }
