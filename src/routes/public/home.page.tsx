@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'react-hot-toast';
 
 function HomePage() {
-
   return (
     <PageContainer>
       <div className="flex flex-col gap-8">
