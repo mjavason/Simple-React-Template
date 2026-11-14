@@ -6,6 +6,7 @@ export default function DesktopNavbar() {
   return (
     <div className="mt-6 hidden w-full justify-end px-15 md:flex">
       <div className="flex justify-between gap-8">
+        <AnchorNavLink href="index.html" text="Landing" />
         {Object.entries(RoutesConst).map(
           ([key, path]) =>
             typeof path === 'string' && (
@@ -38,5 +39,19 @@ function NavLink({ to, text }: { to: string; text: string }) {
         </p>
       )}
     </AppLink>
+  );
+}
+
+function AnchorNavLink({ href, text }: { href: string; text: string }) {
+  return (
+    <a href={href}>
+      <div key={href} className="mb-2 flex items-center gap-3 rounded-lg p-3">
+        <p
+          className={`hover:text-core-primary text-[20px] leading-none font-medium`}
+        >
+          {text}
+        </p>
+      </div>
+    </a>
   );
 }

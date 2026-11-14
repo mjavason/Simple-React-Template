@@ -8,6 +8,7 @@ export function privateRouteLoader() {
   const authToken = getCookie(CookieKeys.AUTH_TOKEN);
 
   if (!authToken) {
+    // We're using events here because route loaders cannot access our global context
     setTimeout(() => {
       window.dispatchEvent(new Event('stop-progress'));
     }, 0);

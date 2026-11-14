@@ -1,0 +1,2 @@
+To add a new static page, you must create it in the root directory. Once created, don't forget to register it in vite.config.ts.
+Enjoy!

@@ -1,0 +1,7 @@
+Your hosting provider must serve:
+
+- / → /index.html
+- /app/ → /app/index.html
+- /app/* → /app/index.html (SPA fallback)
+
+Do not rewrite / to your React application.

@@ -37,10 +37,12 @@ function RouterLayout() {
     setLoading(false);
   }, []);
 
+  // Stop the global loader by listening for location changes
   React.useEffect(() => {
     stop();
   }, [location.pathname, location.search, location.hash, stop]);
 
+  // Stop the global loader with events
   React.useEffect(() => {
     const handleStop = () => stop();
     window.addEventListener('stop-progress', handleStop);
@@ -61,29 +63,16 @@ function RouterLayout() {
   );
 }
 
-export const router = createBrowserRouter([
-  {
-    element: <RouterLayout />,
-    errorElement: <ErrorElement />,
-    children: [
-      {
-        element: <PublicRoute />,
-        loader: publicRouteLoader,
-        children: publicRoutes.map((route) => {
-          const Comp = route.component;
-
-          return {
-            path: route.path,
-            element: <Comp />,
-          };
-        }),
-      },
-
-      {
-        element: <PrivateRoute />,
-        loader: privateRouteLoader,
-        children: [
-          ...privateRoutes.map((route) => {
+export const router = createBrowserRouter(
+  [
+    {
+      element: <RouterLayout />,
+      errorElement: <ErrorElement />,
+      children: [
+        {
+          element: <PublicRoute />,
+          loader: publicRouteLoader,
+          children: publicRoutes.map((route) => {
             const Comp = route.component;
 
             return {
@@ -91,13 +80,29 @@ export const router = createBrowserRouter([
               element: <Comp />,
             };
           }),
+        },
 
-          {
-            path: '*',
-            element: <NotFound />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+        {
+          element: <PrivateRoute />,
+          loader: privateRouteLoader,
+          children: [
+            ...privateRoutes.map((route) => {
+              const Comp = route.component;
+
+              return {
+                path: route.path,
+                element: <Comp />,
+              };
+            }),
+
+            {
+              path: '*',
+              element: <NotFound />,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  { basename: '/app' },
+);
